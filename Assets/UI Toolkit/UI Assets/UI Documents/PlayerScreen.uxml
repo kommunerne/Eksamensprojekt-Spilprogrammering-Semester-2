@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-items: flex-end; justify-content: flex-end;">
+        <ui:VisualElement style="height: 281px; width: 283px; align-items: center; justify-content: center;">
+            <ui:VisualElement style="background-image: url(&apos;project://database/Assets/Materials/Render%20Texture/MiniMapRenderTexture.renderTexture?fileID=8400000&amp;guid=43cc48bf731538e43b54a2c07fbbba39&amp;type=2#MiniMapRenderTexture&apos;); width: 200px; height: 200px; border-left-color: rgba(0, 0, 0, 255); border-right-color: rgba(0, 0, 0, 255); border-top-color: rgba(0, 0, 0, 255); border-bottom-color: rgba(0, 0, 0, 255); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-left-radius: 92px; border-bottom-left-radius: 92px; border-top-right-radius: 92px; border-bottom-right-radius: 92px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

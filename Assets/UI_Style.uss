@@ -1,0 +1,195 @@
+.button-style {
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    -unity-background-image-tint-color: rgb(207, 207, 207);
+    background-color: rgb(47, 160, 224);
+    border-left-color: rgb(47, 148, 224);
+    border-right-color: rgb(47, 148, 224);
+    border-top-color: rgb(47, 148, 224);
+    border-bottom-color: rgb(47, 148, 224);
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: none;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    -unity-font-style: bold;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=a460248379a6d3643b967f271f7bd2ae&type=3#NotInter-Regular');
+    -unity-font-definition: initial;
+    -unity-text-outline-width: 0;
+    -unity-text-outline-color: rgb(255, 255, 255);
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 43px;
+    width: 162px;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: auto;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.button-style:hover {
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    -unity-background-image-tint-color: rgb(207, 207, 207);
+    background-color: rgb(47, 149, 224);
+    border-left-color: rgb(34, 120, 185);
+    border-right-color: rgb(34, 120, 185);
+    border-top-color: rgb(34, 120, 185);
+    border-bottom-color: rgb(34, 120, 185);
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: none;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    -unity-font-style: bold;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=a460248379a6d3643b967f271f7bd2ae&type=3#NotInter-Regular');
+    -unity-font-definition: initial;
+    -unity-text-outline-width: 0;
+    -unity-text-outline-color: rgb(255, 255, 255);
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 43px;
+    width: 162px;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: auto;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    scale: 1 1;
+}
+
+.button-style:active {
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    background-color: rgb(47, 105, 224);
+    border-left-color: rgb(34, 120, 185);
+    border-right-color: rgb(34, 120, 185);
+    border-top-color: rgb(34, 120, 185);
+    border-bottom-color: rgb(34, 120, 185);
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    background-image: none;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    -unity-font-style: bold;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=a460248379a6d3643b967f271f7bd2ae&type=3#NotInter-Regular');
+    -unity-font-definition: initial;
+    -unity-text-outline-width: 0;
+    -unity-text-outline-color: rgb(255, 255, 255);
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 43px;
+    width: 162px;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: auto;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.menu-style {
+    height: 437px;
+    width: 388px;
+    background-color: rgb(161, 161, 161);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    position: absolute;
+}
+
+.Header-Text {
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 0 rgb(0, 0, 0);
+    position: absolute;
+    top: 20px;
+}
+
+.volume-slider {
+    height: 50px;
+    width: 175px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    -unity-text-align: upper-center;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=a460248379a6d3643b967f271f7bd2ae&type=3#NotInter-Regular');
+    -unity-font-style: bold;
+    position: absolute;
+    top: 25%;
+    background-color: rgba(61, 159, 226, 255);
+}
+
+.text-input {
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+    -unity-text-align: upper-center;
+    max-width: none;
+    min-width: auto;
+    min-height: auto;
+    max-height: none;
+    width: 230px;
+    height: 70px;
+    top: -62px;
+}

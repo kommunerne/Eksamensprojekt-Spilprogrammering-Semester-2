@@ -1,0 +1,149 @@
+.prograss_bar_box {
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.progress_bar {
+    -unity-text-align: upper-left;
+    width: 100%;
+}
+
+.stat_lable {
+    align-items: center;
+    justify-content: center;
+    -unity-text-align: middle-center;
+    height: auto;
+    width: auto;
+    left: auto;
+    transform-origin: center;
+    flex-direction: column;
+    white-space: nowrap;
+    background-color: rgba(255, 255, 255, 0);
+    -unity-font: url('project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&guid=58b647c5b2ec4184e9a07a561cdf0644&type=3#JazzCreateBubble');
+    font-size: 18px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+.stat_box {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 62px;
+}
+
+.stat_upgrade_button {
+    align-items: flex-start;
+    justify-content: center;
+    left: 16px;
+}
+
+.unity-progress-bar__progress {
+    background-color: yellow;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.unity-progress-bar__background {
+    background-color: darkcyan;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.unity-progress-bar__container {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.border_test {
+    height: 448px;
+    width: 404px;
+    background-color: rgba(18, 18, 18, 0.58);
+    border-top-left-radius: 82px;
+    border-bottom-left-radius: 82px;
+    border-top-right-radius: 82px;
+    border-bottom-right-radius: 82px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.upgrade-button {
+    background-color: rgba(255, 255, 255, 255);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-color: rgba(159, 159, 159, 255);
+    border-right-color: rgba(159, 159, 159, 255);
+    border-top-color: rgba(159, 159, 159, 255);
+    border-bottom-color: rgba(159, 159, 159, 255);
+    -unity-font-style: bold;
+    color: rgba(0, 0, 0, 255);
+}
+
+.upgrade-button:hover {
+    background-color: rgb(186, 186, 186);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-color: rgb(130, 130, 130);
+    border-right-color: rgb(130, 130, 130);
+    border-top-color: rgb(130, 130, 130);
+    border-bottom-color: rgb(130, 130, 130);
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
+}
+
+.upgrade-button:active {
+    background-color: rgb(208, 208, 208);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-color: rgb(94, 94, 94);
+    border-right-color: rgb(94, 94, 94);
+    border-top-color: rgb(94, 94, 94);
+    border-bottom-color: rgb(94, 94, 94);
+    -unity-font-style: bold;
+    color: rgb(0, 0, 0);
+}
+
+.unity-text-element {
+}
+
+.unity-label {
+}
+
+.unity-progress-bar {
+}

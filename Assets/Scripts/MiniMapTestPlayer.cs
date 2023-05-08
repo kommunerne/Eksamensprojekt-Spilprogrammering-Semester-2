@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class MiniMapTestPlayer : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    
     public Camera cameraToUse;
     public GameObject test;
     private Rigidbody2D rb;
-    
+
+    public int hp = 100;
+    public int dmg = 20;
+    public float firerate = 1.0f;
+    public float moveSpeed = 5f;
+    public int hpregen = 5;
+
+    public int level;
+    public int exp;
+    public int statPoints;
+    public int score;
+
+    public string name;
+    public int pinCode;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +51,35 @@ public class MiniMapTestPlayer : MonoBehaviour
 
         // Rotate the player to face the mouse
         test.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
 
+    public void HpUpgrade()
+    {
+        hp += 100;
+        statPoints--;
+    }
+
+    public void DmgUpgrade()
+    {
+        dmg += 20;
+        statPoints--;
+    }
+
+    public void FirerateUpgrade()
+    {
+        firerate += 0.15f;
+        statPoints--;
+    }
+
+    public void MovespeedUpgrade()
+    {
+        moveSpeed += 1f;
+        statPoints--;
+    }
+
+    public void HpregenUpgrade()
+    {
+        hpregen += 5;
+        statPoints--;
     }
 }

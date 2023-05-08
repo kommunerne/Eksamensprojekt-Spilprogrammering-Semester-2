@@ -1,0 +1,69 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Game%20UI/USS%20Styles/PlayerScreen_USS.uss?fileID=7433441132597879392&amp;guid=2d4cf64c2e5739844b595f7a1d373fea&amp;type=3#PlayerScreen_USS" />
+    <Style src="project://database/Assets/UI%20Toolkit/UI%20Assets/UI_Style.uss?fileID=7433441132597879392&amp;guid=a5a28b8dfbe18cf4aa3812424a305766&amp;type=3#UI_Style" />
+    <ui:VisualElement name="MainScreen" style="height: auto; width: auto; flex-grow: 1; align-items: center; justify-content: flex-start; flex-direction: row; background-color: rgba(255, 255, 255, 0);">
+        <ui:VisualElement name="ScreenDiv1" style="flex-direction: column; overflow: visible; align-items: flex-start; justify-content: space-between; height: 100%; width: 50%; flex-wrap: nowrap;">
+            <ui:VisualElement name="ScoreBoardBox" style="width: 50%; height: 50%; align-items: flex-start; padding-left: 24px; padding-right: 24px; padding-top: 24px; padding-bottom: 24px;" />
+            <ui:VisualElement name="PlayerStatsShown" class="border_test" style="width: 361px; -unity-text-align: upper-center; align-items: center; height: 441px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; display: flex; border-top-left-radius: 68px; border-bottom-left-radius: 68px; border-top-right-radius: 68px; border-bottom-right-radius: 68px;">
+                <ui:Button text="Hide" display-tooltip-when-elided="true" name="hideStats" style="position: relative; top: -2px; left: 0; overflow: hidden; background-color: rgba(255, 255, 255, 0.24); color: rgb(255, 255, 255); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; height: 32px; width: 66px; transform-origin: center; scale: 1 1; white-space: nowrap; -unity-text-align: middle-center; border-left-color: rgba(56, 56, 56, 0); border-right-color: rgba(56, 56, 56, 0); border-top-color: rgba(56, 56, 56, 0); border-bottom-color: rgba(56, 56, 56, 0); justify-content: center; align-items: center; font-size: 16px;" />
+                <ui:VisualElement style="-unity-text-align: upper-center; flex-grow: 1; flex-wrap: nowrap; height: 347px; width: 100%; padding-left: 27px; padding-right: 27px; padding-top: 27px; padding-bottom: 27px; left: -7px; top: -14px;">
+                    <ui:VisualElement name="Level_Exp_Display" class="stat_box" style="justify-content: space-around;">
+                        <ui:VisualElement name="Current_Level" style="width: 50%; height: 100%; justify-content: center; flex-direction: row; align-items: center;">
+                            <ui:Label text="Level:" display-tooltip-when-elided="true" class="stat_lable" />
+                            <ui:Label text="0" display-tooltip-when-elided="true" name="currentLevel" enable-rich-text="false" class="stat_lable" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Stat_Points" style="width: 50%; height: 100%; justify-content: flex-start; flex-direction: row; align-items: center;">
+                            <ui:Label text="Status Points:" display-tooltip-when-elided="true" class="stat_lable" style="height: 29px; width: 129px;" />
+                            <ui:Label text="0" display-tooltip-when-elided="true" name="statusPoints" class="stat_lable" style="color: rgb(1, 204, 12);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="StatsBox" style="justify-content: center; height: 347px; width: 100%; left: auto; align-items: center; top: 0;">
+                        <ui:VisualElement name="HP_Box" class="stat_box">
+                            <ui:VisualElement name="HP" class="prograss_bar_box" style="margin-left: 15px;">
+                                <ui:Label text="HP" display-tooltip-when-elided="true" class="stat_lable" style="margin-bottom: 0; align-items: center;" />
+                                <ui:ProgressBar value="2" high-value="10" name="hpSlider" usage-hints="None" class="progress_bar" style="background-color: rgba(96, 77, 77, 0); -unity-background-image-tint-color: rgb(19, 19, 19); color: rgb(255, 220, 220); -unity-text-outline-color: rgb(0, 0, 0); margin-top: 0;" />
+                            </ui:VisualElement>
+                            <ui:Button text="Upgarde" display-tooltip-when-elided="true" name="hpButton" class="stat_upgrade_button upgrade-button" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="DMG_Box" class="stat_box" style="flex-direction: row;">
+                            <ui:VisualElement name="DMG" class="prograss_bar_box">
+                                <ui:Label text="DMG" display-tooltip-when-elided="true" class="stat_lable" style="margin-bottom: 0;" />
+                                <ui:ProgressBar value="2" high-value="10" name="dmgSlider" class="progress_bar" style="margin-top: 0;" />
+                            </ui:VisualElement>
+                            <ui:Button text="Upgarde" display-tooltip-when-elided="true" name="dmgButton" class="stat_upgrade_button upgrade-button" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="FireRate_Box" class="stat_box" style="flex-direction: row;">
+                            <ui:VisualElement name="FireRate" class="prograss_bar_box">
+                                <ui:Label text="Fire Rate" display-tooltip-when-elided="true" class="stat_lable" style="margin-bottom: 0;" />
+                                <ui:ProgressBar value="2" high-value="10" name="firerateSlider" class="progress_bar" style="margin-top: 0; margin-right: 4px;" />
+                            </ui:VisualElement>
+                            <ui:Button text="Upgarde" display-tooltip-when-elided="true" name="firerateButton" class="stat_upgrade_button upgrade-button" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Movespeed_Box" class="stat_box" style="flex-direction: row;">
+                            <ui:VisualElement name="MoveSpeed" class="prograss_bar_box">
+                                <ui:Label text="Move Speed" display-tooltip-when-elided="true" class="stat_lable" style="width: auto; margin-bottom: 0;" />
+                                <ui:ProgressBar value="2" high-value="10" name="movespeedSlider" class="progress_bar" style="margin-top: 0;" />
+                            </ui:VisualElement>
+                            <ui:Button text="Upgarde" display-tooltip-when-elided="true" name="movespeedButton" class="stat_upgrade_button upgrade-button" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="HPRegen_Box" class="stat_box" style="flex-direction: row;">
+                            <ui:VisualElement name="HPRegen" class="prograss_bar_box">
+                                <ui:Label text="Health Regen" display-tooltip-when-elided="true" class="stat_lable" style="height: 23px; width: auto; margin-bottom: 0;" />
+                                <ui:ProgressBar value="2" high-value="10" name="hpregenSlider" class="progress_bar" style="margin-top: 0;" />
+                            </ui:VisualElement>
+                            <ui:Button text="Upgarde" display-tooltip-when-elided="true" name="hpregenButton" class="stat_upgrade_button upgrade-button" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="PlayerStatsHidden" class="border_test" style="width: 361px; -unity-text-align: upper-center; align-items: center; height: 45px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; overflow: visible; visibility: visible; display: none; border-top-left-radius: 23px; border-bottom-left-radius: 23px; border-top-right-radius: 23px; border-bottom-right-radius: 23px; justify-content: flex-start;">
+                <ui:Button text="Show" display-tooltip-when-elided="true" name="showStats" style="position: relative; top: -2px; left: 0; overflow: hidden; background-color: rgba(255, 255, 255, 0.24); color: rgb(255, 255, 255); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; height: 32px; width: 66px; transform-origin: center; scale: 1 1; white-space: nowrap; -unity-text-align: middle-center; border-left-color: rgba(56, 56, 56, 0); border-right-color: rgba(56, 56, 56, 0); border-top-color: rgba(56, 56, 56, 0); border-bottom-color: rgba(56, 56, 56, 0); justify-content: center; align-items: center; font-size: 16px; display: flex;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ScrrenDiv2" style="width: 50%;">
+            <ui:VisualElement name="MiniMapHolder" style="flex-grow: 0; align-items: flex-end; justify-content: flex-end; left: auto; height: 947px; width: 100%; background-color: rgba(255, 255, 255, 0);">
+                <ui:VisualElement name="miniMap" style="background-image: url(&apos;project://database/Assets/Materials/Render%20Texture/MiniMapRenderTexture.renderTexture?fileID=8400000&amp;guid=43cc48bf731538e43b54a2c07fbbba39&amp;type=2#MiniMapRenderTexture&apos;); width: 300px; height: 300px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-top-left-radius: 92px; border-bottom-left-radius: 92px; border-top-right-radius: 92px; border-bottom-right-radius: 92px; margin-left: 30px; margin-right: 30px; margin-top: 30px; margin-bottom: 30px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

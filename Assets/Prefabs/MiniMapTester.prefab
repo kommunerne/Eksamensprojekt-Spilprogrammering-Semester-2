@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 7839277371089715546}
   - component: {fileID: 1100730952752897449}
   - component: {fileID: 1100730952752897448}
+  - component: {fileID: 205579597}
   m_Layer: 0
   m_Name: MiniMapTester
   m_TagString: Untagged
@@ -219,9 +220,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71dacfe2912c8bc4cb8c2829cdf5631a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   cameraToUse: {fileID: 5842477994893953899}
   test: {fileID: 6903933226273571961}
+  hp: 100
+  dmg: 20
+  firerate: 1
+  moveSpeed: 5
+  hpregen: 5
+  level: 0
+  exp: 0
+  statPoints: 0
 --- !u!50 &7839277371089715546
 Rigidbody2D:
   serializedVersion: 4
@@ -285,6 +293,19 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 820e7dec7d0ae9746af1429de5e00cdb, type: 3}
   m_SortingOrder: 0
+--- !u!114 &205579597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490536705170797276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc71096f9221af469a509aa08f5d0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &6395995517379776220
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,10 +481,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
-  field of view: 143.30725
+  far clip plane: 1.42
+  field of view: 171.4517
   orthographic: 1
-  orthographic size: 17.43919
+  orthographic size: 21.404398
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -530,7 +551,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1837624372679492500}
   - component: {fileID: 5842477994893953899}
-  - component: {fileID: 8197112553586827972}
   - component: {fileID: 8730131062013678794}
   m_Layer: 0
   m_Name: Camera
@@ -597,14 +617,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8197112553586827972
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8504007289637874295}
-  m_Enabled: 1
 --- !u!114 &8730131062013678794
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game%20UI/USS%20Styles/Healthbar.uss?fileID=7433441132597879392&amp;guid=4e69542f377e9f64c847c820e0f05a2b&amp;type=3#Healthbar" />
+    <ui:VisualElement name="container" style="height: 30px; width: 100px;">
+        <ui:ProgressBar value="102.15" name="healthbar" class="Progressbar" style="margin-left: 6px; margin-right: 6px; margin-top: 6px; margin-bottom: 6px;" />
+    </ui:VisualElement>
+</ui:UXML>

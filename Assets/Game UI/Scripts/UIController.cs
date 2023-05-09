@@ -38,7 +38,7 @@ public class UIController : MonoBehaviour
         // Load Menu Buttons
         _loadLoadGameMenuButton = root.Q<Button>("goToLoadGameMenu");
         _loadSettingsMenuButton = root.Q<Button>("goToSettingsMenu");
-        
+        _loadNewGameMenuButton = root.Q<Button>("goToNewGameMenu");
         // Return Buttons
         _returnFromLoadGameMenu = root.Q<Button>("returnFromLoadGameMenu");
         _returnFromSettingsMenu = root.Q<Button>("returnFromSettingsMenu");
@@ -59,6 +59,7 @@ public class UIController : MonoBehaviour
 
         _loadLoadGameMenuButton.clicked += LoadLoadGameMenu;
         _loadSettingsMenuButton.clicked += LoadSettingsMenu;
+        _loadNewGameMenuButton.clicked += LoadGame;
         
         // Return Menu Button
 
@@ -86,6 +87,12 @@ public class UIController : MonoBehaviour
     {
         _settingsMenu.style.display = DisplayStyle.None;
     }
-    
+
+    void LoadGame()
+    {
+        SceneManager.LoadScene("GameScene");
+        _mainMenu.style.display = DisplayStyle.None;
+        
+    }
     
 }

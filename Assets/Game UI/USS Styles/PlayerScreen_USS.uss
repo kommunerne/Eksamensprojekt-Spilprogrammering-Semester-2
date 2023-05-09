@@ -86,7 +86,7 @@
 }
 
 .upgrade-button {
-    background-color: rgba(255, 255, 255, 255);
+    background-color: rgb(255, 255, 255);
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -95,12 +95,12 @@
     border-right-width: 3px;
     border-top-width: 3px;
     border-bottom-width: 3px;
-    border-left-color: rgba(159, 159, 159, 255);
-    border-right-color: rgba(159, 159, 159, 255);
-    border-top-color: rgba(159, 159, 159, 255);
-    border-bottom-color: rgba(159, 159, 159, 255);
+    border-left-color: rgb(159, 159, 159);
+    border-right-color: rgb(159, 159, 159);
+    border-top-color: rgb(159, 159, 159);
+    border-bottom-color: rgb(159, 159, 159);
     -unity-font-style: bold;
-    color: rgba(0, 0, 0, 255);
+    color: rgb(0, 0, 0);
 }
 
 .upgrade-button:hover {
@@ -146,4 +146,26 @@
 }
 
 .unity-progress-bar {
+}
+
+.Scores {
+    background-color: rgba(255, 255, 255, 0.21);
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: auto;
+    flex-grow: 1;
+}
+
+.Scores-label {
+    margin-top: 10px;
+    font-size: 16px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 255);
+    -unity-text-outline-width: 1px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 255);
 }

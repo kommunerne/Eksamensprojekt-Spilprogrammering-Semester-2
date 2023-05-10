@@ -133,12 +133,12 @@ GameObject:
   m_Component:
   - component: {fileID: 21543951}
   - component: {fileID: 21543953}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (69)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &21543951
 Transform:
@@ -218,12 +218,12 @@ GameObject:
   - component: {fileID: 29036633}
   - component: {fileID: 29036635}
   - component: {fileID: 29036634}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &29036633
 Transform:
@@ -442,15 +442,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005932050287795475, guid: 4b9cee51e2a517e448a10224512250f5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5005932050287795475, guid: 4b9cee51e2a517e448a10224512250f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.5
+      value: -138.2719
       objectReference: {fileID: 0}
     - target: {fileID: 5005932050287795475, guid: 4b9cee51e2a517e448a10224512250f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.5
+      value: 27.37152
       objectReference: {fileID: 0}
     - target: {fileID: 5005932050287795475, guid: 4b9cee51e2a517e448a10224512250f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -496,7 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 91419975}
   - component: {fileID: 91419976}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (51)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,12 +580,12 @@ GameObject:
   m_Component:
   - component: {fileID: 102909920}
   - component: {fileID: 102909922}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (67)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &102909920
 Transform:
@@ -664,7 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 134491941}
   - component: {fileID: 134491942}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,12 +860,12 @@ GameObject:
   - component: {fileID: 147024493}
   - component: {fileID: 147024495}
   - component: {fileID: 147024494}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &147024493
 Transform:
@@ -970,12 +970,12 @@ GameObject:
   m_Component:
   - component: {fileID: 147356895}
   - component: {fileID: 147356897}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &147356895
 Transform:
@@ -1055,12 +1055,12 @@ GameObject:
   - component: {fileID: 172687643}
   - component: {fileID: 172687645}
   - component: {fileID: 172687644}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &172687643
 Transform:
@@ -1165,7 +1165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244630330}
   - component: {fileID: 244630331}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269689306}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,7 +1393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 317305154}
   - component: {fileID: 317305155}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1477,12 +1477,12 @@ GameObject:
   m_Component:
   - component: {fileID: 320918246}
   - component: {fileID: 320918248}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (59)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &320918246
 Transform:
@@ -1561,7 +1561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 344489288}
   - component: {fileID: 344489289}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1645,7 +1645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349536527}
   - component: {fileID: 349536528}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1729,7 +1729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370252928}
   - component: {fileID: 370252929}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1814,12 +1814,12 @@ GameObject:
   - component: {fileID: 382924753}
   - component: {fileID: 382924755}
   - component: {fileID: 382924754}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &382924753
 Transform:
@@ -1925,12 +1925,12 @@ GameObject:
   - component: {fileID: 394396588}
   - component: {fileID: 394396590}
   - component: {fileID: 394396589}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &394396588
 Transform:
@@ -2036,12 +2036,12 @@ GameObject:
   - component: {fileID: 395444883}
   - component: {fileID: 395444885}
   - component: {fileID: 395444884}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &395444883
 Transform:
@@ -2147,12 +2147,12 @@ GameObject:
   - component: {fileID: 410056437}
   - component: {fileID: 410056439}
   - component: {fileID: 410056438}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &410056437
 Transform:
@@ -2257,12 +2257,12 @@ GameObject:
   m_Component:
   - component: {fileID: 447882181}
   - component: {fileID: 447882183}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (78)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &447882181
 Transform:
@@ -2453,12 +2453,12 @@ GameObject:
   - component: {fileID: 492418371}
   - component: {fileID: 492418373}
   - component: {fileID: 492418372}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &492418371
 Transform:
@@ -2674,7 +2674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 504920691}
   - component: {fileID: 504920692}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2758,12 +2758,12 @@ GameObject:
   m_Component:
   - component: {fileID: 510222743}
   - component: {fileID: 510222745}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (66)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &510222743
 Transform:
@@ -2843,12 +2843,12 @@ GameObject:
   - component: {fileID: 527935484}
   - component: {fileID: 527935486}
   - component: {fileID: 527935485}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &527935484
 Transform:
@@ -2954,12 +2954,12 @@ GameObject:
   - component: {fileID: 534035569}
   - component: {fileID: 534035571}
   - component: {fileID: 534035570}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &534035569
 Transform:
@@ -3065,12 +3065,12 @@ GameObject:
   - component: {fileID: 535949579}
   - component: {fileID: 535949581}
   - component: {fileID: 535949580}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &535949579
 Transform:
@@ -3176,12 +3176,12 @@ GameObject:
   - component: {fileID: 536002619}
   - component: {fileID: 536002621}
   - component: {fileID: 536002620}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &536002619
 Transform:
@@ -3287,12 +3287,12 @@ GameObject:
   - component: {fileID: 551165526}
   - component: {fileID: 551165528}
   - component: {fileID: 551165527}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &551165526
 Transform:
@@ -3397,7 +3397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 554936544}
   - component: {fileID: 554936545}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (55)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3481,7 +3481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563963906}
   - component: {fileID: 563963907}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3566,12 +3566,12 @@ GameObject:
   - component: {fileID: 594319603}
   - component: {fileID: 594319605}
   - component: {fileID: 594319604}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &594319603
 Transform:
@@ -3676,7 +3676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598411478}
   - component: {fileID: 598411479}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3760,12 +3760,12 @@ GameObject:
   m_Component:
   - component: {fileID: 610739003}
   - component: {fileID: 610739005}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (79)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &610739003
 Transform:
@@ -3845,12 +3845,12 @@ GameObject:
   - component: {fileID: 637524105}
   - component: {fileID: 637524107}
   - component: {fileID: 637524106}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &637524105
 Transform:
@@ -3956,12 +3956,12 @@ GameObject:
   - component: {fileID: 640359737}
   - component: {fileID: 640359739}
   - component: {fileID: 640359738}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &640359737
 Transform:
@@ -4066,12 +4066,12 @@ GameObject:
   m_Component:
   - component: {fileID: 666621954}
   - component: {fileID: 666621956}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &666621954
 Transform:
@@ -4150,7 +4150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 701824865}
   - component: {fileID: 701824866}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4305,12 +4305,12 @@ GameObject:
   - component: {fileID: 733922688}
   - component: {fileID: 733922690}
   - component: {fileID: 733922689}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &733922688
 Transform:
@@ -4416,12 +4416,12 @@ GameObject:
   - component: {fileID: 751437770}
   - component: {fileID: 751437772}
   - component: {fileID: 751437771}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &751437770
 Transform:
@@ -4564,12 +4564,12 @@ GameObject:
   - component: {fileID: 765921755}
   - component: {fileID: 765921757}
   - component: {fileID: 765921756}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &765921755
 Transform:
@@ -4675,12 +4675,12 @@ GameObject:
   - component: {fileID: 802286569}
   - component: {fileID: 802286571}
   - component: {fileID: 802286570}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &802286569
 Transform:
@@ -4785,7 +4785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806351130}
   - component: {fileID: 806351131}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4869,7 +4869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814679516}
   - component: {fileID: 814679517}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (53)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4953,7 +4953,7 @@ GameObject:
   m_Component:
   - component: {fileID: 819299142}
   - component: {fileID: 819299143}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5037,7 +5037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 826818749}
   - component: {fileID: 826818750}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5232,12 +5232,12 @@ GameObject:
   m_Component:
   - component: {fileID: 848921066}
   - component: {fileID: 848921068}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &848921066
 Transform:
@@ -5316,12 +5316,12 @@ GameObject:
   m_Component:
   - component: {fileID: 850419801}
   - component: {fileID: 850419803}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (74)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &850419801
 Transform:
@@ -5511,12 +5511,12 @@ GameObject:
   m_Component:
   - component: {fileID: 861952559}
   - component: {fileID: 861952561}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (62)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &861952559
 Transform:
@@ -5817,12 +5817,12 @@ GameObject:
   m_Component:
   - component: {fileID: 884437077}
   - component: {fileID: 884437079}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &884437077
 Transform:
@@ -5902,12 +5902,12 @@ GameObject:
   - component: {fileID: 926691639}
   - component: {fileID: 926691641}
   - component: {fileID: 926691640}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &926691639
 Transform:
@@ -6012,7 +6012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933235651}
   - component: {fileID: 933235652}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6096,12 +6096,12 @@ GameObject:
   m_Component:
   - component: {fileID: 957860030}
   - component: {fileID: 957860032}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (75)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &957860030
 Transform:
@@ -6180,7 +6180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 966518779}
   - component: {fileID: 966518780}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (52)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6254,37 +6254,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &970512053
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 970512054}
-  m_Layer: 0
-  m_Name: Target
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &970512054
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970512053}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.08, y: 15.2, z: 0.3795863}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978866819
 GameObject:
   m_ObjectHideFlags: 0
@@ -6295,12 +6264,12 @@ GameObject:
   m_Component:
   - component: {fileID: 978866820}
   - component: {fileID: 978866822}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &978866820
 Transform:
@@ -6379,12 +6348,12 @@ GameObject:
   m_Component:
   - component: {fileID: 988245829}
   - component: {fileID: 988245831}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (76)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &988245829
 Transform:
@@ -6464,12 +6433,12 @@ GameObject:
   - component: {fileID: 1029707327}
   - component: {fileID: 1029707329}
   - component: {fileID: 1029707328}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1029707327
 Transform:
@@ -6575,12 +6544,12 @@ GameObject:
   - component: {fileID: 1033429006}
   - component: {fileID: 1033429008}
   - component: {fileID: 1033429007}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1033429006
 Transform:
@@ -6685,7 +6654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035793010}
   - component: {fileID: 1035793011}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6743,7 +6712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056200129}
   - component: {fileID: 1056200130}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6828,12 +6797,12 @@ GameObject:
   - component: {fileID: 1074761171}
   - component: {fileID: 1074761173}
   - component: {fileID: 1074761172}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1074761171
 Transform:
@@ -6938,7 +6907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075124392}
   - component: {fileID: 1075124393}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7022,12 +6991,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1101243142}
   - component: {fileID: 1101243144}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (61)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1101243142
 Transform:
@@ -7106,7 +7075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101308746}
   - component: {fileID: 1101308747}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7190,12 +7159,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1113499079}
   - component: {fileID: 1113499081}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (72)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1113499079
 Transform:
@@ -7274,7 +7243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126738403}
   - component: {fileID: 1126738404}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7358,12 +7327,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1128431526}
   - component: {fileID: 1128431528}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (73)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1128431526
 Transform:
@@ -7443,12 +7412,12 @@ GameObject:
   - component: {fileID: 1145272258}
   - component: {fileID: 1145272260}
   - component: {fileID: 1145272259}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1145272258
 Transform:
@@ -7552,12 +7521,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1149180261}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1149180261
 Transform:
@@ -7616,12 +7585,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1151554804}
   - component: {fileID: 1151554806}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1151554804
 Transform:
@@ -7700,12 +7669,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1156117351}
   - component: {fileID: 1156117353}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1156117351
 Transform:
@@ -7784,12 +7753,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1166790417}
   - component: {fileID: 1166790419}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (71)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1166790417
 Transform:
@@ -7882,7 +7851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201103145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.06912552}
+  m_LocalPosition: {x: 0.79614645, y: 0.56530774, z: 0.06912552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7890,93 +7859,6 @@ Transform:
   - {fileID: 1458543256}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1219159172
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1219159174}
-  - component: {fileID: 1219159173}
-  m_Layer: 0
-  m_Name: AStar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1219159173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219159172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  data:
-    dataString: UEsDBBQAAAgIAAAIIeyQBV+qeQIAADQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK5w1lDCbx3nYdQvZAQoVs5eKLsMdYhSy59OCRFP++I9nGDntC9EyPenpG/iJM6BoyI9VSsXwlcyA/R8SdyY9RH3yGE91JsWGf0OV8sNyULon6nDdqmER84mhaVmAUy36JHXfJAYJWsEKqapHvIJHaaIQLyjVgSEnj2AKhrxE54c9d7ChnPIX37vSJpzgYXfCYgTCgBqnTcRTH8X04i1vKJBxHLaehWJFxWtWQO/09cxI+jKdxMA+jlhhH43j+cB95ksA+2/zJOPS4u11yznSrlZhz7b1IaK0tdooJOaPYuxforCiB7Urj+hiSX4tCg2mNUfT8yBRa2FQlv2Xja0X1vhF7oNxCI9hLa4qu/ovfTXy4ULJ67u6dBO4OU7Js/0bPGdVmYPwQfvwu3Ioj5Xu65fBRgniRSyWtyDFolHVUqyF87P9eW0tKyPY93ki9AW3dD6Gbczdl18PFd39KOKu2LjSeNcCGS++3Xw5QOKA/KNivjm5LIOpU/NXwTnfDHWsDT0xpg6G2S+HkbaVVLpUsvGeuG2sSqQR4uBVdg6DcnNdYxtyO8CY2uPYm8kTda2ovb2PdI7mheLjPD4Kb0Foer8PSpTyuQJev1nAmoBftAi/oUyKFaDZs6ElH21hV0GxA21mWf18tEoRTCMOCBtvtNMim0d0sCiGbb+cPczoLYDYnfveYwD4pXzdCW3twaqIvLnDPuo/MaKlo7bc9V/S4ZJ+VHFjORCE3mQIQr02Fq3BQeAk+znyRMzRoA8Yw4edNvlLCZbaHPL0WSn2ni5NRNO2rpKRmB2kckpLEf1VS4uDrLq8VHBgc3eVdsQu5/ANQSwMEFAAACAgAAAgh7B7vv6dtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJKBkXGqkVFaokFSkrFBsrGprompUWqyWZKZhVmiiUGqiZlSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7JAFX6p5AgAANAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7B7vv6dtAAAAeAAAAAkAJAAAAAAAAAAAAAAAxgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB+AwAAAAA=
-    upgradeData: 
-    file_cachedStartup: {fileID: 0}
-    data_cachedStartup: 
-    cacheStartup: 0
-  showNavGraphs: 1
-  showUnwalkableNodes: 1
-  debugMode: 0
-  debugFloor: 0
-  debugRoof: 1
-  manualDebugFloorRoof: 0
-  showSearchTree: 0
-  unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
-  maxNearestNodeDistance: 100
-  scanOnStartup: 1
-  fullGetNearestSearch: 0
-  prioritizeGraphs: 0
-  prioritizeGraphsLimit: 1
-  colorSettings:
-    _SolidColor: {r: 0.094695546, g: 0.3884881, b: 0.7924528, a: 0.9}
-    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
-    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
-    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
-    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
-    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
-    _AreaColors:
-    - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
-  heuristic: 2
-  heuristicScale: 1
-  threadCount: 1
-  maxFrameTime: 10
-  batchGraphUpdates: 0
-  graphUpdateBatchingInterval: 0.2
-  euclideanEmbedding:
-    mode: 0
-    seed: 0
-    pivotPointRoot: {fileID: 0}
-    spreadOutCount: 1
-  showGraphs: 1
---- !u!4 &1219159174
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1219159172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6, y: 12.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225972895
 GameObject:
@@ -7989,12 +7871,12 @@ GameObject:
   - component: {fileID: 1225972896}
   - component: {fileID: 1225972898}
   - component: {fileID: 1225972897}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1225972896
 Transform:
@@ -8099,12 +7981,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1272057753}
   - component: {fileID: 1272057755}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1272057753
 Transform:
@@ -8184,12 +8066,12 @@ GameObject:
   - component: {fileID: 1316688318}
   - component: {fileID: 1316688320}
   - component: {fileID: 1316688319}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1316688318
 Transform:
@@ -8295,12 +8177,12 @@ GameObject:
   - component: {fileID: 1333262702}
   - component: {fileID: 1333262704}
   - component: {fileID: 1333262703}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1333262702
 Transform:
@@ -8406,12 +8288,12 @@ GameObject:
   - component: {fileID: 1369676241}
   - component: {fileID: 1369676243}
   - component: {fileID: 1369676242}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1369676241
 Transform:
@@ -8517,12 +8399,12 @@ GameObject:
   - component: {fileID: 1404312680}
   - component: {fileID: 1404312682}
   - component: {fileID: 1404312681}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1404312680
 Transform:
@@ -8628,12 +8510,12 @@ GameObject:
   - component: {fileID: 1420612099}
   - component: {fileID: 1420612101}
   - component: {fileID: 1420612100}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1420612099
 Transform:
@@ -8738,7 +8620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427251133}
   - component: {fileID: 1427251134}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8823,12 +8705,12 @@ GameObject:
   - component: {fileID: 1429463500}
   - component: {fileID: 1429463502}
   - component: {fileID: 1429463501}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1429463500
 Transform:
@@ -8932,12 +8814,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458543256}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1458543256
 Transform:
@@ -9009,12 +8891,12 @@ GameObject:
   - component: {fileID: 1474062469}
   - component: {fileID: 1474062471}
   - component: {fileID: 1474062470}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1474062469
 Transform:
@@ -9119,7 +9001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480002201}
   - component: {fileID: 1480002202}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9203,12 +9085,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1518671514}
   - component: {fileID: 1518671516}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (65)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1518671514
 Transform:
@@ -9288,12 +9170,12 @@ GameObject:
   - component: {fileID: 1521812756}
   - component: {fileID: 1521812758}
   - component: {fileID: 1521812757}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1521812756
 Transform:
@@ -9398,7 +9280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542359315}
   - component: {fileID: 1542359316}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9482,7 +9364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548117954}
   - component: {fileID: 1548117955}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9567,12 +9449,12 @@ GameObject:
   - component: {fileID: 1551056513}
   - component: {fileID: 1551056515}
   - component: {fileID: 1551056514}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1551056513
 Transform:
@@ -9677,7 +9559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1555883680}
   - component: {fileID: 1555883681}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9761,7 +9643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557339953}
   - component: {fileID: 1557339954}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9846,12 +9728,12 @@ GameObject:
   - component: {fileID: 1578291925}
   - component: {fileID: 1578291927}
   - component: {fileID: 1578291926}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1578291925
 Transform:
@@ -9956,12 +9838,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1609355987}
   - component: {fileID: 1609355989}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (58)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1609355987
 Transform:
@@ -10040,7 +9922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1616708505}
   - component: {fileID: 1616708506}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10124,12 +10006,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1628574258}
   - component: {fileID: 1628574260}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (77)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1628574258
 Transform:
@@ -10245,7 +10127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1670102673}
   - component: {fileID: 1670102674}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10329,12 +10211,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1724965556}
   - component: {fileID: 1724965558}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (63)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1724965556
 Transform:
@@ -10414,12 +10296,12 @@ GameObject:
   - component: {fileID: 1773014918}
   - component: {fileID: 1773014920}
   - component: {fileID: 1773014919}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1773014918
 Transform:
@@ -10525,12 +10407,12 @@ GameObject:
   - component: {fileID: 1790093918}
   - component: {fileID: 1790093920}
   - component: {fileID: 1790093919}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1790093918
 Transform:
@@ -10636,12 +10518,12 @@ GameObject:
   - component: {fileID: 1804252509}
   - component: {fileID: 1804252511}
   - component: {fileID: 1804252510}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1804252509
 Transform:
@@ -10746,7 +10628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1826857601}
   - component: {fileID: 1826857602}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10831,12 +10713,12 @@ GameObject:
   - component: {fileID: 1853742031}
   - component: {fileID: 1853742033}
   - component: {fileID: 1853742032}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1853742031
 Transform:
@@ -11052,7 +10934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1872634532}
   - component: {fileID: 1872634533}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11137,12 +11019,12 @@ GameObject:
   - component: {fileID: 1894756230}
   - component: {fileID: 1894756232}
   - component: {fileID: 1894756231}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1894756230
 Transform:
@@ -11247,12 +11129,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1899466807}
   - component: {fileID: 1899466809}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (60)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1899466807
 Transform:
@@ -11331,7 +11213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914114138}
   - component: {fileID: 1914114139}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11415,12 +11297,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1918394265}
   - component: {fileID: 1918394267}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (64)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1918394265
 Transform:
@@ -11499,12 +11381,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1922115931}
   - component: {fileID: 1922115933}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1922115931
 Transform:
@@ -11584,12 +11466,12 @@ GameObject:
   - component: {fileID: 1936232687}
   - component: {fileID: 1936232689}
   - component: {fileID: 1936232688}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1936232687
 Transform:
@@ -11805,7 +11687,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1952535224}
   - component: {fileID: 1952535225}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11889,7 +11771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1952706432}
   - component: {fileID: 1952706433}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11973,12 +11855,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1955124570}
   - component: {fileID: 1955124572}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (70)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1955124570
 Transform:
@@ -12057,12 +11939,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2018121719}
   - component: {fileID: 2018121721}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (68)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2018121719
 Transform:
@@ -12141,12 +12023,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2038179305}
   - component: {fileID: 2038179307}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundGrid (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2038179305
 Transform:
@@ -12337,12 +12219,12 @@ GameObject:
   - component: {fileID: 2102110958}
   - component: {fileID: 2102110960}
   - component: {fileID: 2102110959}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2102110958
 Transform:
@@ -12447,7 +12329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2113182836}
   - component: {fileID: 2113182837}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: BackgroundGrid (54)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12521,152 +12403,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2123113784 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2830100365905264878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-  m_PrefabInstance: {fileID: 2129389332}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2123113785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123113784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 970512054}
---- !u!114 &2123113786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123113784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
-  radius: 0.5
-  height: 2
-  canMove: 1
-  maxSpeed: 1
-  gravity: {x: NaN, y: NaN, z: NaN}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  repathRateCompatibility: NaN
-  canSearchCompability: 0
-  orientation: 0
-  enableRotation: 1
-  autoRepath:
-    mode: 2
-    interval: 0.5
-    sensitivity: 10
-    maximumInterval: 2
-    visualizeSensitivity: 0
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
---- !u!114 &2123113787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123113784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
---- !u!1001 &2129389332
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.1752443
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 13.757215
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.019899452
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1216420577438085878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2830100365905264878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
-      propertyPath: m_Name
-      value: SmallEnemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
 --- !u!1 &2130090625
 GameObject:
   m_ObjectHideFlags: 0
@@ -12678,12 +12414,12 @@ GameObject:
   - component: {fileID: 2130090626}
   - component: {fileID: 2130090628}
   - component: {fileID: 2130090627}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Obstacle (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2130090626
 Transform:
@@ -12787,7 +12523,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1893091205984327916, guid: 8b4a96963d1cf5e428fa08c9078027ef, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1893091205984327916, guid: 8b4a96963d1cf5e428fa08c9078027ef, type: 3}
       propertyPath: m_LocalPosition.x

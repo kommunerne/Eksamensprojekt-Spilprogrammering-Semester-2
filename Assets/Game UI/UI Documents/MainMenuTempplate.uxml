@@ -1,30 +1,105 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/UI%20Assets/UI_Style.uss?fileID=7433441132597879392&amp;guid=a5a28b8dfbe18cf4aa3812424a305766&amp;type=3#UI_Style" />
+    <Style src="project://database/Assets/Game%20UI/USS%20Styles/PlayerScreen_USS.uss?fileID=7433441132597879392&amp;guid=2d4cf64c2e5739844b595f7a1d373fea&amp;type=3#PlayerScreen_USS" />
     <ui:VisualElement name="Background" style="flex-grow: 1; align-items: center; justify-content: center; background-color: rgb(128, 128, 128);">
         <ui:VisualElement name="MainMenu" class="menu-style" style="display: flex; visibility: visible; overflow: visible;">
-            <ui:Label text="Main Menu" display-tooltip-when-elided="true" class="Header-Text" />
-            <ui:VisualElement style="position: absolute; top: 80px;">
+            <ui:Label text="Main Menu" display-tooltip-when-elided="true" name="MenuHeader" class="Header-Text" />
+            <ui:VisualElement name="ButtonsContainer" style="position: absolute; top: 80px;">
                 <ui:Button text="Load Game" display-tooltip-when-elided="true" name="goToLoadGameMenu" class="button-style" style="text-shadow: 0 0 0 rgb(0, 0, 0);" />
                 <ui:Button text="New Game" display-tooltip-when-elided="true" name="goToNewGameMenu" class="button-style" style="text-shadow: 0 0 0 rgb(0, 0, 0);" />
                 <ui:Button text="Settings" display-tooltip-when-elided="true" name="goToSettingsMenu" class="button-style" style="text-shadow: 0 0 0 rgb(0, 0, 0);" />
                 <ui:Button text="Exit" display-tooltip-when-elided="true" name="exitMainMenu" class="button-style" style="text-shadow: 0 0 0 rgb(0, 0, 0);" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="SettingsMenu" class="menu-style" style="position: relative; display: none;">
-            <ui:Label text="Settings" display-tooltip-when-elided="true" name="Settings-Label" class="Header-Text" />
-            <ui:Slider picking-mode="Ignore" label="Music" value="0" high-value="100" direction="Horizontal" name="music-volume-slider" class="volume-slider" style="background-color: rgb(47, 160, 224); border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; text-shadow: 1px 1px 0 rgb(0, 0, 0); color: rgb(255, 255, 255);" />
-            <ui:Slider picking-mode="Ignore" label="Effects" value="42" high-value="100" name="effects-volume-slider" class="volume-slider" style="top: 179px; background-color: rgb(47, 160, 224); border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; text-shadow: 1px 1px 0 rgb(0, 0, 0); letter-spacing: 0; color: rgb(255, 255, 255); font-size: 14px; -unity-font-style: bold; white-space: normal; -unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=a460248379a6d3643b967f271f7bd2ae&amp;type=3#NotInter-Regular&apos;); left: 102px;" />
-            <ui:Button text="Return" display-tooltip-when-elided="true" name="returnFromSettingsMenu" focusable="false" class="button-style" style="position: relative; top: 75px; right: 0; left: 0; bottom: 0; width: 162px; height: 38px;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="LoadGameMenu" class="menu-style" style="display: none; visibility: visible; overflow: visible; top: auto; left: auto; position: relative;">
+        <ui:VisualElement name="LoadGameMenu" class="menu-style" style="display: none; visibility: visible; overflow: visible; top: auto; left: auto; position: absolute;">
             <ui:Label text="Load Game" display-tooltip-when-elided="true" class="Header-Text" />
             <ui:VisualElement style="align-items: center; justify-content: center; height: 206px; width: 273px; top: 22px; margin-left: 9px; margin-right: 9px; margin-top: 9px; margin-bottom: 9px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
                 <ui:Label text="To load a game, please enter your&#10;previous username and pin-code." display-tooltip-when-elided="true" name="user-text" style="-unity-text-align: upper-center; align-items: stretch; justify-content: flex-start; left: 0; top: -10%; position: relative;" />
-                <ui:TextField picking-mode="Ignore" label="Username" value="Enter Username" text="Enter Username" max-length="-1" readonly="false" is-delayed="false" multiline="false" class="text-input" style="top: -8%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; overflow: hidden;" />
-                <ui:TextField picking-mode="Ignore" label="Pin-Code" text="Enter Pin-Code" max-length="4" readonly="false" password="false" is-delayed="false" name="pin-code" class="text-input" style="top: -6%;" />
+                <ui:TextField picking-mode="Ignore" label="Username" value="Enter Username" text="Enter Username" max-length="-1" readonly="false" is-delayed="false" multiline="false" name="loadUsername" class="text-input" style="top: -8%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; overflow: hidden;" />
+                <ui:TextField picking-mode="Ignore" label="Pin-Code" text="Enter Pin-Code" max-length="4" readonly="false" password="false" is-delayed="false" name="loadPinCode" class="text-input" style="top: -6%;" />
             </ui:VisualElement>
-            <ui:Button text="Load Game" display-tooltip-when-elided="true" name="load-game" class="button-style" style="width: 162px; height: 43px; font-size: 25px; text-shadow: 0 0 0 rgb(0, 0, 0); -unity-font-style: bold; letter-spacing: -4px; top: 9px;" />
+            <ui:Button text="Load Game" display-tooltip-when-elided="true" name="loadGameButton" class="button-style" style="width: 162px; height: 43px; font-size: 25px; text-shadow: 0 0 0 rgb(0, 0, 0); -unity-font-style: bold; letter-spacing: -4px; top: 9px;" />
             <ui:Button text="Return" display-tooltip-when-elided="true" name="returnFromLoadGameMenu" enable-rich-text="false" class="button-style" />
+        </ui:VisualElement>
+        <ui:VisualElement name="NewGameMenu" class="menu-style" style="display: none; visibility: visible; overflow: visible; position: absolute; align-items: center; justify-content: flex-start;">
+            <ui:VisualElement name="HeaderContainer" style="flex-grow: 0; align-items: center; height: 10%; width: 100%; justify-content: center; background-color: rgba(208, 209, 102, 0);">
+                <ui:Label text="Create New Tank" display-tooltip-when-elided="true" name="Header" class="Header-Text" style="padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; top: auto; position: relative;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="UsernameAndPin_Container" style="flex-grow: 0; width: 100%; height: 20%; align-items: center; background-color: rgba(56, 56, 56, 0);">
+                <ui:VisualElement name="Username_Container" style="width: 100%; align-items: center; height: 50%; flex-direction: row; padding-left: 5%;">
+                    <ui:Label text="Please enter a username:" display-tooltip-when-elided="true" style="width: 43%;" />
+                    <ui:TextField picking-mode="Ignore" text="Username" max-length="12" name="newUsername" style="flex-shrink: 1; width: 38%; margin-left: 12px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PinCode_Container" style="width: 100%; height: 50%; align-items: center; flex-direction: row; padding-left: 5%;">
+                    <ui:Label text="Please enter a pincode:" display-tooltip-when-elided="true" style="width: 43%;" />
+                    <ui:TextField picking-mode="Ignore" value="0000" text="Pin-Code" max-length="4" name="newPinCode" style="width: 25%; align-items: center; -unity-text-align: upper-center; flex-shrink: 1; margin-left: 12px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="PrefabContainer" style="flex-grow: 0; height: 60%; width: 100%; background-color: rgba(192, 94, 94, 0);">
+                <ui:VisualElement name="TextContainer" style="height: 10%; align-items: center; margin-top: 8px;">
+                    <ui:Label text="Please select your desired starter tank below" display-tooltip-when-elided="true" style="-unity-text-align: middle-left;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="PrefabHeaders1" class="PrefabHeaders">
+                    <ui:VisualElement name="PrefabHeader1" class="PrefabHeader">
+                        <ui:Label text="Big Gun Tank" display-tooltip-when-elided="true" class="PrefabLabel" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PrefabHeader2" style="width: 50%;">
+                        <ui:Label text="Sniper Tank" display-tooltip-when-elided="true" class="PrefabLabel" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="RowOne" class="PrefabRow" style="height: 40%; flex-direction: row; align-items: center;">
+                    <ui:VisualElement name="PrefabHolder1" class="PrefabHolder" style="background-color: rgba(204, 184, 184, 0);">
+                        <ui:VisualElement style="height: 100%; width: 70%; background-image: url(&apos;project://database/Assets/Sprites/BigGunner.png?fileID=21300000&amp;guid=3234c843bea1f244fac969e6fde41153&amp;type=3#BigGunner&apos;); -unity-background-scale-mode: scale-to-fit; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                        <ui:VisualElement class="PrefabToggle" style="background-color: rgba(56, 56, 56, 0);">
+                            <ui:Toggle name="bigGunTankToggle" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PrefabHolder2" class="PrefabHolder" style="flex-direction: row; background-color: rgba(255, 255, 255, 0); height: 100%; width: 50%;">
+                        <ui:VisualElement style="width: 70%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/SniperGunner.png?fileID=21300000&amp;guid=dc27b33c0cabfa04698af3efd1902730&amp;type=3#SniperGunner&apos;);" />
+                        <ui:VisualElement class="PrefabToggle" style="flex-grow: 1; height: 100%; background-color: rgba(146, 140, 140, 0);">
+                            <ui:Toggle name="sniperTankToggle" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="RowTwo" style="height: 40%; min-width: auto; min-height: auto;">
+                            <ui:VisualElement />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="PrefabHeaders2" class="PrefabHeaders">
+                    <ui:VisualElement name="PrefabHeader3" class="PrefabHeader" style="height: auto;">
+                        <ui:Label text="Gunner Tank" display-tooltip-when-elided="true" class="PrefabLabel" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PrefabHeader4" class="PrefabHeader" style="height: auto;">
+                        <ui:Label text="Machine Gunner Tank" display-tooltip-when-elided="true" class="PrefabLabel" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="RowTwo" class="PrefabRow" style="height: 40%; flex-direction: row; align-items: center;">
+                    <ui:VisualElement name="PrefabHolder1" class="PrefabHolder" style="background-color: rgba(204, 184, 184, 0);">
+                        <ui:VisualElement style="height: 100%; width: 70%; background-image: url(&apos;project://database/Assets/Sprites/NormalGunner.png?fileID=21300000&amp;guid=9ed662fa7d4f5384f821070f0ef90eb5&amp;type=3#NormalGunner&apos;); -unity-background-scale-mode: scale-to-fit; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                        <ui:VisualElement class="PrefabToggle" style="background-color: rgba(56, 56, 56, 0);">
+                            <ui:Toggle name="gunnerTankToggle" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PrefabHolder2" class="PrefabHolder" style="flex-direction: row; background-color: rgba(70, 67, 67, 0); height: 100%; width: 50%;">
+                        <ui:VisualElement style="width: 70%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/MachineGunner.png?fileID=2800000&amp;guid=ff2cb80afe1f4a546a1962fdfc80add5&amp;type=3#MachineGunner&apos;);" />
+                        <ui:VisualElement class="PrefabToggle" style="flex-grow: 1; height: 100%; background-color: rgba(146, 140, 140, 0);">
+                            <ui:Toggle name="machineTankToggle" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="RowTwo" style="height: 40%; min-width: auto; min-height: auto;">
+                            <ui:VisualElement />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ButtonsContainer" style="flex-grow: 1; width: 100%; background-color: rgba(36, 68, 161, 0); flex-direction: row; align-items: center; justify-content: space-around;">
+                <ui:Button text="Return" display-tooltip-when-elided="true" name="returnFromNewGameMenu" class="button-style" style="width: 25%; height: 80%; padding-left: 12px; padding-right: 12px; padding-top: 10px; padding-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; font-size: 20px;" />
+                <ui:Button text="Continue" display-tooltip-when-elided="true" name="createNewTank" class="button-style" style="width: 25%; height: 80%; font-size: 20px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="SettingsMenu" class="menu-style" style="position: absolute; display: none;">
+            <ui:Label text="Settings" display-tooltip-when-elided="true" name="Settings-Label" class="Header-Text" />
+            <ui:Slider picking-mode="Ignore" label="Music" value="0" high-value="100" direction="Horizontal" name="musicSlider" class="volume-slider" style="background-color: rgb(47, 160, 224); border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; text-shadow: 1px 1px 0 rgb(0, 0, 0); color: rgb(255, 255, 255);" />
+            <ui:Slider picking-mode="Ignore" label="Effects" value="42" high-value="100" name="effectsSlider" class="volume-slider" style="top: 179px; background-color: rgb(47, 160, 224); border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; text-shadow: 1px 1px 0 rgb(0, 0, 0); letter-spacing: 0; color: rgb(255, 255, 255); font-size: 14px; -unity-font-style: bold; white-space: normal; -unity-font-definition: initial; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=a460248379a6d3643b967f271f7bd2ae&amp;type=3#NotInter-Regular&apos;); left: 102px;" />
+            <ui:Button text="Return" display-tooltip-when-elided="true" name="returnFromSettingsMenu" focusable="false" class="button-style" style="position: relative; top: 75px; right: 0; left: 0; bottom: 0; width: 162px; height: 38px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

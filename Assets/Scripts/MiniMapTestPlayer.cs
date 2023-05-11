@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MiniMapTestPlayer : MonoBehaviour
 {
@@ -8,8 +10,11 @@ public class MiniMapTestPlayer : MonoBehaviour
     public Camera cameraToUse;
     public GameObject test;
     private Rigidbody2D rb;
-
-    public int hp = 100;
+    [SerializeField] private PlayerUIController uiController;
+    
+    
+    public int maxHp = 100;
+    public int currentHp = 100;
     public int dmg = 20;
     public float firerate = 1.0f;
     public float moveSpeed = 5f;
@@ -19,25 +24,35 @@ public class MiniMapTestPlayer : MonoBehaviour
     public int exp;
     public int statPoints;
     public int score;
-
-    public string name;
+    public ulong sceenCullingMask;
+    public string playerName;
     public int pinCode;
-
+    public bool playerGotHit;
+    private bool _playerDead = false;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        uiController = GetComponent<PlayerUIController>();
+        playerGotHit = false;
     }
 
     void Update()
     {
+        Hit();
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
-        Vector2 movement = new Vector2(horizontalInput, verticalInput);
+        if (!_playerDead)
+        {
+            Vector2 movement = new Vector2(horizontalInput, verticalInput); 
+            rb.velocity = movement.normalized * moveSpeed;
+        }
+            
 
-        rb.velocity = movement.normalized * moveSpeed;
 
-        RotateToMouse2D();
+        if(!_playerDead)
+            RotateToMouse2D();
     }
 
     void RotateToMouse2D(){
@@ -55,7 +70,8 @@ public class MiniMapTestPlayer : MonoBehaviour
 
     public void HpUpgrade()
     {
-        hp += 100;
+        maxHp += 100;
+        currentHp += 100;
         statPoints--;
     }
 
@@ -81,5 +97,34 @@ public class MiniMapTestPlayer : MonoBehaviour
     {
         hpregen += 5;
         statPoints--;
+    }
+
+    public void Hit()
+    {
+        if (Input.GetKeyDown(KeyCode.K) && playerGotHit)
+        {
+            Debug.Log("Dubble Hit");
+            CancelInvoke();
+            Invoke(nameof(HitReset),3);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            playerGotHit = true;
+            if (currentHp <= 20)
+            {
+                _playerDead = true;
+                uiController.DeathScreen();
+                cameraToUse.cullingMask = 119;
+                rb.velocity = new Vector2(0,0);
+            }
+            currentHp = currentHp - 20;
+            Debug.Log(currentHp);
+            Invoke(nameof(HitReset), 3);
+        }
+    }
+
+    void HitReset()
+    {
+        playerGotHit = false;
     }
 }

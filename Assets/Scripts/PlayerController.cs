@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,123 +6,186 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // variables
-    public int maxhealth = 100; // The amount of health the unit has
-    public int moveSpeed = 10;
-    public int currentHealth;
-    public bool isRegenHealth;
-    private float healthRegenRate = 0.5f;
-    private bool damageTaken;
-    private Rigidbody rb;
-    public int damage;
-    public string playerTag = "red";
-    public float fireRate;
-    public float bulletSpeed = 10f;
-    public float bulletlifetime = 3f;
-    public bool readyToShoot;
-    public GameObject bulletPrefab; // The prefab of the bullet to be spawned
-    public Transform firePoint; // The point from which the bullet will be spawned
-    private float nextFireTime = 0f; // The time at which the next shot can be fired
+    
+    [Header("Main Camera")]
+    public Camera cameraToUse;
+    
+    [Header("GameObject to follow the mouse")]
+    public GameObject gameObjectToBeRotated;
+    
+    
+    [Header("PlayerUIController Script")]
+    [SerializeField] private PlayerUIController uiController;
+        
+    
+    [Header("Player Stats")]
+    public int maxHp = 100;
+    public int currentHp = 100;
+    public int dmg = 20;
+    public float firerate = 1.0f;
+    public float moveSpeed = 5f;
+    public int hpregen = 5;
+    public int level;
+    public int exp;
+    public int statPoints;
+    public int score;
+    
+    [Header("Stats gained pr upgrade")]
+    public int bonusHpPerLevel = 100;
+    public int bonusDmgPerLevel = 20;
+    public float bonusFireRatePerLevel = 1.0f;
+    public float bonusMoveSpeed = 5f;
+    public int bonusHpRegenPerLevel = 5;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("Class Specific Variables")] 
+    public float bulletRadius;
+
+    [Header("Player Info")]
+    public string playerName;
+    public int pinCode;
+    
+    public bool playerGotHit;
+    private bool _playerDead = false;
+    private Rigidbody2D _rb2D;
+
+    private void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        _rb2D = GetComponent<Rigidbody2D>();
+        uiController = GetComponent<PlayerUIController>();
+        playerGotHit = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // health regen coroutine
-        if (damageTaken == false)
+        RotateToMouse2D();
+        PlayerShoot();
+        PlayerTakeDamage();
+        CharacterMovement();
+        RegenHealtOverTime();
+        HaveTakenDamageCheck();
+    }
+
+    private void FixedUpdate()
+    {
+        throw new NotImplementedException();
+    }
+    
+    
+    // Methods
+    
+        // Main Methods
+        //*******************************************************
+        //
+        // Det er disse metoder du skal implementere Erik :) 
+        //
+        //*******************************************************
+        
+        // Makes the player follow the mouse ( Use the objectToGetRotated gameobject as the object that should be rotated)
+        // If you rotated the entire player objects, you will then also rotate the cameras
+        
+        void RotateToMouse2D()
         {
-            if (currentHealth != maxhealth && !isRegenHealth)
+            throw new NotImplementedException();
+        }
+    
+        // Makes the player regen health over time
+        private void RegenHealtOverTime()
+        {
+            throw new NotImplementedException();
+        }
+
+        // Controls the players movement ( PlayerMovement() er et ugyldigt navn for en metode. Derfor blev det CharacterMovement() )
+        // Bare lige FYI :) 
+        private void CharacterMovement()
+        {
+            throw new NotImplementedException();
+        }
+
+        // Makes the player take damage if the collider with enemies or enemyteams bullets
+        private void PlayerTakeDamage()
+        {
+            throw new NotImplementedException();
+        }
+
+        // Makes the player shoot
+        private void PlayerShoot()
+        {
+            throw new NotImplementedException();
+        }
+
+        // Pauses Health Regeneration when hit by an enemy
+        private void HaveTakenDamageCheck()
+        {
+            throw new NotImplementedException();
+        }
+        
+        //___________________________________________________
+        
+    // UI Methods
+        
+        public void HpUpgrade()
+        {
+            maxHp += bonusHpPerLevel;
+            currentHp += bonusHpPerLevel;
+            statPoints--;
+        }
+
+        public void DmgUpgrade()
+        {
+            dmg += bonusDmgPerLevel;
+            statPoints--;
+        }
+
+        public void FirerateUpgrade()
+        {
+            firerate += bonusFireRatePerLevel;
+            statPoints--;
+        }
+
+        public void MovespeedUpgrade()
+        {
+            moveSpeed += bonusMoveSpeed;
+            statPoints--;
+        }
+
+        public void HpregenUpgrade()
+        {
+            hpregen += bonusHpPerLevel;
+            statPoints--;
+        }
+    
+        
+        // ***********************************
+        //
+        // Denne metode bliver slettet senere. Den er lavet for at kunne teste om "kill" mechanicen fungere.
+        // Jeg skal nok slette den når vi kommer dertil.
+        //
+        // ***********************************
+        public void Hit()
+        {
+            if (Input.GetKeyDown(KeyCode.K) && playerGotHit)
             {
-                StartCoroutine("regeainHealthOverTime");
+                Debug.Log("Dubble Hit");
+                CancelInvoke();
+                Invoke(nameof(HitReset),3);
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                playerGotHit = true;
+                if (currentHp <= 20)
+                {
+                    _playerDead = true;
+                    uiController.DeathScreen();
+                    gameObjectToBeRotated.layer = 8;
+                    _rb2D.velocity = new Vector2(0, 0);
+                }
+                currentHp = currentHp - 20;
+                Debug.Log(currentHp);
+                Invoke(nameof(HitReset), 3);
             }
         }
-
-        //movement
-
-        if (Input.GetKey(KeyCode.A))
-            rb.AddForce(Vector3.left);
-        if (Input.GetKey(KeyCode.D))
-            rb.AddForce(Vector3.right);
-        if (Input.GetKey(KeyCode.W))
-            rb.AddForce(Vector3.up);
-        if (Input.GetKey(KeyCode.S))
-            rb.AddForce(Vector3.down);
-
-        //shooting function
-        // Check if the fire button is pressed and if enough time has passed since the last shot
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
+        void HitReset()
         {
-            // Spawn a bullet at the fire point
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-            // Set the speed of the bullet
-            Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-            bulletRB.velocity = firePoint.right * bulletSpeed;
-
-            // Set the time of the next shot
-            nextFireTime = Time.time + fireRate;
+            playerGotHit = false;
         }
-    }
-
-    //Check for damage taken
-    private IEnumerator haveTakenDamage()
-    {
-        damageTaken = true;
-        yield return new WaitForSeconds(5f);
-    }
-
-    //health regen
-    private IEnumerator regeainHealthOverTime()
-    {
-        isRegenHealth = true;
-        while (currentHealth < maxhealth)
-        {
-            currentHealth++;
-            yield return new WaitForSeconds(healthRegenRate);
-        }
-        isRegenHealth = false;
-    }
-
-    //damage taken / kill
-    public void Damage(int damage)
-    {
-        if (damage < 0)
-        {
-            throw new System.ArgumentOutOfRangeException("Damage cannot be negative"); // Since we dont want to be capable of dealing negative damage, i've made the script throw an error
-        }
-
-        currentHealth -= damage; // This script is made to allow someone to damage this character
-        if (currentHealth <= 0)
-        {
-            Kill();
-        }
-    }
-
-    //kill command
-    private void Kill()
-    {
-        this.gameObject.SetActive(false);
-    }
-
-    //damage checker
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == playerTag || collision.gameObject.tag == "enemy")
-        {
-            Health health = collision.GetComponent<Health>();
-            health.Damage(damage);
-
-        }
-    }
-
-    //firerate
-    private IEnumerator fireRateShooting()
-    {
-        readyToShoot = true;
-        yield return new WaitForSeconds(fireRate);
-    }
 }

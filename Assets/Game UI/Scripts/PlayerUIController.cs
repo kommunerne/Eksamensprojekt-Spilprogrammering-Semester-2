@@ -51,7 +51,7 @@ public class PlayerUIController : MonoBehaviour
     // Player
     
         // Player Script
-        public MiniMapTestPlayer player;
+        public PlayerController player;
         
         // Visual Elements
         private VisualElement _healthBarContainer;

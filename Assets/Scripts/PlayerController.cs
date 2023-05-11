@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public float bulletSpeed = 10f;
     public float bulletlifetime = 3f;
     public bool readyToShoot;
+    public GameObject bulletPrefab; // The prefab of the bullet to be spawned
+    public Transform firePoint; // The point from which the bullet will be spawned
+    private float nextFireTime = 0f; // The time at which the next shot can be fired
 
     // Start is called before the first frame update
     void Start()
@@ -49,9 +52,18 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.down);
 
         //shooting function
-        if (Input.GetKey(KeyCode.Space) && readyToShoot == true)
+        // Check if the fire button is pressed and if enough time has passed since the last shot
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
         {
-            readyToShoot = false;
+            // Spawn a bullet at the fire point
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+            // Set the speed of the bullet
+            Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+            bulletRB.velocity = firePoint.right * bulletSpeed;
+
+            // Set the time of the next shot
+            nextFireTime = Time.time + fireRate;
         }
     }
 

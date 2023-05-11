@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("GameObject to follow the mouse")]
     public GameObject gameObjectToBeRotated;
+    public GameObject barrelOfTheTank;
     
     
     [Header("PlayerUIController Script")]
@@ -63,11 +64,12 @@ public class PlayerController : MonoBehaviour
         CharacterMovement();
         RegenHealtOverTime();
         HaveTakenDamageCheck();
+        Hit();
     }
 
     private void FixedUpdate()
     {
-        throw new NotImplementedException();
+        
     }
     
     
@@ -85,38 +87,38 @@ public class PlayerController : MonoBehaviour
         
         void RotateToMouse2D()
         {
-            throw new NotImplementedException();
+            
         }
     
         // Makes the player regen health over time
         private void RegenHealtOverTime()
         {
-            throw new NotImplementedException();
+            
         }
 
         // Controls the players movement ( PlayerMovement() er et ugyldigt navn for en metode. Derfor blev det CharacterMovement() )
         // Bare lige FYI :) 
         private void CharacterMovement()
         {
-            throw new NotImplementedException();
+            
         }
 
         // Makes the player take damage if the collider with enemies or enemyteams bullets
         private void PlayerTakeDamage()
         {
-            throw new NotImplementedException();
+            
         }
 
         // Makes the player shoot
         private void PlayerShoot()
         {
-            throw new NotImplementedException();
+            
         }
 
         // Pauses Health Regeneration when hit by an enemy
         private void HaveTakenDamageCheck()
         {
-            throw new NotImplementedException();
+            
         }
         
         //___________________________________________________
@@ -177,6 +179,7 @@ public class PlayerController : MonoBehaviour
                     _playerDead = true;
                     uiController.DeathScreen();
                     gameObjectToBeRotated.layer = 8;
+                    barrelOfTheTank.layer = 8;
                     _rb2D.velocity = new Vector2(0, 0);
                 }
                 currentHp = currentHp - 20;

@@ -6344,6 +6344,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1032569979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6852541635511715490, guid: dd3f1fbbe87ffff448d7feb3d1d1fbd5, type: 3}
+  m_PrefabInstance: {fileID: 8941365495001005589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1032981160
 GameObject:
   m_ObjectHideFlags: 0
@@ -13007,5 +13012,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8974697484686372357, guid: dd3f1fbbe87ffff448d7feb3d1d1fbd5, type: 3}
+      propertyPath: statPoints
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974697484686372357, guid: dd3f1fbbe87ffff448d7feb3d1d1fbd5, type: 3}
+      propertyPath: barrelOfTheTank
+      value: 
+      objectReference: {fileID: 1032569979}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd3f1fbbe87ffff448d7feb3d1d1fbd5, type: 3}

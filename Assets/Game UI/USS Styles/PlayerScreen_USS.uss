@@ -22,7 +22,7 @@
     flex-direction: column;
     white-space: nowrap;
     background-color: rgba(255, 255, 255, 0);
-    -unity-font: url('project://database/Assets/Fonts/JazzCreateBubble.ttf?fileID=12800000&guid=58b647c5b2ec4184e9a07a561cdf0644&type=3#JazzCreateBubble');
+    -unity-font: resource('FlatSkin/Font/Roboto-Black');
     font-size: 18px;
     -unity-font-style: bold;
     color: rgb(255, 255, 255);
@@ -165,7 +165,7 @@
     margin-top: 10px;
     font-size: 16px;
     -unity-font-style: bold;
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     -unity-text-outline-width: 1px;
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 255);
+    text-shadow: 1px 1px 0 rgb(0, 0, 0);
 }

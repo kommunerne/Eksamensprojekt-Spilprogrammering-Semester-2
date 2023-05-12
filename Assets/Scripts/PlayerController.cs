@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Info")]
     public string playerName;
-    public int pinCode;
+    public string pinCode;
     
     public bool playerGotHit;
     private bool _playerDead = false;

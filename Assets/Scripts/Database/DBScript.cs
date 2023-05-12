@@ -13,8 +13,8 @@ public class DBScript : MonoBehaviour {
         dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
         
         CreateDB();
-        CreatePlayer("Arnold", "1234DummyPass");
-        GetPlayer("Arnold", "1234DummyPass");
+        //CreatePlayer("Arnold", "1234DummyPass");
+        //GetPlayer("Arnold", "1234DummyPass");
     }
 
     public void CreateDB() {
@@ -38,7 +38,7 @@ public class DBScript : MonoBehaviour {
     }
     
 
-    public void CreatePlayer(string name, string pinCode) {
+    public void CreatePlayer(string playerName, string pinCode) {
         Debug.Log("Begun creation of player");
         using (SqliteConnection connection = new SqliteConnection(dbName)) {
             Debug.Log("Passed using statement");
@@ -54,7 +54,7 @@ public class DBScript : MonoBehaviour {
                     "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}'," +
                     "'{14}','{15}','{16}');";
                 
-                command.CommandText = string.Format(playerInsert, name, pinCode, 100, 100, 10, 1.0, 1.0, 1, 1, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0);
+                command.CommandText = string.Format(playerInsert, playerName, pinCode, 100, 100, 10, 1.0, 1.0, 1, 1, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0);
                 
                 command.ExecuteNonQuery();
                 connection.Close();

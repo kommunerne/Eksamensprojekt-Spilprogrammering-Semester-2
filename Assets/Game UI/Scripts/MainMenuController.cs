@@ -10,13 +10,25 @@ using UnityEngine.UIElements;
 using Mirror;
 using Mono.Data.Sqlite;
 
-public class MainMenuController : NetworkBehaviour
+public class MainMenuController : MonoBehaviour
 {
+
+    private GunnerNetworkManager manager;
+    
     #region Vairbales
     
     
     
     // Main Menu
+    
+        // Scene
+
+        private Scene mainMenu;
+    
+    
+        // UI Document
+
+        private UIDocument uiDoc;
     
         // Buttons
         private Button _loadLoadGameMenuButton;
@@ -34,11 +46,17 @@ public class MainMenuController : NetworkBehaviour
         private Button _loadGameButton;
    
         // Text Elements
-        private TextElement _loadUsername;
-        private TextElement _loadPinCode;
+        private TextField _loadUsername;
+        private TextField _loadPinCode;
+        // public string loadUsername;
+        // public string loadPinCode;
         
         // Visual Elements
         private VisualElement _loadGameMenu;
+        
+        // Toggle
+
+        private Toggle _loadHostToggle;
         
     // New Game Menu
     
@@ -47,18 +65,21 @@ public class MainMenuController : NetworkBehaviour
         private Button _createNewTank;
         
         // Text Elements
-        private TextElement _newUsername;
-        private TextElement _newPinCode;
+        private TextField _newUsername;
+        private TextField _newPinCode;
+        // public string newUsername;
+        // public string newPinCode;
         
         // Toggles
         private Toggle _bigGunTankToggle;
         private Toggle _sniperTankToggle;
         private Toggle _gunnerTankToggle;
         private Toggle _machineTankToggle;
+        private Toggle _newHostToggle;
         
         // Toggle to int converter
 
-        private int _toggleToInt;
+        public int _toggleToInt;
         
         // Visual Elements
         private VisualElement _newGameMenu;
@@ -79,17 +100,26 @@ public class MainMenuController : NetworkBehaviour
 
         private DBScript _db;
     
-    // NetworkManager Message
-        
+    // NetworkManager Boolean to check if new character or old character is created
+
+        public bool isNewPlayer;
+        private bool _loadHostBool;
+        private bool _newHostBool;
         
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
+        mainMenu = SceneManager.GetSceneByName("MainMenu");
 
         #region Instantiating
+        // Components
+        uiDoc = GetComponent<UIDocument>();
+        var root = GetComponent<UIDocument>().rootVisualElement;
+        manager = FindObjectOfType(typeof(GunnerNetworkManager)).GetComponent<GunnerNetworkManager>();
+        _db = GetComponent<DBScript>();
+        
         // Main Menu
         
             // Buttons
@@ -108,12 +138,16 @@ public class MainMenuController : NetworkBehaviour
             _returnFromLoadGameMenu = root.Q<Button>("returnFromLoadGameMenu");
         
             // Text Elements
-            _loadUsername = root.Q<TextElement>("loadUsername");
-            _loadPinCode = root.Q<TextElement>("loadPinCode");
+            _loadUsername = root.Q<TextField>("loadUsername");
+            _loadPinCode = root.Q<TextField>("loadPinCode");
     
             // Visual Elements
             _loadGameMenu = root.Q<VisualElement>("LoadGameMenu");
 
+            // Toggle
+
+            _loadHostToggle = root.Q<Toggle>("loadHostToggle");
+            
         // New Game Menu
                     
             // Buttons
@@ -125,9 +159,15 @@ public class MainMenuController : NetworkBehaviour
             _sniperTankToggle = root.Q<Toggle>("sniperTankToggle");
             _gunnerTankToggle = root.Q<Toggle>("gunnerTankToggle");
             _machineTankToggle = root.Q<Toggle>("machineTankToggle");
-    
+            _newHostToggle = root.Q<Toggle>("newHostToggle");
+            
             // Visual Elements
             _newGameMenu = root.Q<VisualElement>("NewGameMenu");
+            
+            // Text Fields
+
+            _newUsername = root.Q<TextField>("newUsername");
+            _newPinCode = root.Q<TextField>("newPinCode");
                         
         // Settings Menu
         
@@ -179,6 +219,17 @@ public class MainMenuController : NetworkBehaviour
     {
         TogglesController();
         GetToggle();
+
+        if (mainMenu == SceneManager.GetActiveScene())
+        {
+            uiDoc.enabled = true;
+        }
+        else
+        {
+            uiDoc.enabled = false;
+        }
+        _newHostBool = _newHostToggle.value;
+        _loadHostBool = _loadHostToggle.value;
     }
 
     void FixedUpdate()
@@ -208,7 +259,25 @@ public class MainMenuController : NetworkBehaviour
     
         private void LoadSavedGame()
         {
-            SceneManager.LoadScene("GameScene");
+            /*if (_db.CheckPlayerInfo(_loadUsername.value, _loadPinCode.value))
+            {
+                _toggleToInt = _db.GetPrefabNumber(_loadUsername.value,_loadPinCode.value);
+                
+                
+                isNewPlayer = false;
+                if (_loadHostBool)
+                {
+                    manager.StartHost();
+                }
+                else
+                {
+                    manager.networkAddress = "7777";
+                    manager.StartClient();
+                }
+                uiDoc.enabled = false;
+            }*/
+            
+            
         }
         private void UnloadLoadGameMenu()
         {
@@ -219,9 +288,19 @@ public class MainMenuController : NetworkBehaviour
 
     private void LoadNewGame()
     {
-        _db.CreatePlayer(_newUsername.text);
+        isNewPlayer = true;
+        _db.CreatePlayer(_newUsername.value,_newPinCode.value);
         ToggleToInt();
-        SceneManager.LoadScene("GameScene");
+        if (_newHostBool)
+        {
+            manager.StartHost();
+        }
+        else
+        {
+            manager.networkAddress = "7777";
+            manager.StartClient();
+        }
+        //uiDoc.enabled = false;
     }
     private void UnloadNewGameMenu()
     {
@@ -310,5 +389,22 @@ public class MainMenuController : NetworkBehaviour
         private void MusicSlider(){}
         private void EffectsSlider(){}
 
-    
+    // Send Player Info Methods
+
+    public string GetNewPlayerName()
+    {
+        return _newUsername.value;
+    }
+    public string GetNewPinCode()
+    {
+        return _newPinCode.value;
+    }
+    public string GetLoadPlayerName()
+    {
+        return _loadUsername.value;
+    }
+    public string GetLoadPinCode()
+    {
+        return _loadPinCode.value;
+    }
 }

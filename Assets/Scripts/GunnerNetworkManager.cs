@@ -21,23 +21,41 @@ public class GunnerNetworkManager : NetworkManager
     {
         base.OnStartServer();
 
-        NetworkServer.RegisterHandler<CreateGunnerMessage>(onCreateCharacter);
+        NetworkServer.RegisterHandler<CreateGunnerMessage>(OnCreateCharacter);
     }
 
     public override void OnClientConnect()
     {
         base.OnClientConnect();
 
-        CreateGunnerMessage characterMessage = new CreateGunnerMessage
+        CreateGunnerMessage characterMessage;
+        
+        MainMenuController menuScene = GetComponent<MainMenuController>();
+        
+        if(menuScene.isNewPlayer)
         {
-            // Johannes do ur magic in here thank you <33
-
-        };
-
-        NetworkClient.Send(CharacterMessage);
+            characterMessage = new CreateGunnerMessage
+            {
+                // Johannes do ur magic in here thank you <33
+                name = menuScene.GetNewPlayerName(),
+                pinCode = menuScene.GetNewPinCode(), 
+                prefabSelector = menuScene._toggleToInt
+            };
+        } 
+        else
+        {
+            characterMessage = new CreateGunnerMessage
+            {
+                // Johannes do ur magic in here thank you <33
+                name = menuScene.GetLoadPlayerName(),
+                pinCode = menuScene.GetLoadPinCode(), 
+                prefabSelector = menuScene._toggleToInt
+            };
+        }
+        NetworkClient.Send(characterMessage);
     }
 
-    void onCreateCharacter(NetworkConnectionToClient conn, CreateGunnerMessage message)
+    void OnCreateCharacter(NetworkConnectionToClient conn, CreateGunnerMessage message)
     {
         GameObject gameobject;
 
@@ -45,7 +63,7 @@ public class GunnerNetworkManager : NetworkManager
 
        
 
-        if (bluePlayers >= redPlayers)
+        /*if (bluePlayers >= redPlayers)
         {
             spawnPoint = blueSpawnPoints[Random.Range(0, 2)].transform.position;
         }
@@ -53,8 +71,10 @@ public class GunnerNetworkManager : NetworkManager
         else
         {
             spawnPoint = redSpawnPoints[Random.Range(0, 2)].transform.position;
-        }
+        }*/
 
+        spawnPoint = new Vector3(0, 0, 0);
+        
         if(message.prefabSelector == 1)
         {
             gameobject = Instantiate(bigGunTank, spawnPoint, new Quaternion(0,0,0,0));

@@ -12,7 +12,7 @@ public class PlayerDBController : NetworkManager
     // Start is called before the first frame update
     void Start()
     {
-        _db
+        
     }
 
     // Update is called once per frame

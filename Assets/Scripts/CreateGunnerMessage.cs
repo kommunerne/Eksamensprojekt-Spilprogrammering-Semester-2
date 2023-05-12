@@ -1,0 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Mirror; 
+
+public struct CreateGunnerMessage : NetworkMessage
+{
+    public string name; // Navn!... Burde være obvious hvad det her 
+    public string pinCode; // String fordi en tekstfelt i main menu ikke kunne være andet end en string :( 
+    public int prefabSelector; // Vælger type af tanks -- igennem en int
+}

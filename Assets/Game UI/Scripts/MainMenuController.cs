@@ -1,15 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Mirror;
+using Mono.Data.Sqlite;
 
-public class MainMenuController : MonoBehaviour
+public class MainMenuController : NetworkBehaviour
 {
     #region Vairbales
+    
+    
     
     // Main Menu
     
@@ -51,6 +56,10 @@ public class MainMenuController : MonoBehaviour
         private Toggle _gunnerTankToggle;
         private Toggle _machineTankToggle;
         
+        // Toggle to int converter
+
+        private int _toggleToInt;
+        
         // Visual Elements
         private VisualElement _newGameMenu;
         
@@ -66,6 +75,13 @@ public class MainMenuController : MonoBehaviour
         // Visual Elements
         private VisualElement _settingsMenu;
     
+    // Database
+
+        private DBScript _db;
+    
+    // NetworkManager Message
+        
+        
     #endregion
 
     // Start is called before the first frame update
@@ -203,62 +219,87 @@ public class MainMenuController : MonoBehaviour
 
     private void LoadNewGame()
     {
+        _db.CreatePlayer(_newUsername.text);
+        ToggleToInt();
         SceneManager.LoadScene("GameScene");
     }
-        private void UnloadNewGameMenu()
+    private void UnloadNewGameMenu()
+    {
+        _newGameMenu.style.display = DisplayStyle.None;
+    }
+    private void TogglesController()
+    {
+        switch (GetToggle())
         {
-            _newGameMenu.style.display = DisplayStyle.None;
+            case "bigGunTank":
+                _sniperTankToggle.value = false;
+                _gunnerTankToggle.value = false;
+                _machineTankToggle.value = false;
+                break;
+            case "sniperTank":
+                _bigGunTankToggle.value = false;
+                _gunnerTankToggle.value = false;
+                _machineTankToggle.value = false;
+                break;
+            case "gunnerTank":
+                _bigGunTankToggle.value = false;
+                _sniperTankToggle.value = false;
+                _machineTankToggle.value = false;
+                break;
+            case "machineTank":
+                _bigGunTankToggle.value = false;
+                _sniperTankToggle.value = false;
+                _gunnerTankToggle.value = false;
+                break;
+            case "noneSelected":
+                break;
+            default:
+                break;
         }
-        private void TogglesController()
+    }
+    private string GetToggle()
+    {
+        if (_bigGunTankToggle.value)
         {
-            switch (GetToggle())
-            {
-                case "bigGunTank":
-                    _sniperTankToggle.value = false;
-                    _gunnerTankToggle.value = false;
-                    _machineTankToggle.value = false;
-                    break;
-                case "sniperTank":
-                    _bigGunTankToggle.value = false;
-                    _gunnerTankToggle.value = false;
-                    _machineTankToggle.value = false;
-                    break;
-                case "gunnerTank":
-                    _bigGunTankToggle.value = false;
-                    _sniperTankToggle.value = false;
-                    _machineTankToggle.value = false;
-                    break;
-                case "machineTank":
-                    _bigGunTankToggle.value = false;
-                    _sniperTankToggle.value = false;
-                    _gunnerTankToggle.value = false;
-                    break;
-                case "noneSelected":
-                    break;
-                default:
-                    break;
-            }
-        }
-        private string GetToggle()
+            return "bigGunTank";
+        } 
+        else if (_sniperTankToggle.value)
         {
-            if (_bigGunTankToggle.value)
-            {
-                return "bigGunTank";
-            } 
-            else if (_sniperTankToggle.value)
-            {
-                return "sniperTank";
-            } 
-            else if (_gunnerTankToggle.value)
-            {
-                return "gunnerTank";
-            } 
-            else if (_machineTankToggle.value)
-            {
-                return "machineTank";
-            } 
-            else { return "noneSelected"; }
+            return "sniperTank";
+        } 
+        else if (_gunnerTankToggle.value)
+        {
+            return "gunnerTank";
+        } 
+        else if (_machineTankToggle.value)
+        {
+            return "machineTank";
+        } 
+        else { return "noneSelected"; }
+    }
+    void ToggleToInt()
+    {
+        if (_bigGunTankToggle.value)
+        {
+            _toggleToInt = 1;
         }
+        else if (_gunnerTankToggle.value)
+        {
+            _toggleToInt = 2;
+        }
+        else if (_sniperTankToggle.value)
+        {
+            _toggleToInt = 3;
+        } 
+        else if (_machineTankToggle.value)
+        {
+            _toggleToInt = 4;
+        }
+        else
+        {
+            _toggleToInt = 0;
+        }
+    }
         
     // Settings Menu Methods
     

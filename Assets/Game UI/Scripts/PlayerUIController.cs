@@ -74,6 +74,9 @@ public class PlayerUIController : MonoBehaviour
         // Visual Elements
         private VisualElement _escScreen;
         
+        // Labels
+
+        private Label _playerName;
         
     
     
@@ -146,12 +149,15 @@ public class PlayerUIController : MonoBehaviour
             // Visual Elements
             _escScreen = root.Q<VisualElement>("EscScreenContainer");
             
-         
+            // Labels
+
+            _playerName = root.Q<Label>("playerName");
 
             #endregion
         
         
         // On Start Values
+        _playerName.text = player.playerName;
         
         _statsShown.style.display = DisplayStyle.Flex;
         _statsHidden.style.display = DisplayStyle.None;

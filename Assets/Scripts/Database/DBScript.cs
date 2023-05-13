@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using UnityEngine;
 using Mono.Data.Sqlite;
 
@@ -12,15 +13,16 @@ public class DBScript : MonoBehaviour {
     private void Awake()
     {
         // dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
-        
+        // dbName = Directory.GetCurrentDirectory(); // For use in the build version
+
         // CreateDB();
     }
     private void Start() {
-        // dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
+        dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
         
-        // CreateDB();
-        // CreatePlayer("Arnold", "1234DummyPass");
-        // GetPlayer("Arnold", "1234DummyPass");
+        CreateDB();
+        CreatePlayer("Arnold", "1234DummyPass");
+        GetPlayer("Arnold", "1234DummyPass");
     }
 
     public void CreateDB() {
@@ -77,24 +79,45 @@ public class DBScript : MonoBehaviour {
         }
     }
 
-    public void GetPlayer(string name, string pincode) {
+    public Player GetPlayer(string name, string pinCode) {
         Debug.Log("Begun creation of getPlayer");
+        Player playerToGet;
         using (SqliteConnection connection = new SqliteConnection(dbName)) {
             connection.Open();
 
             using (SqliteCommand command = connection.CreateCommand()) {
+
+                command.CommandText = "SELECT * FROM players WHERE Name LIKE @param1 AND PinCode LIKE @param2";
+                command.CommandType = CommandType.Text; // Done to make things easier on the database
+                command.Parameters.Add(new SqliteParameter("@param1", name));
+                command.Parameters.Add(new SqliteParameter("@param2", pinCode));
                 
-                command.CommandText = "SELECT * FROM players;";
                 using (IDataReader reader = command.ExecuteReader()) {
                     while (reader.Read()) {
-                        Debug.Log( "name: " + reader["name"]);
+                        
+                        // playerToGet = new Player(reader["name"].ToString(), reader["pinCode"].ToString(), 
+                        //     (int)reader["maxHp"], (int)reader["currentHp"],(int)reader["dmg"],
+                        //     (float)(int)reader["moveSpeed"],(int)reader["hpRegen"],(int)reader["level"],
+                        //     (int)reader["Exp"],(int)reader["statPoints"], (int)reader["score"],
+                        //     (float)reader["fireRate"] ,(float)reader["hpProgressBar"],
+                        //     (float)reader["dmgProgressBar"],
+                        //     (float)reader["firerateProgressBar"],(float)reader["moveSpeedProgressBar"],
+                        //     (float)reader["hpRegenProgressBar"]);
+                        //
+
+                        playerToGet = new Player(reader["name"].ToString(), reader["PinCode"].ToString());
+                        
+                        Debug.Log(playerToGet.name);
+                        return playerToGet;
+
                     }
                 }
                 
                 connection.Close();
             }
         }
-        
+        Debug.Log("failed to retrieve player");
+        return null;
     }
 
 

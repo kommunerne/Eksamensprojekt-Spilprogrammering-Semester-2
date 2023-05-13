@@ -1,16 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     // variables
-    public GameObject player;
+    //public GameObject player;
     
-    [Header("Main Camera")]
+    [Header("Cameras")]
     public Camera cameraToUse;
+    public Camera miniMap;
+    public Camera deathScreen;
     
     [Header("GameObject to follow the mouse")]
     public GameObject gameObjectToBeRotated;
@@ -25,20 +28,15 @@ public class PlayerController : MonoBehaviour
     public int maxHp = 100;
     public int currentHp;
     public int dmg = 20;
-    public float firerate = 1.0f;
     public float moveSpeed = 5f;
-    public int hpregen = 5;
+    public int hpRegen = 5;
     public int level;
     public int exp;
     public int statPoints;
     public int score;
-    private bool isRegenHealth;
-    public Transform firePoint;
     public float nextFireTime = 0f;
     public float fireRate = 0.5f;
     public float bulletSpeed = 10f;
-    private bool damageTaken = false;
-
     [Header("Stats gained pr upgrade")]
     public int bonusHpPerLevel = 100;
     public int bonusDmgPerLevel = 20;
@@ -52,26 +50,43 @@ public class PlayerController : MonoBehaviour
     [Header("Player Info")]
     public string playerName;
     public string pinCode;
-    
+    public string teamName;
     public bool playerGotHit;
     private bool _playerDead = false;
     private Rigidbody2D _rb2D;
 
+    [Space] 
+    [Header("Prefabs & GameObjects:")] 
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    
     private void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
         uiController = GetComponent<PlayerUIController>();
         playerGotHit = false;
+        nextFireTime = fireRate;
     }
 
     private void Update()
     {
-        RotateToMouse2D();
-        PlayerShoot();
-        PlayerTakeDamage();
-        CharacterMovement();
-        RegenHealtOverTime();
-        Hit();
+        if (isLocalPlayer)
+        {
+            CmdRotateToMouse2D();
+            CmdShoot();
+            CharacterMovement();
+            RegenHealthOverTime();
+            Hit();
+            
+        }
+        else
+        {
+            Debug.Log(transform.name + " is not local :( ", transform);
+            cameraToUse.enabled = false;
+            miniMap.enabled = false;
+            deathScreen.enabled = false;
+        }
+        
     }
 
     private void FixedUpdate()
@@ -83,16 +98,8 @@ public class PlayerController : MonoBehaviour
     // Methods
     
         // Main Methods
-        //*******************************************************
-        //
-        // Det er disse metoder du skal implementere Erik :) 
-        //
-        //*******************************************************
-        
-        // Makes the player follow the mouse ( Use the objectToGetRotated gameobject as the object that should be rotated)
-        // If you rotated the entire player objects, you will then also rotate the cameras
-        
-        void RotateToMouse2D()
+        [Command]
+        void CmdRotateToMouse2D()
         {
             Vector3 mousePosition = cameraToUse.ScreenToWorldPoint(Input.mousePosition);
 
@@ -101,115 +108,96 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Rotate the player to face the mouse
-            player.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            gameObjectToBeRotated.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
-
-        // Makes the player regen health over time
-        private void RegenHealtOverTime()
+        
+        private void RegenHealthOverTime()
         {
-            if (damageTaken == false)
+            if (currentHp < maxHp && !playerGotHit)
             {
-                if (currentHp != maxHp && !isRegenHealth)
-                {
-                    StartCoroutine("regeainHealthOverTime");
-                }
+                currentHp += hpRegen * (int)Time.deltaTime; // Increase current health by regenRate per second
+                currentHp = Mathf.Clamp(currentHp, 0, maxHp); // Clamp current health to be within the range of 0 and max health
             }
         }
-
-    public void Damage(int damage)
-    {
-        if (damage < 0)
-        {
-            throw new System.ArgumentOutOfRangeException("Damage cannot be negative"); // Since we dont want to be capable of dealing negative damage, i've made the script throw an error
-        }
-
-        currentHp -= damage; // This script is made to allow someone to damage this character
-        if (currentHp <= 0)
-        {
-            Kill();
-        }
-    }
-
-    private void Kill()
-    {
-        this.gameObject.SetActive(false);
-    }
-
-    private IEnumerator regeainHealthOverTime()
-        {
-            isRegenHealth = true;
-            while (currentHp < maxHp)
-            {
-                currentHp++;
-                yield return new WaitForSeconds(hpregen);
-            }
-            isRegenHealth = false;
-        }
-
-        // Controls the players movement ( PlayerMovement() er et ugyldigt navn for en metode. Derfor blev det CharacterMovement() )
-        // Bare lige FYI :) 
+        
         private void CharacterMovement()
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
             if (Input.GetKey(KeyCode.A))
-                rb.AddForce(Vector3.left);
+                _rb2D.AddForce(Vector2.left * moveSpeed);
             if (Input.GetKey(KeyCode.D))
-                rb.AddForce(Vector3.right);
+                _rb2D.AddForce(Vector2.right * moveSpeed);
             if (Input.GetKey(KeyCode.W))
-                rb.AddForce(Vector3.up);
+                _rb2D.AddForce(Vector2.up * moveSpeed);
             if (Input.GetKey(KeyCode.S))
-                rb.AddForce(Vector3.down);
+                _rb2D.AddForce(Vector2.down * moveSpeed);
         }   
-
-        // Makes the player take damage if the collider with enemies or enemyteams bullets
-        private void PlayerTakeDamage()
+        
+        private void PlayerTakeDamage(int damage)
         {
-        currentHp - dmg;
-        haveTakenDamage();
+            if (playerGotHit)
+            {
+                Debug.Log("Dubble Hit");
+                CancelInvoke(nameof(HitReset));
+            }
+            else
+            {
+                playerGotHit = true;    
+            }
+            if (currentHp <= damage)
+            {
+                _playerDead = true;
+                uiController.DeathScreen();
+                gameObjectToBeRotated.layer = 8;
+                barrelOfTheTank.layer = 8;
+                _rb2D.velocity = new Vector2(0, 0);
+            }
+            currentHp = currentHp-damage;
+            Debug.Log(currentHp);
+            Invoke(nameof(HitReset), 3);
         }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+        /*private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "enemy")
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            PlayerTakeDamage(collision.gameObject.);
+        }
+        else if(collision.gameObject.CompareTag("RedTeam") && player.CompareTag("BlueTeam"))
         {
             PlayerTakeDamage();
         }
-        else if(collision.gameObject.tag == "red" && player.tag == "blue")
+        else if(collision.gameObject.CompareTag("BlueTeam") && player.CompareTag("RedTeam"))
         {
             PlayerTakeDamage();
         }
-        else if(collision.gameObject.tag == "blue" && player.tag == "red")
-        {
-            PlayerTakeDamage();
-        }
-    }
+    }*/
 
-    // Makes the player shoot
-    private void PlayerShoot()
+        // Makes the player shoot
+        [Command]
+        private void CmdShoot()
         {
-        // Check if the fire button is pressed and if enough time has passed since the last shot
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
-        {
+            // Check if the fire button is pressed and if enough time has passed since the last shot
+            if (Input.GetButtonDown("Fire1") && nextFireTime <= 0)
+            {
             // Spawn a bullet at the fire point
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
+                bullet.tag = tag;
             // Set the speed of the bullet
-            Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-            bulletRB.velocity = firePoint.right * bulletSpeed;
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.velocity = firePoint.right * bulletSpeed;
 
             // Set the time of the next shot
-            nextFireTime = Time.time + fireRate;
-        }
-    }
-
-        // Pauses Health Regeneration when hit by an enemy
-        private IEnumerator haveTakenDamage()
-        {
-            damageTaken = true;
-            yield return new WaitForSeconds(5f);
+            nextFireTime = fireRate;
+            Destroy(bullet,3f);
+            }
+            else
+            {
+                nextFireTime -= Time.deltaTime;
+            }
         }
 
-    //___________________________________________________
+        //___________________________________________________
 
     // UI Methods
 
@@ -228,7 +216,7 @@ public class PlayerController : MonoBehaviour
 
         public void FirerateUpgrade()
         {
-            firerate += bonusFireRatePerLevel;
+            fireRate += bonusFireRatePerLevel;
             statPoints--;
         }
 
@@ -240,7 +228,7 @@ public class PlayerController : MonoBehaviour
 
         public void HpregenUpgrade()
         {
-            hpregen += bonusHpPerLevel;
+            hpRegen += bonusHpPerLevel;
             statPoints--;
         }
     

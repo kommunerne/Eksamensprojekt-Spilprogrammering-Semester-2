@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Mirror;
 using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -289,7 +287,7 @@ public class MainMenuController : MonoBehaviour
     private void LoadNewGame()
     {
         isNewPlayer = true;
-        _db.CreatePlayer(_newUsername.value,_newPinCode.value);
+        // _db.CreatePlayer(_newUsername.value,_newPinCode.value);
         ToggleToInt();
         if (_newHostBool)
         {
@@ -297,7 +295,7 @@ public class MainMenuController : MonoBehaviour
         }
         else
         {
-            manager.networkAddress = "7777";
+            manager.networkAddress = "localhost";
             manager.StartClient();
         }
         //uiDoc.enabled = false;
@@ -407,4 +405,8 @@ public class MainMenuController : MonoBehaviour
     {
         return _loadPinCode.value;
     }
+    
+    
+    // Network Manager HUD
+
 }

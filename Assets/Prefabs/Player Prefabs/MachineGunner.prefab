@@ -49,9 +49,11 @@ GameObject:
   - component: {fileID: 5005082264696666649}
   - component: {fileID: 6211034831758485065}
   - component: {fileID: -5729559424542059537}
+  - component: {fileID: -7280105267382221719}
+  - component: {fileID: 5982726486604320172}
   m_Layer: 0
   m_Name: MachineGunner
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,20 +165,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e83a1051ee01d4495dd51ea67ab5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   cameraToUse: {fileID: 7553749281393373631}
+  miniMap: {fileID: 6835724251131998454}
+  deathScreen: {fileID: 2082509580819245928}
   gameObjectToBeRotated: {fileID: 5764697656339353918}
   barrelOfTheTank: {fileID: 7412931916158505662}
   uiController: {fileID: 3777822949838106855}
   maxHp: 100
   currentHp: 100
   dmg: 20
-  firerate: 1
   moveSpeed: 5
-  hpregen: 5
+  hpRegen: 5
   level: 0
   exp: 0
   statPoints: 0
   score: 0
+  nextFireTime: 0
+  fireRate: 0.5
+  bulletSpeed: 10
   bonusHpPerLevel: 100
   bonusDmgPerLevel: 20
   bonusFireRatePerLevel: 1
@@ -185,7 +194,10 @@ MonoBehaviour:
   bulletRadius: 0
   playerName: 
   pinCode: 0
+  teamName: 
   playerGotHit: 0
+  bulletPrefab: {fileID: 628592309837062276, guid: c127b31f74a7a3b4cab7225f2460f782, type: 3}
+  firePoint: {fileID: 7369278269586175}
 --- !u!114 &6211034831758485065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +238,74 @@ MonoBehaviour:
   syncAngularVelocity: 1
   clearAngularVelocity: 0
   angularVelocitySensitivity: 0.1
+--- !u!114 &-7280105267382221719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237882189463493724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 818101671640344638}
+  clientAuthority: 0
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
+  onlySyncOnChangeCorrectionMultiplier: 2
+  sendIntervalMultiplier: 3
+  rotationSensitivity: 0.01
+  compressRotation: 0
+  positionPrecision: 0.01
+  scalePrecision: 0.01
+  timelineOffset: 0
+--- !u!114 &5982726486604320172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237882189463493724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 8031605146417663369}
+  clientAuthority: 0
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
+  onlySyncOnChangeCorrectionMultiplier: 2
+  sendIntervalMultiplier: 3
+  rotationSensitivity: 0.01
+  compressRotation: 0
+  positionPrecision: 0.01
+  scalePrecision: 0.01
+  timelineOffset: 0
 --- !u!1 &5764697656339353918
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +404,7 @@ GameObject:
   - component: {fileID: 3599558481581736240}
   m_Layer: 0
   m_Name: CameraToUse
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

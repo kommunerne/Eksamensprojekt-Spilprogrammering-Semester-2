@@ -164,7 +164,7 @@
     text-shadow: 2px 2px 0 rgb(0, 0, 0);
     position: absolute;
     top: 20px;
-    -unity-font: resource('FlatSkin/Font/Roboto-Black');
+    -unity-font: url('project://database/Assets/Fonts/Roboto/Roboto-Black.ttf?fileID=12800000&guid=87d6165f8cbad5d4f9cc3928290ce158&type=3#Roboto-Black');
     -unity-font-definition: initial;
 }
 

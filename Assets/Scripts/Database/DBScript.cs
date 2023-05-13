@@ -9,12 +9,18 @@ public class DBScript : MonoBehaviour {
 
     private string dbName;
 
-    private void Start() {
-        dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
+    private void Awake()
+    {
+        // dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
         
-        CreateDB();
-        //CreatePlayer("Arnold", "1234DummyPass");
-        //GetPlayer("Arnold", "1234DummyPass");
+        // CreateDB();
+    }
+    private void Start() {
+        // dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
+        
+        // CreateDB();
+        // CreatePlayer("Arnold", "1234DummyPass");
+        // GetPlayer("Arnold", "1234DummyPass");
     }
 
     public void CreateDB() {

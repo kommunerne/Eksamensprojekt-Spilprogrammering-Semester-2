@@ -15,7 +15,8 @@ public class GunnerNetworkManager : NetworkManager
     public int bluePlayers; 
     public Transform[] redSpawnPoints;
     public Transform[] blueSpawnPoints;
-    public ArrayList enemySpawnPoints; 
+    public Transform[] enemySpawnPoints;
+    public Transform[] bossSpawnPoint;
 
     public override void OnStartServer()
     {
@@ -59,22 +60,18 @@ public class GunnerNetworkManager : NetworkManager
     {
         GameObject gameobject;
 
-        Vector3 spawnPoint;
-
-       
-
-        /*if (bluePlayers >= redPlayers)
+        // Getting a random spawn for the player depending on which team he should spawn in on.
+        GameObject[] redSpawns =
         {
-            spawnPoint = blueSpawnPoints[Random.Range(0, 2)].transform.position;
-        }
+            GameObject.Find("SpawnR01"), GameObject.Find("SpawnR02"), GameObject.Find("SpawnR03"),GameObject.Find("SpawnR04"),GameObject.Find("SpawnR05"),GameObject.Find("SpawnR06")
+        };
+        GameObject[] blueSpawns = {
+            GameObject.Find("SpawnB01"), GameObject.Find("SpawnB02"), GameObject.Find("SpawnB03"), GameObject.Find("SpawnB04"), GameObject.Find("SpawnB05"), GameObject.Find("SpawnB06")
+        };
 
-        else
-        {
-            spawnPoint = redSpawnPoints[Random.Range(0, 2)].transform.position;
-        }*/
+        var spawnPoint = bluePlayers <= redPlayers ? blueSpawns[Random.Range(0, 5)].transform.position : redSpawns[Random.Range(0, 5)].transform.position;
 
-        spawnPoint = new Vector3(0, 0, 0);
-        
+
         if(message.prefabSelector == 1)
         {
             gameobject = Instantiate(bigGunTank, spawnPoint, new Quaternion(0,0,0,0));
@@ -98,24 +95,15 @@ public class GunnerNetworkManager : NetworkManager
         else
         {
             gameobject = Instantiate(gunnerTank, spawnPoint, new Quaternion(0, 0, 0, 0));
+            
         }
 
         PlayerController player = gameobject.GetComponent<PlayerController>();
         player.playerName = message.name;
         player.pinCode = message.pinCode;
-        
+        player.teamName = bluePlayers <= redPlayers ? "BlueTeam" : "RedTeam";
+        NetworkServer.AddPlayerForConnection(conn, gameobject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
 

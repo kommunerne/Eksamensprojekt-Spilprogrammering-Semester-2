@@ -6,6 +6,8 @@ TagManager:
   tags:
   - RedTeamSafeZone
   - BlueTeamSafeZone
+  - BlueTeam
+  - RedTeam
   layers:
   - Default
   - TransparentFX

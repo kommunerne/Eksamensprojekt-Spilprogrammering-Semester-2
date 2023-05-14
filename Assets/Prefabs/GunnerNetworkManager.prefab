@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6750927646768155524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6750927646768155522}
+  - component: {fileID: 6750927646768155525}
+  - component: {fileID: 6750927646768155520}
+  - component: {fileID: 1067764054}
+  - component: {fileID: 1067764055}
+  - component: {fileID: 1067764056}
+  m_Layer: 0
+  m_Name: GunnerNetworkManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6750927646768155522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750927646768155524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.50432, y: 8.793535, z: -0.4199267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6750927646768155525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750927646768155524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6422eb0785748429c30436d3850162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 1
+  runInBackground: 1
+  autoStartServerBuild: 1
+  autoConnectClientBuild: 0
+  sendRate: 30
+  offlineScene: Assets/Scenes/MainMenu.unity
+  onlineScene: Assets/Scenes/GameScene.unity
+  transport: {fileID: 6750927646768155520}
+  networkAddress: localhost
+  maxConnections: 100
+  authenticator: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  autoCreatePlayer: 0
+  playerSpawnMethod: 0
+  spawnPrefabs:
+  - {fileID: 7291977701909461216, guid: 395cd7a0adfcbf94e87c0b5fc6859f0e, type: 3}
+  - {fileID: 231622463071815744, guid: dd3f1fbbe87ffff448d7feb3d1d1fbd5, type: 3}
+  - {fileID: 4237882189463493724, guid: aa0663b96b74aac419428ab0b8edb5a1, type: 3}
+  - {fileID: 1958152622918217271, guid: b3c74143c353095458b0299993832675, type: 3}
+  - {fileID: 2830100365905264878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
+  - {fileID: 9208188512314539513, guid: 73d202db3d88c4d4ebf5c838cb8d0996, type: 3}
+  - {fileID: 8589547092090898790, guid: d4637037ca27eba4d8b858517e7aa126, type: 3}
+  - {fileID: 1225958574424988226, guid: 6bc9354654df03f4d91b1146afb104fa, type: 3}
+  - {fileID: 628592309837062276, guid: c127b31f74a7a3b4cab7225f2460f782, type: 3}
+  snapshotSettings:
+    bufferTimeMultiplier: 2
+    catchupNegativeThreshold: -1
+    catchupPositiveThreshold: 1
+    catchupSpeed: 0.019999999552965164
+    slowdownSpeed: 0.03999999910593033
+    driftEmaDuration: 1
+    dynamicAdjustment: 1
+    dynamicAdjustmentTolerance: 1
+    deliveryTimeEmaDuration: 2
+  timeInterpolationGui: 0
+  bigGunTank: {fileID: 7291977701909461216, guid: 395cd7a0adfcbf94e87c0b5fc6859f0e, type: 3}
+  gunnerTank: {fileID: 231622463071815744, guid: dd3f1fbbe87ffff448d7feb3d1d1fbd5, type: 3}
+  sniperTank: {fileID: 1958152622918217271, guid: b3c74143c353095458b0299993832675, type: 3}
+  machineTank: {fileID: 4237882189463493724, guid: aa0663b96b74aac419428ab0b8edb5a1, type: 3}
+  redPlayers: 0
+  bluePlayers: 0
+  redSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  blueSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemySpawnPoints: []
+  bossSpawnPoint: []
+--- !u!114 &6750927646768155520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750927646768155524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 7777
+  NoDelay: 1
+  SendTimeout: 5000
+  ReceiveTimeout: 30000
+  serverMaxMessageSize: 16384
+  serverMaxReceivesPerTick: 10000
+  serverSendQueueLimitPerConnection: 10000
+  serverReceiveQueueLimitPerConnection: 10000
+  clientMaxMessageSize: 16384
+  clientMaxReceivesPerTick: 1000
+  clientSendQueueLimit: 10000
+  clientReceiveQueueLimit: 10000
+--- !u!114 &1067764054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750927646768155524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 62d01d99d9754f44f8b24eb99ce08dc0, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: f95c528900cced84fb12f9ada2ab3e54, type: 3}
+  m_SortingOrder: 0
+--- !u!114 &1067764055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750927646768155524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47616310895119e42bb088ef289f6de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toggleToInt: 0
+  isNewPlayer: 0
+--- !u!114 &1067764056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6750927646768155524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b03c2ac92a57854e8d0cdbcab29f8fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

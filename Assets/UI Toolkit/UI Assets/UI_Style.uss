@@ -151,6 +151,7 @@
     border-top-color: rgb(255, 255, 255);
     border-bottom-color: rgb(255, 255, 255);
     position: absolute;
+    -unity-font: resource('FlatSkin/Font/Roboto-Black');
 }
 
 .Header-Text {
@@ -163,6 +164,8 @@
     text-shadow: 2px 2px 0 rgb(0, 0, 0);
     position: absolute;
     top: 20px;
+    -unity-font: url('project://database/Assets/Fonts/Roboto/Roboto-Black.ttf?fileID=12800000&guid=87d6165f8cbad5d4f9cc3928290ce158&type=3#Roboto-Black');
+    -unity-font-definition: initial;
 }
 
 .volume-slider {
@@ -192,10 +195,13 @@
     width: 230px;
     height: 70px;
     top: -62px;
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=a460248379a6d3643b967f271f7bd2ae&type=3#NotInter-Regular');
+    -unity-font-definition: initial;
 }
 
 .PrefabLabel {
     -unity-text-align: middle-center;
+    -unity-font: resource('FlatSkin/Font/Roboto-Black');
 }
 
 .PrefabToggle {

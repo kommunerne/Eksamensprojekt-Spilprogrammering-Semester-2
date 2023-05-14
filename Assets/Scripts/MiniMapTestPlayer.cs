@@ -11,7 +11,7 @@ public class MiniMapTestPlayer : MonoBehaviour
     public GameObject test;
     private Rigidbody2D rb;
     [SerializeField] private PlayerUIController uiController;
-    
+        
     
     public int maxHp = 100;
     public int currentHp = 100;

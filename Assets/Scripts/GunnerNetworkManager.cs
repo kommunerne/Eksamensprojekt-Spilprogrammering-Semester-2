@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class GunnerNetworkManager : NetworkManager
 {
@@ -17,8 +18,8 @@ public class GunnerNetworkManager : NetworkManager
     public GameObject mediumEnemy;
     public GameObject largeEnemy;
     public GameObject bossEnemy;
-    public int enemyCounter; 
-    public float interval = 6f; 
+    public int enemyCounter = 0; 
+    public float interval = 6f; // Noget galt med hvordan den her virker med smallEnemySpawn --> Kigger på det soon 
 
     public int redPlayers;
     public int bluePlayers; 
@@ -113,7 +114,7 @@ public class GunnerNetworkManager : NetworkManager
         PlayerController player = gameobject.GetComponent<PlayerController>();
         player.playerName = message.name;
         player.pinCode = message.pinCode;
-        player.prefabNr = message.prefabSelector;
+       // player.prefabNr = message.prefabSelector;
         player.teamName = bluePlayers <= redPlayers ? "BlueTeam" : "RedTeam";
         if (player.teamName == "BlueTeam")
             bluePlayers++;
@@ -153,6 +154,7 @@ public class GunnerNetworkManager : NetworkManager
 
             enemyCounter += 3;
             interval = 6f;
+            Debug.Log("Enemy spawn:" + enemyCounter);
 
         }
         else
@@ -226,14 +228,15 @@ public class GunnerNetworkManager : NetworkManager
 
     }
 
-    public override void Update()
+       public override void Update()
     {
-        base.Update();
-
-        if (enemyCounter <= 30)
+        if (enemyCounter <= 30 &&  SceneManager.GetActiveScene().ToString() == "GameScene")
         {
-            smallEnemySpawn();
+            smallEnemySpawn(); // --> the fuck is going wrong lmao
+            Debug.Log("HELLO!");
         }
+        base.Update();
+        
     }
 
 }

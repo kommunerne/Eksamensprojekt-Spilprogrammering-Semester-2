@@ -257,11 +257,9 @@ public class MainMenuController : MonoBehaviour
     
         private void LoadSavedGame()
         {
-            /*if (_db.CheckPlayerInfo(_loadUsername.value, _loadPinCode.value))
+            Player loadedPlayer = _db.GetPlayer(_loadUsername.value, _loadPinCode.value);
+            if (loadedPlayer != null)
             {
-                _toggleToInt = _db.GetPrefabNumber(_loadUsername.value,_loadPinCode.value);
-                
-                
                 isNewPlayer = false;
                 if (_loadHostBool)
                 {
@@ -269,13 +267,11 @@ public class MainMenuController : MonoBehaviour
                 }
                 else
                 {
-                    manager.networkAddress = "7777";
+                    manager.networkAddress = "localhost";
                     manager.StartClient();
                 }
                 uiDoc.enabled = false;
-            }*/
-            
-            
+            }
         }
         private void UnloadLoadGameMenu()
         {
@@ -286,8 +282,11 @@ public class MainMenuController : MonoBehaviour
 
     private void LoadNewGame()
     {
+        ToggleToInt();
         isNewPlayer = true;
-        // _db.CreatePlayer(_newUsername.value,_newPinCode.value);
+        Player newPlayer = new Player(_newUsername.value, _newPinCode.value, _toggleToInt, 0, 0, 0);
+        
+        _db.CreatePlayer(newPlayer);
         ToggleToInt();
         if (_newHostBool)
         {

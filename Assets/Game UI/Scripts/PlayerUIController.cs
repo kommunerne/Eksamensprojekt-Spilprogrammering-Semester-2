@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class PlayerUIController : MonoBehaviour
+public class PlayerUIController : NetworkBehaviour
 {
     // Stats HUD
     
@@ -83,6 +84,85 @@ public class PlayerUIController : MonoBehaviour
     void Start()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
+        
+        if (!isLocalPlayer)
+        {
+             // Labels
+            _currentLevel = root.Q<Label>("currentLevel");
+            _statusPoints = root.Q<Label>("statusPoints");
+        
+            // Buttons
+            _hpUpgradeButton = root.Q<Button>("hpButton");
+            _dmgUpgradeButton = root.Q<Button>("dmgButton");
+            _firerateUpgradeButton = root.Q<Button>("firerateButton");
+            _movespeedUpgradeButton = root.Q<Button>("movespeedButton");
+            _hpregenUpgradeButton = root.Q<Button>("hpregenButton");
+            _hideStats = root.Q<Button>("hideStats");
+            _showStats = root.Q<Button>("showStats");
+        
+            // Sliders
+            _hpProgressBar = root.Q<ProgressBar>("hpSlider");
+            _dmgProgressBar = root.Q<ProgressBar>("dmgSlider");
+            _firerateProgressBar = root.Q<ProgressBar>("firerateSlider");
+            _movespeedProgressBar = root.Q<ProgressBar>("movespeedSlider");
+            _hpregenProgressBar = root.Q<ProgressBar>("hpregenSlider");
+
+            // Visual Element
+            _statsShown = root.Q<VisualElement>("PlayerStatsShown");
+            _statsHidden = root.Q<VisualElement>("PlayerStatsHidden");
+            
+        // Death Screen
+        
+            // Buttons
+            _deathContinue = root.Q<Button>("continueButton");
+        
+            // Labels
+            _playerScore = root.Q<Label>("playerScore");
+            _playerLevel = root.Q<Label>("playerLevel");
+            _playerTimeAlive = root.Q<Label>("playerTimeAlive");
+            
+            // Visual Elements
+            _deathScreen = root.Q<VisualElement>("DeathScreenContainer");
+        
+        // Player
+            // Visual Elements
+            _healthBarContainer = root.Q<VisualElement>("PlayerHealthbar");
+            
+            // Progress Bars
+            _healthBar = root.Q<ProgressBar>("healthbar");
+        
+        // Main UI
+
+            // Visual Elements
+            _uiScreen = root.Q<VisualElement>("MainScreen");
+            
+        
+        // Esc Screen
+        
+            // Buttons
+            _saveButton = root.Q<Button>("saveButton");
+            _closeButton = root.Q<Button>("closeButton");
+            
+            
+            // Visual Elements
+            _escScreen = root.Q<VisualElement>("EscScreenContainer");
+            
+            // Labels
+
+            _playerName = root.Q<Label>("playerName");
+
+
+            // On Start Values
+        _playerName.text = player.playerName;
+        
+        _statsShown.style.display = DisplayStyle.None;
+        _statsHidden.style.display = DisplayStyle.None;
+        _uiScreen.style.display = DisplayStyle.None;
+        _deathScreen.style.display = DisplayStyle.None;
+        _escScreen.style.display = DisplayStyle.None;
+        _healthBarContainer.style.display = DisplayStyle.None;
+        return;
+        }
 
         #region Instantiation
 
@@ -193,9 +273,12 @@ public class PlayerUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer)
+            return;
+        
         UpdatePlayerHealth();
         
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape)&& isLocalPlayer)
             ShowEscScreen();
         
         _currentLevel.text = player.level.ToString();
@@ -218,6 +301,7 @@ public class PlayerUIController : MonoBehaviour
     // Methods
     
     #region Stats HUD
+    // [ClientRpc]
     void HpUpgrade()
     {
         if (_hpProgressBar.value < 10 && player.statPoints>0)
@@ -228,6 +312,7 @@ public class PlayerUIController : MonoBehaviour
             player.HpUpgrade();
         }
     }
+    // [ClientRpc]
     void DmgUpgrade()
     {
         if (_dmgProgressBar.value < 10 && player.statPoints>0)
@@ -236,6 +321,7 @@ public class PlayerUIController : MonoBehaviour
             player.DmgUpgrade();
         }
     }
+    // [ClientRpc]
     void FirerateUpgrade()
     {
         if (_firerateProgressBar.value < 10 && player.statPoints>0)
@@ -244,6 +330,7 @@ public class PlayerUIController : MonoBehaviour
             player.FirerateUpgrade();
         }
     }
+    // [ClientRpc]
     void MovespeedUpgrade()
     {
         if (_movespeedProgressBar.value < 10 && player.statPoints>0)
@@ -252,6 +339,7 @@ public class PlayerUIController : MonoBehaviour
             player.MovespeedUpgrade();
         }
     }
+    // [ClientRpc]
     void HpregenUpgrade()
     {
         if (_hpregenProgressBar.value < 10 && player.statPoints>0)
@@ -260,11 +348,13 @@ public class PlayerUIController : MonoBehaviour
             player.HpregenUpgrade();
         }
     }
+    // [ClientRpc]
     void HideStats()
     {
         _statsShown.style.display = DisplayStyle.None;
         _statsHidden.style.display = DisplayStyle.Flex;
     }
+    // [ClientRpc]
     void ShowStats()
     {
         _statsShown.style.display = DisplayStyle.Flex;
@@ -275,10 +365,12 @@ public class PlayerUIController : MonoBehaviour
     #endregion
     
     #region Player
+    // [ClientRpc]
     void HideHealth()
     {
         _healthBarContainer.style.display = DisplayStyle.None;
     }
+    // [ClientRpc]
     void UpdatePlayerHealth()
     {
         _healthBar.highValue = player.maxHp;
@@ -288,13 +380,14 @@ public class PlayerUIController : MonoBehaviour
     #endregion
 
     #region Death Screen
-    
+    // [ClientRpc]
     public void DeathScreen()
     {
         _uiScreen.style.display = DisplayStyle.None;
         _deathScreen.style.display = DisplayStyle.Flex;
     }
 
+    // [ClientRpc]
     void ContinueToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -309,11 +402,12 @@ public class PlayerUIController : MonoBehaviour
         
     }
 
+    // [ClientRpc]
     void ShowEscScreen()
     {
         _escScreen.style.display = DisplayStyle.Flex;
     }
-    
+    // [ClientRpc]
     void CloseEscScreen()
     {
         _escScreen.style.display = DisplayStyle.None;

@@ -25,14 +25,23 @@ public class PlayerController : NetworkBehaviour
         
     
     [Header("Player Stats")]
+    [SyncVar]
     public int maxHp = 100;
+    [SyncVar]
     public int currentHp;
+    [SyncVar]
     public int dmg = 20;
+    [SyncVar]
     public float moveSpeed = 5f;
+    [SyncVar]
     public int hpRegen = 5;
+    [SyncVar]
     public int level;
+    [SyncVar]
     public int exp;
+    [SyncVar]
     public int statPoints;
+    [SyncVar]
     public int score;
     public float nextFireTime = 0f;
     public float fireRate = 0.5f;
@@ -48,8 +57,11 @@ public class PlayerController : NetworkBehaviour
     public float bulletRadius;
 
     [Header("Player Info")]
+    [SyncVar]
     public string playerName;
+    [SyncVar]
     public string pinCode;
+    [SyncVar]
     public string teamName;
     public bool playerGotHit;
     private bool _playerDead = false;
@@ -72,12 +84,11 @@ public class PlayerController : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            CmdRotateToMouse2D();
-            CmdShoot();
+            RotateToMouse2D();
+            Shoot();
             CharacterMovement();
             RegenHealthOverTime();
             Hit();
-            
         }
         else
         {
@@ -98,8 +109,8 @@ public class PlayerController : NetworkBehaviour
     // Methods
     
         // Main Methods
-        [Command]
-        void CmdRotateToMouse2D()
+        //[ClientRpc]
+        void RotateToMouse2D()
         {
             Vector3 mousePosition = cameraToUse.ScreenToWorldPoint(Input.mousePosition);
 
@@ -173,16 +184,22 @@ public class PlayerController : NetworkBehaviour
     }*/
 
         // Makes the player shoot
-        [Command]
-        private void CmdShoot()
+        [ClientRpc]
+        private void Shoot()
         {
             // Check if the fire button is pressed and if enough time has passed since the last shot
             if (Input.GetButtonDown("Fire1") && nextFireTime <= 0)
             {
             // Spawn a bullet at the fire point
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-                bullet.tag = tag;
+                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+                
+                bullet.tag = teamName;
+                if (teamName == "RedTeam")
+                    spriteRenderer.color = Color.red;
+                else if (teamName == "BlueTeam")
+                    spriteRenderer.color = Color.blue;
+                
             // Set the speed of the bullet
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.velocity = firePoint.right * bulletSpeed;
@@ -200,32 +217,32 @@ public class PlayerController : NetworkBehaviour
         //___________________________________________________
 
     // UI Methods
-
-    public void HpUpgrade()
+        // [ClientRpc]
+        public void HpUpgrade()
         {
             maxHp += bonusHpPerLevel;
             currentHp += bonusHpPerLevel;
             statPoints--;
         }
-
+        //[ClientRpc]
         public void DmgUpgrade()
         {
             dmg += bonusDmgPerLevel;
             statPoints--;
         }
-
+        //[ClientRpc]
         public void FirerateUpgrade()
         {
             fireRate += bonusFireRatePerLevel;
             statPoints--;
         }
-
+        //[ClientRpc]
         public void MovespeedUpgrade()
         {
             moveSpeed += bonusMoveSpeed;
             statPoints--;
         }
-
+        // [ClientRpc]
         public void HpregenUpgrade()
         {
             hpRegen += bonusHpPerLevel;

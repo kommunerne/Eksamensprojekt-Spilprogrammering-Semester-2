@@ -102,6 +102,12 @@ public class GunnerNetworkManager : NetworkManager
         player.playerName = message.name;
         player.pinCode = message.pinCode;
         player.teamName = bluePlayers <= redPlayers ? "BlueTeam" : "RedTeam";
+        if (player.teamName == "BlueTeam")
+            bluePlayers++;
+        else if (player.teamName == "RedTeam")
+        {
+            redPlayers++;
+        }
         NetworkServer.AddPlayerForConnection(conn, gameobject);
     }
 

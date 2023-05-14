@@ -6,7 +6,7 @@ public class Player
 {
     
     public string username { get; set; }
-    public int pinCode { get; set; }
+    public string pinCode { get; set; }
     public int prefabNr { get; set; }
     public int level { get; set; }
     public int exp { get; set; }
@@ -14,7 +14,7 @@ public class Player
 
     
     
-    public Player(string username, int pinCode, int prefabNr, int level, int exp, int score) {
+    public Player(string username, string pinCode, int prefabNr, int level, int exp, int score) {
         this.username = username;
         this.pinCode = pinCode;
         this.prefabNr = prefabNr;

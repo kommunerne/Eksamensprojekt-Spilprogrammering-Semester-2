@@ -186,8 +186,43 @@ PrefabInstance:
       propertyPath: autoStartServerBuild
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6750927646768155520, guid: 7670ae14b4e152b4eb1f420dd4e6801d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7670ae14b4e152b4eb1f420dd4e6801d, type: 3}
+--- !u!1 &1811451780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6750927646768155524, guid: 7670ae14b4e152b4eb1f420dd4e6801d, type: 3}
+  m_PrefabInstance: {fileID: 15203534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1811451787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811451780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 7777
+  DualMode: 1
+  NoDelay: 1
+  Interval: 10
+  Timeout: 10000
+  RecvBufferSize: 7361536
+  SendBufferSize: 7361536
+  FastResend: 2
+  ReceiveWindowSize: 4096
+  SendWindowSize: 4096
+  MaxRetransmit: 40
+  MaximizeSocketBuffers: 1
+  ReliableMaxMessageSize: 297433
+  UnreliableMaxMessageSize: 1195
+  debugLog: 0
+  statisticsGUI: 0
+  statisticsLog: 0
 --- !u!1 &1896576790
 GameObject:
   m_ObjectHideFlags: 0

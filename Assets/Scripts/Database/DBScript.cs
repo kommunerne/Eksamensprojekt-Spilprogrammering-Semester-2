@@ -11,16 +11,16 @@ public class DBScript : MonoBehaviour {
     private string dbName;
     
     private void Start() {
-        dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
-        //dbName = "URI=file:spilprogrammeringDB.db"; // For use in the build version
+        //dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
+        dbName = "URI=file:spilprogrammeringDB.db"; // For use in the build version
         
         CreateDB();
-        Player player = new Player("RonaldMacDonald", 1234, 1, 1, 0, 0);
+        Player player = new Player("RonaldMacDonald", "1234", 1, 1, 0, 0);
         CreatePlayer(player);
-        GetPlayer("RonaldMacDonald", 1234);
-        Player playerUpdate = new Player("ArnoldMacGarnold", 4321, 1, 1, 0, 0);
+        GetPlayer("RonaldMacDonald", "1234");
+        Player playerUpdate = new Player("ArnoldMacGarnold", "4321", 1, 1, 0, 0);
 
-        UpdatePlayer("RonaldMacDonald", 1234, playerUpdate);
+        UpdatePlayer("RonaldMacDonald", "1234", playerUpdate);
     }
 
     public void CreateDB() {
@@ -31,7 +31,7 @@ public class DBScript : MonoBehaviour {
 
                 string commandText = "CREATE TABLE IF NOT EXISTS players " +
                                      "(Username TEXT, " +
-                                     "PinCode INT, " +
+                                     "PinCode TEXT, " +
                                      "PrefabNr INT, " +
                                      "Level INT, " +
                                      "Exp INT, " +
@@ -64,7 +64,7 @@ public class DBScript : MonoBehaviour {
         }
     }
 
-    public void UpdatePlayer(string username, int pinCode, Player playerToUpdate) {
+    public void UpdatePlayer(string username, string pinCode, Player playerToUpdate) {
         using (SqliteConnection connection = new SqliteConnection(dbName)) {
             connection.Open();
 
@@ -96,7 +96,7 @@ public class DBScript : MonoBehaviour {
         }
     }
 
-    public Player GetPlayer(string username, int pinCode) {
+    public Player GetPlayer(string username, string pinCode) {
         Player playerToGet;
         using (SqliteConnection connection = new SqliteConnection(dbName)) {
             connection.Open();
@@ -110,7 +110,7 @@ public class DBScript : MonoBehaviour {
                 
                 using (IDataReader reader = command.ExecuteReader()) {
                     while (reader.Read()) {
-                        playerToGet = new Player(reader["Username"].ToString(), Convert.ToInt32(reader["PinCode"]), Convert.ToInt32(reader["PrefabNr"]), Convert.ToInt32(reader["Level"]), Convert.ToInt32(reader["Exp"]), Convert.ToInt32(reader["Score"]));
+                        playerToGet = new Player(reader["Username"].ToString(), reader["PinCode"].ToString(), Convert.ToInt32(reader["PrefabNr"]), Convert.ToInt32(reader["Level"]), Convert.ToInt32(reader["Exp"]), Convert.ToInt32(reader["Score"]));
                         
                         return playerToGet;
 

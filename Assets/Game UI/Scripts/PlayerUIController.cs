@@ -77,13 +77,18 @@ public class PlayerUIController : NetworkBehaviour
         // Labels
 
         private Label _playerName;
-        
+
+    // GameObjects and GameManager
     
+        private GameObject _managerGameObject;
+        private DBScript _db;
     
     // Start is called before the first frame update
     void Start()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
+        _managerGameObject = GameObject.Find(nameof(GunnerNetworkManager));
+        _db = _managerGameObject.GetComponent<DBScript>();
         
         if (!isLocalPlayer)
         {
@@ -301,7 +306,7 @@ public class PlayerUIController : NetworkBehaviour
     // Methods
     
     #region Stats HUD
-    // [ClientRpc]
+    
     void HpUpgrade()
     {
         if (_hpProgressBar.value < 10 && player.statPoints>0)
@@ -309,7 +314,7 @@ public class PlayerUIController : NetworkBehaviour
             Debug.Log(player.statPoints);
             Debug.Log(player.statPoints.ToString());
             _hpProgressBar.value += 1f;
-            player.HpUpgrade();
+            player.CmdUpgradeHp();
         }
     }
     // [ClientRpc]
@@ -318,7 +323,7 @@ public class PlayerUIController : NetworkBehaviour
         if (_dmgProgressBar.value < 10 && player.statPoints>0)
         {
             _dmgProgressBar.value += 1f;
-            player.DmgUpgrade();
+            player.CmdUpgradeDmg();
         }
     }
     // [ClientRpc]
@@ -327,7 +332,7 @@ public class PlayerUIController : NetworkBehaviour
         if (_firerateProgressBar.value < 10 && player.statPoints>0)
         {
             _firerateProgressBar.value += 1f;
-            player.FirerateUpgrade();
+            player.CmdUpgradeFireRate();
         }
     }
     // [ClientRpc]
@@ -336,7 +341,7 @@ public class PlayerUIController : NetworkBehaviour
         if (_movespeedProgressBar.value < 10 && player.statPoints>0)
         {
             _movespeedProgressBar.value += 1f;
-            player.MovespeedUpgrade();
+            player.CmdUpgradeMoveSpeed();
         }
     }
     // [ClientRpc]
@@ -345,7 +350,7 @@ public class PlayerUIController : NetworkBehaviour
         if (_hpregenProgressBar.value < 10 && player.statPoints>0)
         {
             _hpregenProgressBar.value += 1f;
-            player.HpregenUpgrade();
+            player.CmdUpgradeHpRegen();
         }
     }
     // [ClientRpc]
@@ -365,12 +370,12 @@ public class PlayerUIController : NetworkBehaviour
     #endregion
     
     #region Player
-    // [ClientRpc]
+    [Client]
     void HideHealth()
     {
         _healthBarContainer.style.display = DisplayStyle.None;
     }
-    // [ClientRpc]
+    [Client]
     void UpdatePlayerHealth()
     {
         _healthBar.highValue = player.maxHp;
@@ -380,14 +385,13 @@ public class PlayerUIController : NetworkBehaviour
     #endregion
 
     #region Death Screen
-    // [ClientRpc]
+    [Client]
     public void DeathScreen()
     {
         _uiScreen.style.display = DisplayStyle.None;
         _deathScreen.style.display = DisplayStyle.Flex;
     }
-
-    // [ClientRpc]
+    
     void ContinueToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -399,7 +403,11 @@ public class PlayerUIController : NetworkBehaviour
 
     void SaveGame()
     {
-        
+        Player playerToSave = new Player(player.playerName, player.pinCode, player.prefabNr, player.level, player.exp,
+            player.score);
+        _db.UpdatePlayer(player.playerName,player.pinCode,playerToSave);
+        if(isClient)
+            NetworkManager.singleton.StopClient();
     }
 
     // [ClientRpc]

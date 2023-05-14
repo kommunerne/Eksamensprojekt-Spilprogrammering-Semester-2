@@ -43,7 +43,11 @@ public class PlayerController : NetworkBehaviour
     public int statPoints;
     [SyncVar]
     public int score;
+    [SyncVar] 
+    public int prefabNr;
+    [SyncVar]
     public float nextFireTime = 0f;
+    [SyncVar]
     public float fireRate = 0.5f;
     public float bulletSpeed = 10f;
     [Header("Stats gained pr upgrade")]
@@ -63,6 +67,7 @@ public class PlayerController : NetworkBehaviour
     public string pinCode;
     [SyncVar]
     public string teamName;
+    [SyncVar]
     public bool playerGotHit;
     private bool _playerDead = false;
     private Rigidbody2D _rb2D;
@@ -84,20 +89,17 @@ public class PlayerController : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            RotateToMouse2D();
             Shoot();
+            RotateToMouse2D();
             CharacterMovement();
             RegenHealthOverTime();
-            Hit();
+            return;
         }
-        else
-        {
-            Debug.Log(transform.name + " is not local :( ", transform);
-            cameraToUse.enabled = false;
-            miniMap.enabled = false;
-            deathScreen.enabled = false;
-        }
-        
+        Debug.Log(transform.name + " is not local :( " + netId);
+        cameraToUse.enabled = false;
+        miniMap.enabled = false;
+        deathScreen.enabled = false;
+
     }
 
     private void FixedUpdate()
@@ -141,109 +143,121 @@ public class PlayerController : NetworkBehaviour
                 _rb2D.AddForce(Vector2.up * moveSpeed);
             if (Input.GetKey(KeyCode.S))
                 _rb2D.AddForce(Vector2.down * moveSpeed);
-        }   
-        
-        private void PlayerTakeDamage(int damage)
-        {
-            if (playerGotHit)
-            {
-                Debug.Log("Dubble Hit");
-                CancelInvoke(nameof(HitReset));
-            }
-            else
-            {
-                playerGotHit = true;    
-            }
-            if (currentHp <= damage)
-            {
-                _playerDead = true;
-                uiController.DeathScreen();
-                gameObjectToBeRotated.layer = 8;
-                barrelOfTheTank.layer = 8;
-                _rb2D.velocity = new Vector2(0, 0);
-            }
-            currentHp = currentHp-damage;
-            Debug.Log(currentHp);
-            Invoke(nameof(HitReset), 3);
         }
 
-        /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Enemy"))
-        {
-            PlayerTakeDamage(collision.gameObject.);
-        }
-        else if(collision.gameObject.CompareTag("RedTeam") && player.CompareTag("BlueTeam"))
-        {
-            PlayerTakeDamage();
-        }
-        else if(collision.gameObject.CompareTag("BlueTeam") && player.CompareTag("RedTeam"))
-        {
-            PlayerTakeDamage();
-        }
-    }*/
 
-        // Makes the player shoot
-        [ClientRpc]
-        private void Shoot()
+        [Client]
+        void Shoot()
         {
-            // Check if the fire button is pressed and if enough time has passed since the last shot
             if (Input.GetButtonDown("Fire1") && nextFireTime <= 0)
             {
-            // Spawn a bullet at the fire point
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
                 
-                bullet.tag = teamName;
-                if (teamName == "RedTeam")
-                    spriteRenderer.color = Color.red;
-                else if (teamName == "BlueTeam")
-                    spriteRenderer.color = Color.blue;
-                
-            // Set the speed of the bullet
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            bulletRb.velocity = firePoint.right * bulletSpeed;
-
-            // Set the time of the next shot
-            nextFireTime = fireRate;
-            Destroy(bullet,3f);
+                nextFireTime = fireRate;
+                CmdShoot();
             }
             else
             {
                 nextFireTime -= Time.deltaTime;
             }
         }
-
+        // Makes the player shoot
+        [Command] 
+        private void CmdShoot()
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+            bulletScript.damage = dmg;
+            bullet.tag = teamName;
+            if (teamName == "RedTeam")
+                spriteRenderer.color = Color.red;
+            else if (teamName == "BlueTeam")
+                spriteRenderer.color = Color.blue;
+                
+            // Set the speed of the bullet
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.velocity = firePoint.right * bulletSpeed;
+            NetworkServer.Spawn(bullet);
+        }
+        
+       /* //[ClientRpc]
+        //private void RpcFire()
+        {
+            // Spawn a bullet at the fire point
+               
+            
+        }
+        
+        */
         //___________________________________________________
 
+        
+        
     // UI Methods
-        // [ClientRpc]
-        public void HpUpgrade()
+
+    
+    [Command]
+    public void CmdUpgradeHp()
+    {
+        RpcHpUpgrade();
+    }
+    
+    [Command]
+    public void CmdUpgradeDmg()
+    {
+        RpcDmgUpgrade();
+    }
+    
+    [Command]
+    public void CmdUpgradeFireRate()
+    {
+        RpcFireRateUpgrade();
+    }
+    
+    [Command]
+    public void CmdUpgradeMoveSpeed()
+    {
+        RpcMoveSpeedUpgrade();
+    }
+    
+    [Command]
+    public void CmdUpgradeHpRegen()
+    {
+        RpcHpRegenUpgrade();
+    }
+    
+    
+        [ClientRpc]
+        void RpcHpUpgrade()
         {
             maxHp += bonusHpPerLevel;
             currentHp += bonusHpPerLevel;
             statPoints--;
         }
-        //[ClientRpc]
-        public void DmgUpgrade()
+        
+        [ClientRpc]
+        void RpcDmgUpgrade()
         {
             dmg += bonusDmgPerLevel;
             statPoints--;
         }
-        //[ClientRpc]
-        public void FirerateUpgrade()
+        
+        [ClientRpc]
+        void RpcFireRateUpgrade()
         {
             fireRate += bonusFireRatePerLevel;
             statPoints--;
         }
-        //[ClientRpc]
-        public void MovespeedUpgrade()
+        
+        [ClientRpc]
+        void RpcMoveSpeedUpgrade()
         {
             moveSpeed += bonusMoveSpeed;
             statPoints--;
         }
-        // [ClientRpc]
-        public void HpregenUpgrade()
+        
+        [ClientRpc]
+        void RpcHpRegenUpgrade()
         {
             hpRegen += bonusHpPerLevel;
             statPoints--;
@@ -256,32 +270,57 @@ public class PlayerController : NetworkBehaviour
         // Jeg skal nok slette den når vi kommer dertil.
         //
         // ***********************************
-        public void Hit()
+        [ServerCallback]
+        private void OnTriggerEnter(Collider other)
         {
-            if (Input.GetKeyDown(KeyCode.K) && playerGotHit)
+            Bullet bullet = other.GetComponent<Bullet>();
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (bullet != null)
             {
-                Debug.Log("Dubble Hit");
-                CancelInvoke();
-                Invoke(nameof(HitReset),3);
-            }
-            if (Input.GetKeyDown(KeyCode.K))
-            {
+                
                 playerGotHit = true;
-                if (currentHp <= 20)
+                if (currentHp <= bullet.damage)
                 {
-                    _playerDead = true;
-                    uiController.DeathScreen();
-                    gameObjectToBeRotated.layer = 8;
-                    barrelOfTheTank.layer = 8;
-                    _rb2D.velocity = new Vector2(0, 0);
+                    CmdPlayerDied();
                 }
-                currentHp = currentHp - 20;
+                currentHp = currentHp - bullet.damage;
                 Debug.Log(currentHp);
                 Invoke(nameof(HitReset), 3);
+            } 
+            if (enemy != null)
+            {
+                if (currentHp < enemy.health)
+                {
+                    CmdPlayerDied();
+                }
+                else
+                {
+                    playerGotHit = true;
+                    currentHp = currentHp - enemy.health;
+                    Debug.Log(currentHp);
+                    Invoke(nameof(HitReset), 3);
+                }
             }
         }
+        
         void HitReset()
         {
             playerGotHit = false;
+        }
+
+        [Command]
+        void CmdPlayerDied()
+        {
+            PlayerDead();
+        }
+
+        [ClientRpc]
+        void PlayerDead()
+        {
+            _playerDead = true;
+            uiController.DeathScreen();
+            gameObjectToBeRotated.layer = 8;
+            barrelOfTheTank.layer = 8;
+            _rb2D.velocity = new Vector2(0, 0);
         }
 }

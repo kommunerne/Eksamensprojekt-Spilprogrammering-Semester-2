@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine.SceneManagement;
 
 public class GunnerNetworkManager : NetworkManager
@@ -12,14 +13,13 @@ public class GunnerNetworkManager : NetworkManager
     public GameObject gunnerTank;
     public GameObject sniperTank;
     public GameObject machineTank;
-
     public GameObject smallEnemy;
     // public uint smallEnemyID = 1832388894;
     public GameObject mediumEnemy;
     public GameObject largeEnemy;
     public GameObject bossEnemy;
     public int enemyCounter = 0; 
-    public float interval = 6f; // Noget galt med hvordan den her virker med smallEnemySpawn --> Kigger på det soon 
+    public float interval = 6f; // Noget galt med hvordan den her virker med smallEnemySpawn --> Kigger pï¿½ det soon 
 
     public int redPlayers;
     public int bluePlayers; 
@@ -27,11 +27,11 @@ public class GunnerNetworkManager : NetworkManager
     public Transform[] blueSpawnPoints;
     public Transform[] enemySpawnPoints;
     public Transform[] bossSpawnPoint;
-
+    
     public override void OnStartServer()
     {
         base.OnStartServer();
-
+        
         NetworkServer.RegisterHandler<CreateGunnerMessage>(OnCreateCharacter);
        /* NetworkClient.RegisterPrefab(smallEnemy, smallEnemyID);
         NetworkClient.RegisterSpawnHandler(smallEnemyID, smallEnemySpawn(), null); */
@@ -43,7 +43,6 @@ public class GunnerNetworkManager : NetworkManager
         base.OnClientConnect();
 
         CreateGunnerMessage characterMessage;
-        
         MainMenuController menuScene = GetComponent<MainMenuController>();
         
         if(menuScene.isNewPlayer)
@@ -60,10 +59,10 @@ public class GunnerNetworkManager : NetworkManager
         {
             characterMessage = new CreateGunnerMessage
             {
-                // Johannes do ur magic in here thank you <33
                 name = menuScene.GetLoadPlayerName(),
                 pinCode = menuScene.GetLoadPinCode(), 
                 prefabSelector = menuScene._toggleToInt
+                
             };
         }
         NetworkClient.Send(characterMessage);
@@ -72,7 +71,8 @@ public class GunnerNetworkManager : NetworkManager
     void OnCreateCharacter(NetworkConnectionToClient conn, CreateGunnerMessage message)
     {
         GameObject gameobject;
-
+        DBScript _db = GetComponent<DBScript>();
+        MainMenuController menuScene = GetComponent<MainMenuController>();
         // Getting a random spawn for the player depending on which team he should spawn in on.
         GameObject[] redSpawns =
         {
@@ -110,11 +110,23 @@ public class GunnerNetworkManager : NetworkManager
             gameobject = Instantiate(gunnerTank, spawnPoint, new Quaternion(0, 0, 0, 0));
             
         }
-
         PlayerController player = gameobject.GetComponent<PlayerController>();
-        player.playerName = message.name;
-        player.pinCode = message.pinCode;
-       // player.prefabNr = message.prefabSelector;
+        
+        if (menuScene.isNewPlayer)
+        {
+            player.playerName = message.name;
+            player.pinCode = message.pinCode;
+            player.prefabNr = message.prefabSelector;
+        }else
+        {
+            Player loadPlayer = _db.GetPlayer(message.name, message.pinCode);
+            player.playerName = loadPlayer.username;
+            player.pinCode = loadPlayer.pinCode;
+            player.prefabNr = loadPlayer.prefabNr;
+            player.level = loadPlayer.level;
+            player.exp = loadPlayer.exp;
+            player.score = loadPlayer.score;
+        }
         player.teamName = bluePlayers <= redPlayers ? "BlueTeam" : "RedTeam";
         if (player.teamName == "BlueTeam")
             bluePlayers++;
@@ -162,7 +174,7 @@ public class GunnerNetworkManager : NetworkManager
             interval -= Time.deltaTime;
         }
         
-     }
+    }
 
     public void mediumEnemySpawn()
     {
@@ -230,12 +242,13 @@ public class GunnerNetworkManager : NetworkManager
 
        public override void Update()
     {
+        base.Update();
         if (enemyCounter <= 30 &&  SceneManager.GetActiveScene().ToString() == "GameScene")
         {
             smallEnemySpawn(); // --> the fuck is going wrong lmao
             Debug.Log("HELLO!");
         }
-        base.Update();
+        
         
     }
 

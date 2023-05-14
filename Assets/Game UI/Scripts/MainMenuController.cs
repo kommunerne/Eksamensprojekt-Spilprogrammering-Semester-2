@@ -250,7 +250,7 @@ public class MainMenuController : MonoBehaviour
         }
         private void ExitGame()
         {
-            
+            Application.Quit();
         }
     
     // LoadGame Menu Methods
@@ -270,7 +270,7 @@ public class MainMenuController : MonoBehaviour
                     manager.networkAddress = "localhost";
                     manager.StartClient();
                 }
-                uiDoc.enabled = false;
+                // uiDoc.enabled = false;
             }
         }
         private void UnloadLoadGameMenu()
@@ -282,12 +282,10 @@ public class MainMenuController : MonoBehaviour
 
     private void LoadNewGame()
     {
-        ToggleToInt();
         isNewPlayer = true;
-        Player newPlayer = new Player(_newUsername.value, _newPinCode.value, _toggleToInt, 0, 0, 0);
-        
-        _db.CreatePlayer(newPlayer);
         ToggleToInt();
+        Player newPlayer = new Player(_newUsername.value, _newPinCode.value, _toggleToInt, 0, 0, 0);
+        _db.CreatePlayer(newPlayer);
         if (_newHostBool)
         {
             manager.StartHost();

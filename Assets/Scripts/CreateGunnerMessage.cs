@@ -5,7 +5,7 @@ using Mirror;
 
 public struct CreateGunnerMessage : NetworkMessage
 {
-    public string name; // Navn!... Burde være obvious hvad det her 
-    public string pinCode; // String fordi en tekstfelt i main menu ikke kunne være andet end en string :( 
-    public int prefabSelector; // Vælger type af tanks -- igennem en int
+    public string name; // Navn!... Burde vï¿½re obvious hvad det her 
+    public string pinCode; // String fordi en tekstfelt i main menu ikke kunne vï¿½re andet end en string :( 
+    public int prefabSelector; // Vï¿½lger type af tanks -- igennem en int
 }

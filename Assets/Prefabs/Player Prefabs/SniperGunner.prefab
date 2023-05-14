@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 7983065794900060914}
   - component: {fileID: 2261291722844891462}
   - component: {fileID: 2866572368477205298}
+  - component: {fileID: 8656409279138879446}
   m_Layer: 0
   m_Name: SniperGunner
   m_TagString: Player
@@ -152,6 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc71096f9221af469a509aa08f5d0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   player: {fileID: 7248162925712312434}
 --- !u!114 &7248162925712312434
 MonoBehaviour:
@@ -165,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e83a1051ee01d4495dd51ea67ab5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0
   cameraToUse: {fileID: 5275814102763520980}
@@ -183,6 +187,7 @@ MonoBehaviour:
   exp: 0
   statPoints: 0
   score: 0
+  prefabNr: 0
   nextFireTime: 0
   fireRate: 0.5
   bulletSpeed: 10
@@ -227,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2cbc52526ea384ba280d13cd1a57b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   target: {fileID: 4693020031701030683}
@@ -288,6 +293,40 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   target: {fileID: 5662929470807064546}
+  clientAuthority: 0
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
+  onlySyncOnChangeCorrectionMultiplier: 2
+  sendIntervalMultiplier: 3
+  rotationSensitivity: 0.01
+  compressRotation: 0
+  positionPrecision: 0.01
+  scalePrecision: 0.01
+  timelineOffset: 0
+--- !u!114 &8656409279138879446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958152622918217271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 2448010256654354580}
   clientAuthority: 0
   syncPosition: 1
   syncRotation: 1

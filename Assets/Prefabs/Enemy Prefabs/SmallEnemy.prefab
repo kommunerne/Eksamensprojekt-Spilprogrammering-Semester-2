@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1216420577438085878}
   - component: {fileID: 6734850230176833569}
   - component: {fileID: 5983955954404202482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmallEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6367350583719423457}
   - component: {fileID: 3836075180781457991}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3799097828767384893}
   - component: {fileID: 1155512378836534603}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1240282868852193533}
   - component: {fileID: -1316971166780548284}
   - component: {fileID: -2283048625663815060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LargeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8107707606790400993}
   - component: {fileID: 6210240348798230594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

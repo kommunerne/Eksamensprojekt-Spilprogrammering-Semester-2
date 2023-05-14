@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2353114550268186226}
   - component: {fileID: 4296257876597313011}
   - component: {fileID: -3284177524175345931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3229642615338792764}
   - component: {fileID: 3428131635609128528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cross (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3164968299789627275}
   - component: {fileID: 1835611450409135298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2931478103505896180}
   - component: {fileID: 6588694840579156835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

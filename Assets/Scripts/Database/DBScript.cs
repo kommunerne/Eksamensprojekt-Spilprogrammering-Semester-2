@@ -2,99 +2,126 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using UnityEngine;
 using Mono.Data.Sqlite;
 
 public class DBScript : MonoBehaviour {
 
     private string dbName;
-
-    private void Awake()
-    {
-        // dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
-        
-        // CreateDB();
-    }
+    
     private void Start() {
-        // dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
+        dbName = "URI=file:" + Application.dataPath + "/Database/SpilprogrammeringDB.db";
+        //dbName = "URI=file:spilprogrammeringDB.db"; // For use in the build version
         
-        // CreateDB();
-        // CreatePlayer("Arnold", "1234DummyPass");
-        // GetPlayer("Arnold", "1234DummyPass");
+        CreateDB();
+        Player player = new Player("RonaldMacDonald", 1234, 1, 1, 0, 0);
+        CreatePlayer(player);
+        GetPlayer("RonaldMacDonald", 1234);
+        Player playerUpdate = new Player("ArnoldMacGarnold", 4321, 1, 1, 0, 0);
+
+        UpdatePlayer("RonaldMacDonald", 1234, playerUpdate);
     }
 
     public void CreateDB() {
-        Debug.Log("Begun creation of DB");
         using (SqliteConnection connection = new SqliteConnection(dbName)) {
             connection.Open();
 
             using (SqliteCommand command = connection.CreateCommand()) {
-                string commandText = "CREATE TABLE IF NOT EXISTS players (name TEXT, pinCode TEXT, " +
-                                     "maxHp INTEGER, currentHp INTEGER, dmg INTEGER, fireRate REAL, moveSpeed REAL, " +
-                                     "hpRegen INTEGER, level INTEGER, Exp INTEGER, statPoints INTEGER, score INTEGER, " +
-                                     "hpProgressBar REAL, dmgProgressBar REAL, firerateProgressBar REAL, " +
-                                     "moveSpeedProgressBar REAL, hpRegenProgressBar REAL);";
+
+                string commandText = "CREATE TABLE IF NOT EXISTS players " +
+                                     "(Username TEXT, " +
+                                     "PinCode INT, " +
+                                     "PrefabNr INT, " +
+                                     "Level INT, " +
+                                     "Exp INT, " +
+                                     "Score INT);";
 
                 command.CommandText = commandText;
                 command.ExecuteNonQuery();
                 connection.Close();
-                Debug.Log("Executed CreateDB Sql command");
             }
         }
     }
     
 
-    public void CreatePlayer(string playerName, string pinCode) {
-        Debug.Log("Begun creation of player");
+    public void CreatePlayer(Player playerToCreate) {
         using (SqliteConnection connection = new SqliteConnection(dbName)) {
-            Debug.Log("Passed using statement");
             connection.Open();
 
             using (SqliteCommand command = connection.CreateCommand()) {
                 
-                
                 string playerInsert = 
-                    "INSERT INTO Players (name, pinCode, maxHp, currentHp, dmg, fireRate, moveSpeed, hpRegen, " +
-                    "level, Exp, statPoints, score, hpProgressBar, dmgProgressBar, firerateProgressBar, " +
-                    "moveSpeedProgressBar, hpRegenProgressBar) " +
-                    "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}'," +
-                    "'{14}','{15}','{16}');";
-                
-                command.CommandText = string.Format(playerInsert, playerName, pinCode, 100, 100, 10, 1.0, 1.0, 1, 1, 0, 0, 0, 0.0, 0.0, 0.0, 0.0, 0.0);
-                
+                    "INSERT INTO Players (Username, PinCode, PrefabNr, Level, Exp, Score) " +
+                    "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}');";
+
+                command.CommandText = string.Format(playerInsert, playerToCreate.username, playerToCreate.pinCode, playerToCreate.prefabNr, playerToCreate.level, playerToCreate.exp, playerToCreate.score);
+                Debug.Log("After player insert statement creation in CreatePlayer");
+
                 command.ExecuteNonQuery();
                 connection.Close();
-                Debug.Log("Executed CreatePlayer SQL Command");
             }
         }
     }
 
-    public void UpdatePlayer(string name) {
-        using (SqliteConnection connection = new SqliteConnection(dbName)) {
-            connection.Open();
-            
-            
-        }
-    }
-
-    public void GetPlayer(string name, string pincode) {
-        Debug.Log("Begun creation of getPlayer");
+    public void UpdatePlayer(string username, int pinCode, Player playerToUpdate) {
         using (SqliteConnection connection = new SqliteConnection(dbName)) {
             connection.Open();
 
             using (SqliteCommand command = connection.CreateCommand()) {
+                string playerUpdate = "UPDATE Players " +
+                                      "SET Username = @Username, " +
+                                      "PinCode = @PinCode, " +
+                                      "PrefabNr = @PrefabNr, " +
+                                      "Level = @Level, " +
+                                      "Exp = @Exp, " +
+                                      "Score = @Score " +
+                                      "WHERE Username = @UsernameOriginal AND PinCode = @PinCodeOriginal;";
                 
-                command.CommandText = "SELECT * FROM players;";
+                command.Parameters.Add(new SqliteParameter("@Username", playerToUpdate.username));
+                command.Parameters.Add(new SqliteParameter("@PinCode", playerToUpdate.pinCode));
+                command.Parameters.Add(new SqliteParameter("@PrefabNr", playerToUpdate.prefabNr));
+                command.Parameters.Add(new SqliteParameter("@Level", playerToUpdate.level));
+                command.Parameters.Add(new SqliteParameter("@Exp", playerToUpdate.exp));
+                command.Parameters.Add(new SqliteParameter("@Score", playerToUpdate.score));
+                
+                command.Parameters.Add(new SqliteParameter("@UsernameOriginal", username));
+                command.Parameters.Add(new SqliteParameter("@PinCodeOriginal", pinCode));
+
+                command.CommandText = playerUpdate;
+                command.ExecuteNonQuery();
+                connection.Close();
+                
+            }
+        }
+    }
+
+    public Player GetPlayer(string username, int pinCode) {
+        Player playerToGet;
+        using (SqliteConnection connection = new SqliteConnection(dbName)) {
+            connection.Open();
+
+            using (SqliteCommand command = connection.CreateCommand()) {
+
+                command.CommandText = "SELECT * FROM players WHERE Username LIKE @param1 AND PinCode LIKE @param2;";
+                command.CommandType = CommandType.Text; // Done to make things easier on the database
+                command.Parameters.Add(new SqliteParameter("@param1", username));
+                command.Parameters.Add(new SqliteParameter("@param2", pinCode));
+                
                 using (IDataReader reader = command.ExecuteReader()) {
                     while (reader.Read()) {
-                        Debug.Log( "name: " + reader["name"]);
+                        playerToGet = new Player(reader["Username"].ToString(), Convert.ToInt32(reader["PinCode"]), Convert.ToInt32(reader["PrefabNr"]), Convert.ToInt32(reader["Level"]), Convert.ToInt32(reader["Exp"]), Convert.ToInt32(reader["Score"]));
+                        
+                        return playerToGet;
+
                     }
                 }
                 
                 connection.Close();
             }
         }
-        
+        Debug.Log("failed to retrieve player");
+        return null;
     }
 
 

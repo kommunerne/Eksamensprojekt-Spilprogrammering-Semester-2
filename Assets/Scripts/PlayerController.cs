@@ -105,6 +105,8 @@ public class PlayerController : NetworkBehaviour
         cameraToUse.enabled = false;
         miniMap.enabled = false;
         deathScreen.enabled = false;
+        
+        aggroEnemy();
 
     }
 
@@ -404,5 +406,17 @@ public class PlayerController : NetworkBehaviour
             gameObjectToBeRotated.layer = 8;
             barrelOfTheTank.layer = 8;
             _rb2D.velocity = new Vector2(0, 0);
+        }
+
+
+        [Client]
+        void aggroEnemy() {
+            Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, 10f);
+
+            if (colliderArray.Length != 0) {
+                foreach (var collider in colliderArray) {
+                    collider.GetComponent<Enemy>().RpcSetTarget(transform.position);
+                }
+            }
         }
 }

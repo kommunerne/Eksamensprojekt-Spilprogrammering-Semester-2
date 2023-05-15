@@ -181,6 +181,7 @@ MonoBehaviour:
   moveSpeed: 5
   exp: 50
   agent: {fileID: 0}
+  point: {fileID: 0}
 --- !u!60 &1967938951330669768
 PolygonCollider2D:
   m_ObjectHideFlags: 0

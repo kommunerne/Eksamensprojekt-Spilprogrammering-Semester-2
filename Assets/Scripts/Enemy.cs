@@ -2,18 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : NetworkBehaviour
 {
-    
+
     [SyncVar] public int health;
     [SyncVar] public int moveSpeed;
     public int exp;
     public NavMeshAgent agent;
 
     private GunnerNetworkManager manager;
+
+    private Transform targetPlayer;
+    
 
     void Awake()
     {
@@ -23,11 +27,12 @@ public class Enemy : NetworkBehaviour
         manager = FindObjectOfType<GunnerNetworkManager>();
         agent.speed = moveSpeed;
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        
-       
+
+
     }
 
     // Update is called once per frame
@@ -66,6 +71,8 @@ public class Enemy : NetworkBehaviour
                 NetworkServer.Destroy(gameObject);
             }
         }
+        
+        
     }
 
     [Command(requiresAuthority = false)]
@@ -84,4 +91,22 @@ public class Enemy : NetworkBehaviour
 
         player.ReciveExp(giveExp);
     }
+
+    
+    
+
+    [ClientRpc]
+    public void RpcSetTarget(Vector3 target) {
+        agent.SetDestination(target);
+    }
+   
+   
+    
+    
+    
+   
+
+    
 }
+
+

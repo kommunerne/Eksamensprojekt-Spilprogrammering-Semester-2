@@ -103,8 +103,7 @@ public class MainMenuController : MonoBehaviour
         public bool isNewPlayer;
         private bool _loadHostBool;
         private bool _newHostBool;
-
-        private Player _loadedPlayer = null;
+        public Player loadedPlayer;
         
     #endregion
 
@@ -259,8 +258,8 @@ public class MainMenuController : MonoBehaviour
     
         private void LoadSavedGame()
         {
-            _loadedPlayer = _db.GetPlayer(_loadUsername.value, _loadPinCode.value);
-            if (_loadedPlayer != null)
+            loadedPlayer = _db.GetPlayer(_loadUsername.value, _loadPinCode.value);
+            if (loadedPlayer != null)
             {
                 isNewPlayer = false;
                 if (_loadHostBool)

@@ -14645,6 +14645,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3259471329601813818, guid: 8b4a96963d1cf5e428fa08c9078027ef, type: 3}
+      propertyPath: sceneId
+      value: 3249680375
+      objectReference: {fileID: 0}
     - target: {fileID: 5490536705170797276, guid: 8b4a96963d1cf5e428fa08c9078027ef, type: 3}
       propertyPath: m_Name
       value: MiniMapTester

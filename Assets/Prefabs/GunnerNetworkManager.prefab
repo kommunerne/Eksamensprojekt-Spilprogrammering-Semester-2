@@ -87,6 +87,13 @@ MonoBehaviour:
   gunnerTank: {fileID: 231622463071815744, guid: dd3f1fbbe87ffff448d7feb3d1d1fbd5, type: 3}
   sniperTank: {fileID: 1958152622918217271, guid: b3c74143c353095458b0299993832675, type: 3}
   machineTank: {fileID: 4237882189463493724, guid: aa0663b96b74aac419428ab0b8edb5a1, type: 3}
+  smallEnemy: {fileID: 2830100365905264878, guid: 77b426f2e1187f9478ceb8df8c00a0ba, type: 3}
+  smallEnemyID: 1832388894
+  mediumEnemy: {fileID: 9208188512314539513, guid: 73d202db3d88c4d4ebf5c838cb8d0996, type: 3}
+  largeEnemy: {fileID: 8589547092090898790, guid: d4637037ca27eba4d8b858517e7aa126, type: 3}
+  bossEnemy: {fileID: 1225958574424988226, guid: 6bc9354654df03f4d91b1146afb104fa, type: 3}
+  enemyCounter: 0
+  interval: 6
   redPlayers: 0
   bluePlayers: 0
   redSpawnPoints:

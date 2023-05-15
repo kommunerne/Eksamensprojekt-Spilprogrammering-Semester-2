@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -2818160544840455373}
   - component: {fileID: -3538438675110146540}
   - component: {fileID: 8206915016742901306}
+  - component: {fileID: -6396618327480655179}
   m_Layer: 0
   m_Name: Gunner
   m_TagString: Player
@@ -170,6 +171,7 @@ MonoBehaviour:
   playerGotHit: 0
   bulletPrefab: {fileID: 628592309837062276, guid: c127b31f74a7a3b4cab7225f2460f782, type: 3}
   firePoint: {fileID: 4171237410019667683}
+  miniMapIcon: {fileID: 4132676398858713439}
 --- !u!114 &-1167805286740495787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +314,32 @@ MonoBehaviour:
   positionPrecision: 0.01
   scalePrecision: 0.01
   timelineOffset: 0
+--- !u!61 &-6396618327480655179
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231622463071815744}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1417317319463440900
 GameObject:
   m_ObjectHideFlags: 0

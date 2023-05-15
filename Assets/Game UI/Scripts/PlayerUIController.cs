@@ -388,8 +388,11 @@ public class PlayerUIController : NetworkBehaviour
     [Client]
     public void DeathScreen()
     {
-        _uiScreen.style.display = DisplayStyle.None;
-        _deathScreen.style.display = DisplayStyle.Flex;
+        if(isLocalPlayer)
+        {
+            _uiScreen.style.display = DisplayStyle.None;
+            _deathScreen.style.display = DisplayStyle.Flex;
+        }
     }
     
     void ContinueToMainMenu()
@@ -403,11 +406,14 @@ public class PlayerUIController : NetworkBehaviour
 
     void SaveGame()
     {
-        Player playerToSave = new Player(player.playerName, player.pinCode, player.prefabNr, player.level, player.exp,
+        if(isLocalPlayer)
+        { 
+            Player playerToSave = new Player(player.playerName, player.pinCode, player.prefabNr, player.level, player.exp,
             player.score);
-        _db.UpdatePlayer(player.playerName,player.pinCode,playerToSave);
-        if(isClient)
-            NetworkManager.singleton.StopClient();
+            _db.UpdatePlayer(player.playerName,player.pinCode,playerToSave);
+            if(isClient)
+                NetworkManager.singleton.StopClient();
+        }
     }
 
     // [ClientRpc]

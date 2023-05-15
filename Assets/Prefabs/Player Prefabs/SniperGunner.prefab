@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 2261291722844891462}
   - component: {fileID: 2866572368477205298}
   - component: {fileID: 8656409279138879446}
+  - component: {fileID: 1004970795222771787}
   m_Layer: 0
   m_Name: SniperGunner
   m_TagString: Player
@@ -203,6 +204,7 @@ MonoBehaviour:
   playerGotHit: 0
   bulletPrefab: {fileID: 628592309837062276, guid: c127b31f74a7a3b4cab7225f2460f782, type: 3}
   firePoint: {fileID: 2448010256654354580}
+  miniMapIcon: {fileID: 2395938371985907496}
 --- !u!114 &8633749373738406946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +347,32 @@ MonoBehaviour:
   positionPrecision: 0.01
   scalePrecision: 0.01
   timelineOffset: 0
+--- !u!61 &1004970795222771787
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958152622918217271}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &4736259094179187581
 GameObject:
   m_ObjectHideFlags: 0

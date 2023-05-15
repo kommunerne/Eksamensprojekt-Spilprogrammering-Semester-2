@@ -9,9 +9,11 @@ public class Bullet : NetworkBehaviour
 {
     public float destroyAfter = 5;
     public Rigidbody2D rb2D;
-    public float force;
-    public int damage;
+    public float force = 50;
+    public int damage = 50; 
+    [SyncVar]
     public string teamName;
+
     public override void OnStartServer()
     {
         Invoke(nameof(DestroySelf), destroyAfter);
@@ -19,7 +21,9 @@ public class Bullet : NetworkBehaviour
 
     private void Start()
     {
-        rb2D.AddForce(transform.forward*force);
+        Debug.Log(teamName);
+        CmdChangeColor();
+        //rb2D.AddForce(transform.forward*force);
     }
 
     [Server]
@@ -28,17 +32,35 @@ public class Bullet : NetworkBehaviour
         NetworkServer.Destroy(gameObject);
     }
 
-    [ServerCallback]
-    private void OnTriggerEnter(Collider co)
+    [Command(requiresAuthority = false)]
+    void CmdChangeColor()
     {
-        PlayerController player = co.GetComponent<PlayerController>();
-        Bullet bullet = co.GetComponent<Bullet>();
-        if (player != null && tag.ToString() != player.teamName)
-        {
-            DestroySelf();
-        }else if (bullet.teamName != teamName)
-        {
-            DestroySelf();
-        }
+        ChangeColor();
+    }
+    [ClientRpc]
+    void ChangeColor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = teamName == "BlueTeam" ? Color.blue : Color.red;
+    }
+
+    [ServerCallback]
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("It hit something!");
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+          Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+          if (player != null && player.teamName != teamName)
+          {
+              DestroySelf();
+          } else if (collision.CompareTag("Wall"))
+          {
+              DestroySelf();
+          }
+          else if(bullet != null && bullet.teamName != teamName)
+              DestroySelf();
+          else
+              Debug.Log(collision.tag);
+
+
     }
 }

@@ -76,6 +76,8 @@ public class PlayerController : NetworkBehaviour
     [Header("Prefabs & GameObjects:")] 
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public SpriteRenderer miniMapIcon;
+    
     
     private void Start()
     {
@@ -83,15 +85,19 @@ public class PlayerController : NetworkBehaviour
         uiController = GetComponent<PlayerUIController>();
         playerGotHit = false;
         nextFireTime = fireRate;
+        if(isLocalPlayer)
+            CmdChangeSpriteColer();
     }
+
+    
 
     private void Update()
     {
         if (isLocalPlayer)
         {
             Shoot();
-            RotateToMouse2D();
-            CharacterMovement();
+            RotateTank();
+            Move();
             RegenHealthOverTime();
             return;
         }
@@ -110,14 +116,24 @@ public class PlayerController : NetworkBehaviour
     
     // Methods
     
+    
+    
+    
         // Main Methods
-        //[ClientRpc]
-        void RotateToMouse2D()
+
+        [Client]
+        void RotateTank()
         {
             Vector3 mousePosition = cameraToUse.ScreenToWorldPoint(Input.mousePosition);
-
+            Vector3 position = transform.position;
+            CmdRotateTank(mousePosition,position);
+        }
+        
+        [Command]
+        void CmdRotateTank(Vector3 mousePosition,Vector3 position)
+        {
             // Calculate the angle between the mouse and the player's position
-            Vector3 direction = mousePosition - transform.position;
+            Vector3 direction = mousePosition - position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Rotate the player to face the mouse
@@ -132,9 +148,31 @@ public class PlayerController : NetworkBehaviour
                 currentHp = Mathf.Clamp(currentHp, 0, maxHp); // Clamp current health to be within the range of 0 and max health
             }
         }
-        
-        private void CharacterMovement()
+
+
+        [Client]
+        void Move()
         {
+            if (Input.GetKey(KeyCode.A))
+                CmdMove(Vector2.left,moveSpeed);
+            if (Input.GetKey(KeyCode.D))
+                CmdMove(Vector2.right,moveSpeed);
+            if (Input.GetKey(KeyCode.W))
+                CmdMove(Vector2.up,moveSpeed);
+            if (Input.GetKey(KeyCode.S))
+                CmdMove(Vector2.down, moveSpeed);
+        }
+        
+        [Command]
+        void CmdMove(Vector2 direction,float playerMoveSpeed)
+        {
+            _rb2D.AddForce(direction*playerMoveSpeed);
+        }
+        
+        /*[ClientRpc]
+        private void RpcMove()
+        {
+            Debug.Log("The RpcMove was executed");
             if (Input.GetKey(KeyCode.A))
                 _rb2D.AddForce(Vector2.left * moveSpeed);
             if (Input.GetKey(KeyCode.D))
@@ -143,7 +181,7 @@ public class PlayerController : NetworkBehaviour
                 _rb2D.AddForce(Vector2.up * moveSpeed);
             if (Input.GetKey(KeyCode.S))
                 _rb2D.AddForce(Vector2.down * moveSpeed);
-        }
+        }*/
 
 
         [Client]
@@ -151,9 +189,16 @@ public class PlayerController : NetworkBehaviour
         {
             if (Input.GetButtonDown("Fire1") && nextFireTime <= 0)
             {
-                
                 nextFireTime = fireRate;
-                CmdShoot();
+                
+                if(teamName == "BlueTeam")
+                    CmdShoot(true);
+                else if (teamName == "RedTeam")
+                    CmdShoot(false);
+                else
+                {
+                    Debug.Log("Team names don't match: " + teamName);
+                }
             }
             else
             {
@@ -162,18 +207,14 @@ public class PlayerController : NetworkBehaviour
         }
         // Makes the player shoot
         [Command] 
-        private void CmdShoot()
+        private void CmdShoot(bool isPlayerBlueTeam)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            SpriteRenderer spriteRenderer = bullet.GetComponent<SpriteRenderer>();
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.damage = dmg;
-            bullet.tag = teamName;
-            if (teamName == "RedTeam")
-                spriteRenderer.color = Color.red;
-            else if (teamName == "BlueTeam")
-                spriteRenderer.color = Color.blue;
-                
+            bulletScript.teamName = isPlayerBlueTeam ? "BlueTeam" : "RedTeam";
+            Debug.Log(isPlayerBlueTeam);
+
             // Set the speed of the bullet
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.velocity = firePoint.right * bulletSpeed;
@@ -194,8 +235,21 @@ public class PlayerController : NetworkBehaviour
         
         
     // UI Methods
+    [Command]
+    private void CmdChangeSpriteColer()
+    {
+        RpcChangePlayerColor();
+    }
 
-    
+    [ClientRpc]
+    private void RpcChangePlayerColor()
+    {
+        if(teamName == "BlueTeam")
+            miniMapIcon.color = Color.blue;
+        else
+            miniMapIcon.color = Color.red;
+    }
+
     [Command]
     public void CmdUpgradeHp()
     {
@@ -270,12 +324,26 @@ public class PlayerController : NetworkBehaviour
         // Jeg skal nok slette den når vi kommer dertil.
         //
         // ***********************************
+        [Command(requiresAuthority = false)]
+        public void CmdGotHit(int damage)
+        {
+            playerGotHit = true;
+            if (currentHp <= damage)
+            {
+                CmdPlayerDied();
+            }
+
+            currentHp -= damage;
+            Invoke(nameof(HitReset),3);
+        }
+        
+      
         [ServerCallback]
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             Bullet bullet = other.GetComponent<Bullet>();
             Enemy enemy = other.GetComponent<Enemy>();
-            if (bullet != null)
+            if (bullet != null && bullet.teamName != teamName)
             {
                 
                 playerGotHit = true;
@@ -302,7 +370,7 @@ public class PlayerController : NetworkBehaviour
                 }
             }
         }
-        
+
         void HitReset()
         {
             playerGotHit = false;

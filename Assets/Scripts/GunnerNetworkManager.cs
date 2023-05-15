@@ -57,11 +57,13 @@ public class GunnerNetworkManager : NetworkManager
         } 
         else
         {
-            characterMessage = new CreateGunnerMessage
-            {
+            characterMessage = new CreateGunnerMessage {
                 name = menuScene.GetLoadPlayerName(),
-                pinCode = menuScene.GetLoadPinCode(), 
-                prefabSelector = menuScene._toggleToInt
+                pinCode = menuScene.GetLoadPinCode(),
+                prefabSelector = menuScene.loadedPlayer.prefabNr,
+                level = menuScene.loadedPlayer.level,
+                exp = menuScene.loadedPlayer.exp,
+                score = menuScene.loadedPlayer.score
                 
             };
         }

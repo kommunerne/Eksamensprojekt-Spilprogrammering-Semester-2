@@ -9,6 +9,7 @@ TagManager:
   - BlueTeam
   - RedTeam
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX

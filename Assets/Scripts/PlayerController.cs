@@ -371,6 +371,20 @@ public class PlayerController : NetworkBehaviour
             }
         }
 
+        [Client]
+        public void ReciveExp(int enemyExp)
+        {
+            Debug.Log("RecieveExp on Player called");
+            CmdGetExp(enemyExp);
+        }
+
+        [Command]
+        void CmdGetExp(int enemyExp)
+        {
+            Debug.Log("CmdGetExp on Player called");
+            exp += enemyExp;
+        }
+        
         void HitReset()
         {
             playerGotHit = false;

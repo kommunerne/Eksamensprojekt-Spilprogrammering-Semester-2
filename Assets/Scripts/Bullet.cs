@@ -58,8 +58,11 @@ public class Bullet : NetworkBehaviour
           }
           else if(bullet != null && bullet.teamName != teamName)
               DestroySelf();
-          else
-              Debug.Log(collision.tag);
+          else if (collision.CompareTag("Enemy"))
+          {
+              DestroySelf();
+          }
+              
 
 
     }

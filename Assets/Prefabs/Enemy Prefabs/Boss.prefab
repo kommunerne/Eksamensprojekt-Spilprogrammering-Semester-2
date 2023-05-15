@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4296257876597313011}
   - component: {fileID: -3284177524175345931}
   - component: {fileID: 3994223658215070240}
-  m_Layer: 7
+  - component: {fileID: 335563484575049073}
+  m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225958574424988226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -135.26459, y: 27.499237, z: -0.016830903}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   target: {fileID: 2353114550268186226}
@@ -110,6 +111,22 @@ MonoBehaviour:
   positionPrecision: 0.01
   scalePrecision: 0.01
   timelineOffset: 0
+--- !u!58 &335563484575049073
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225958574424988226}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.344907
 --- !u!1 &3868462086255133068
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3229642615338792764}
   - component: {fileID: 3428131635609128528}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Cross (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +199,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 856017125
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.48235294, g: 0.48235294, b: 0.48235294, a: 1}
   m_FlipX: 0
@@ -204,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3164968299789627275}
   - component: {fileID: 1835611450409135298}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +283,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 856017125
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.48235294, g: 0.48235294, b: 0.48235294, a: 1}
   m_FlipX: 0
@@ -288,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2931478103505896180}
   - component: {fileID: 6588694840579156835}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +367,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 856017125
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0.3647059, a: 1}
   m_FlipX: 0

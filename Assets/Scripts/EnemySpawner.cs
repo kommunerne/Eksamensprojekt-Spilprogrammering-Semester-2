@@ -14,81 +14,68 @@ public class EnemySpawner : NetworkBehaviour
     public GameObject bossEnemy;
 
     public int enemyCounter = 0;
-    public float interval = 6f;
-    public GameObject[] spawnPoints; 
+    public float interval = 0f;
+    public Transform[] spawnPoints;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-         
-    }
-
-
-    private void GetSpawn()
-    {
-        Debug.Log("i have been called");
-        if (SceneManager.GetActiveScene().name == "GameScene")
-        {
-            Debug.Log("Yassssss");
-            spawnPoints = new[] {
-            GameObject.Find("EnemySpawn01"), GameObject.Find("EnemySpawn02"), GameObject.Find("EnemySpawn03"), GameObject.Find("EnemySpawn04"), GameObject.Find("EnemySpawn05"),
-            GameObject.Find("EnemySpawn06"), GameObject.Find("EnemySpawn07"), GameObject.Find("EnemySpawn08"), GameObject.Find("EnemySpawn09"), GameObject.Find("EnemySpawn10"),
-            GameObject.Find("EnemySpawn11"), GameObject.Find("EnemySpawn12"), GameObject.Find("EnemySpawn13"), GameObject.Find("EnemySpawn14"), GameObject.Find("EnemySpawn15"),
-            GameObject.Find("EnemySpawn16"), GameObject.Find("EnemySpawn17"), GameObject.Find("EnemySpawn18"), GameObject.Find("EnemySpawn19"), GameObject.Find("EnemySpawn20")
-        };
-        }
-    }
-    [Command(requiresAuthority = false)]
-    public void CmdSpawnEnemies()
-    {
-        if (interval <= 0f && SceneManager.GetActiveScene().name == "GameScene")
-        {
-            Debug.Log("slay");
-            GameObject smallEnemy1 = Instantiate(smallEnemy, spawnPoints[Random.Range(0, 20)].transform.position, new Quaternion(0, 0, 0, 0));
-            Debug.Log(smallEnemy1);
-            Debug.Log(smallEnemy1.transform.position);
-            NetworkServer.Spawn(smallEnemy1);
-
-
-            GameObject smallEnemy2 = Instantiate(smallEnemy, spawnPoints[Random.Range(0, 20)].transform.position, new Quaternion(0, 0, 0, 0));
-            Debug.Log(smallEnemy2);
-            Debug.Log(smallEnemy2.transform.position);
-            NetworkServer.Spawn(smallEnemy2);
-
-
-
-            GameObject smallEnemy3 = Instantiate(smallEnemy, spawnPoints[Random.Range(0, 20)].transform.position, new Quaternion(0, 0, 0, 0));
-            Debug.Log(smallEnemy3);
-            Debug.Log(smallEnemy3.transform.position);
-            NetworkServer.Spawn(smallEnemy3);
-
-
-            enemyCounter += 3;
-            interval = 6f;
-            Debug.Log("Enemy spawn:" + enemyCounter);
-
-        }
-        else
-        {
-            interval -= Time.deltaTime;
-
-        }
-    }
-
+    public int randomNumber;
     // Update is called once per frame
     void Update()
     {
         if (isServer) {
-            Debug.Log(interval);
-        GetSpawn();
-        CmdSpawnEnemies();
+            GetSpawn();
+            SpawnSmallEnemies();
+        }
+    }
+    [Client]
+    private void GetSpawn()
+    {
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            spawnPoints = new[] {
+                GameObject.Find("EnemySpawn01").GetComponent<Transform>(), GameObject.Find("EnemySpawn02").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn03").GetComponent<Transform>(), GameObject.Find("EnemySpawn04").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn05").GetComponent<Transform>(), GameObject.Find("EnemySpawn06").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn07").GetComponent<Transform>(), GameObject.Find("EnemySpawn08").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn09").GetComponent<Transform>(), GameObject.Find("EnemySpawn10").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn11").GetComponent<Transform>(), GameObject.Find("EnemySpawn12").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn13").GetComponent<Transform>(), GameObject.Find("EnemySpawn14").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn15").GetComponent<Transform>(), GameObject.Find("EnemySpawn16").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn17").GetComponent<Transform>(), GameObject.Find("EnemySpawn18").GetComponent<Transform>(), 
+                GameObject.Find("EnemySpawn19").GetComponent<Transform>(), GameObject.Find("EnemySpawn20").GetComponent<Transform>()
+            };
         }
     }
     
     [Client]
-    public void callSpawnEnemy()
+    void SpawnSmallEnemies()
     {
-        CmdSpawnEnemies();
+        if (interval <= 0f && SceneManager.GetActiveScene().name == "GameScene")
+        {
+            enemyCounter += 3;
+            interval = 6f;
+            CmdSpawnEnemies();
+        }
+        else
+        {
+            interval -= Time.deltaTime;
+        }
     }
-    
+ 
+    [Command(requiresAuthority = false)]
+    void CmdSpawnEnemies()
+    {
+        randomNumber = Random.Range(0, 19);
+        GameObject smallEnemy1 = Instantiate(smallEnemy, spawnPoints[randomNumber].position, spawnPoints[randomNumber].rotation);
+        NetworkServer.Spawn(smallEnemy1);
+
+        randomNumber = Random.Range(0, 19);
+        GameObject smallEnemy2 = Instantiate(smallEnemy, spawnPoints[randomNumber].position, spawnPoints[randomNumber].rotation);
+        NetworkServer.Spawn(smallEnemy2);
+            
+        randomNumber = Random.Range(0, 19);
+        GameObject smallEnemy3 = Instantiate(smallEnemy, spawnPoints[randomNumber].position, spawnPoints[randomNumber].rotation);
+        NetworkServer.Spawn(smallEnemy3);
+
+
+    }
 }

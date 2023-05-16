@@ -201,6 +201,7 @@ MonoBehaviour:
   enemyCounter: 0
   interval: 6
   spawnPoints: []
+  randomNumber: 0
 --- !u!114 &1811451794
 MonoBehaviour:
   m_ObjectHideFlags: 0

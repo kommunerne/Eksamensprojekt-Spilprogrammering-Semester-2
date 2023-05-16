@@ -44,8 +44,7 @@ public class PlayerUIController : NetworkBehaviour
         private VisualElement _deathScreen;
         
         // Labels
-        private Label _playerScore;
-        private Label _playerLevel;
+        private Label _playerWhoKilledYou;
         private Label _playerTimeAlive;
         
     // Player
@@ -75,7 +74,8 @@ public class PlayerUIController : NetworkBehaviour
         private VisualElement _escScreen;
         
         // Labels
-
+        private Label _playerScore;
+        private Label _playerLevel;
         private Label _playerName;
 
     // GameObjects and GameManager
@@ -92,80 +92,10 @@ public class PlayerUIController : NetworkBehaviour
         
         if (!isLocalPlayer)
         {
-             // Labels
-            _currentLevel = root.Q<Label>("currentLevel");
-            _statusPoints = root.Q<Label>("statusPoints");
-        
-            // Buttons
-            _hpUpgradeButton = root.Q<Button>("hpButton");
-            _dmgUpgradeButton = root.Q<Button>("dmgButton");
-            _firerateUpgradeButton = root.Q<Button>("firerateButton");
-            _movespeedUpgradeButton = root.Q<Button>("movespeedButton");
-            _hpregenUpgradeButton = root.Q<Button>("hpregenButton");
-            _hideStats = root.Q<Button>("hideStats");
-            _showStats = root.Q<Button>("showStats");
-        
-            // Sliders
-            _hpProgressBar = root.Q<ProgressBar>("hpSlider");
-            _dmgProgressBar = root.Q<ProgressBar>("dmgSlider");
-            _firerateProgressBar = root.Q<ProgressBar>("firerateSlider");
-            _movespeedProgressBar = root.Q<ProgressBar>("movespeedSlider");
-            _hpregenProgressBar = root.Q<ProgressBar>("hpregenSlider");
-
-            // Visual Element
-            _statsShown = root.Q<VisualElement>("PlayerStatsShown");
-            _statsHidden = root.Q<VisualElement>("PlayerStatsHidden");
-            
-        // Death Screen
-        
-            // Buttons
-            _deathContinue = root.Q<Button>("continueButton");
-        
-            // Labels
-            _playerScore = root.Q<Label>("playerScore");
-            _playerLevel = root.Q<Label>("playerLevel");
-            _playerTimeAlive = root.Q<Label>("playerTimeAlive");
-            
-            // Visual Elements
             _deathScreen = root.Q<VisualElement>("DeathScreenContainer");
-        
-        // Player
-            // Visual Elements
-            _healthBarContainer = root.Q<VisualElement>("PlayerHealthbar");
-            
-            // Progress Bars
-            _healthBar = root.Q<ProgressBar>("healthbar");
-        
-        // Main UI
-
-            // Visual Elements
             _uiScreen = root.Q<VisualElement>("MainScreen");
-            
-        
-        // Esc Screen
-        
-            // Buttons
-            _saveButton = root.Q<Button>("saveButton");
-            _closeButton = root.Q<Button>("closeButton");
-            
-            
-            // Visual Elements
-            _escScreen = root.Q<VisualElement>("EscScreenContainer");
-            
-            // Labels
-
-            _playerName = root.Q<Label>("playerName");
-
-
-            // On Start Values
-        _playerName.text = player.playerName;
-        
-        _statsShown.style.display = DisplayStyle.None;
-        _statsHidden.style.display = DisplayStyle.None;
-        _uiScreen.style.display = DisplayStyle.None;
-        _deathScreen.style.display = DisplayStyle.None;
-        _escScreen.style.display = DisplayStyle.None;
-        _healthBarContainer.style.display = DisplayStyle.None;
+            _uiScreen.style.display = DisplayStyle.None;
+            _deathScreen.style.display = DisplayStyle.None;
         return;
         }
 
@@ -206,6 +136,7 @@ public class PlayerUIController : NetworkBehaviour
             _playerScore = root.Q<Label>("playerScore");
             _playerLevel = root.Q<Label>("playerLevel");
             _playerTimeAlive = root.Q<Label>("playerTimeAlive");
+            _playerWhoKilledYou = root.Q<Label>("playerWhoKilledYou");
             
             // Visual Elements
             _deathScreen = root.Q<VisualElement>("DeathScreenContainer");
@@ -280,17 +211,38 @@ public class PlayerUIController : NetworkBehaviour
     {
         if (!isLocalPlayer)
             return;
-        
         UpdatePlayerHealth();
-        
         if(Input.GetKeyDown(KeyCode.Escape)&& isLocalPlayer)
             ShowEscScreen();
-        
+    }
+
+    // Methods
+    
+    #region Stats HUD
+
+    [Command]
+    public void CmdUpdatePlayerStats()
+    {
         _currentLevel.text = player.level.ToString();
         _statusPoints.text = player.statPoints.ToString();
+    }
+    
+    [Command]
+    public void CmdUpdatePlayerInfo()
+    {
+        _playerLevel.text = player.level.ToString();
+        _playerScore.text = player.score.ToString();
+    }
+
+    [Command]
+    public void CmdShowHud()
+    {
         if (player.statPoints == 0)
         {
             _statsShown.style.display = DisplayStyle.None;
+        } else if (player.statPoints > 0)
+        {
+            _statsShown.style.display = DisplayStyle.Flex;
         }
 
         if (player.playerGotHit)
@@ -302,11 +254,8 @@ public class PlayerUIController : NetworkBehaviour
             HideHealth();
         }
     }
-
-    // Methods
     
-    #region Stats HUD
-    
+    [Client]
     void HpUpgrade()
     {
         if (_hpProgressBar.value < 10 && player.statPoints>0)
@@ -317,7 +266,7 @@ public class PlayerUIController : NetworkBehaviour
             player.CmdUpgradeHp();
         }
     }
-    // [ClientRpc]
+    [Client]
     void DmgUpgrade()
     {
         if (_dmgProgressBar.value < 10 && player.statPoints>0)
@@ -326,7 +275,7 @@ public class PlayerUIController : NetworkBehaviour
             player.CmdUpgradeDmg();
         }
     }
-    // [ClientRpc]
+    [Client]
     void FirerateUpgrade()
     {
         if (_firerateProgressBar.value < 10 && player.statPoints>0)
@@ -335,7 +284,7 @@ public class PlayerUIController : NetworkBehaviour
             player.CmdUpgradeFireRate();
         }
     }
-    // [ClientRpc]
+    [Client]
     void MovespeedUpgrade()
     {
         if (_movespeedProgressBar.value < 10 && player.statPoints>0)
@@ -344,7 +293,7 @@ public class PlayerUIController : NetworkBehaviour
             player.CmdUpgradeMoveSpeed();
         }
     }
-    // [ClientRpc]
+    [Client]
     void HpregenUpgrade()
     {
         if (_hpregenProgressBar.value < 10 && player.statPoints>0)
@@ -353,13 +302,13 @@ public class PlayerUIController : NetworkBehaviour
             player.CmdUpgradeHpRegen();
         }
     }
-    // [ClientRpc]
+    //[Client]
     void HideStats()
     {
         _statsShown.style.display = DisplayStyle.None;
         _statsHidden.style.display = DisplayStyle.Flex;
     }
-    // [ClientRpc]
+    //[Client]
     void ShowStats()
     {
         _statsShown.style.display = DisplayStyle.Flex;
@@ -370,12 +319,12 @@ public class PlayerUIController : NetworkBehaviour
     #endregion
     
     #region Player
-    [Client]
+    //[Client]
     void HideHealth()
     {
         _healthBarContainer.style.display = DisplayStyle.None;
     }
-    [Client]
+    //[Client]
     void UpdatePlayerHealth()
     {
         _healthBar.highValue = player.maxHp;
@@ -386,15 +335,17 @@ public class PlayerUIController : NetworkBehaviour
 
     #region Death Screen
     [Client]
-    public void DeathScreen()
+    public void DeathScreen(string enemyPlayer)
     {
         if(isLocalPlayer)
         {
+            _playerWhoKilledYou.text = enemyPlayer;
             _uiScreen.style.display = DisplayStyle.None;
             _deathScreen.style.display = DisplayStyle.Flex;
         }
     }
     
+    [Client]
     void ContinueToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -416,16 +367,17 @@ public class PlayerUIController : NetworkBehaviour
         }
     }
 
-    // [ClientRpc]
+    [Client]
     void ShowEscScreen()
     {
         _escScreen.style.display = DisplayStyle.Flex;
     }
-    // [ClientRpc]
+    [Client]
     void CloseEscScreen()
     {
         _escScreen.style.display = DisplayStyle.None;
     }
+    
     #endregion
     
 }

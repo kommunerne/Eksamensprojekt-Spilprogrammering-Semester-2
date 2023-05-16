@@ -50,10 +50,8 @@ GameObject:
   - component: {fileID: 6211034831758485065}
   - component: {fileID: -5729559424542059537}
   - component: {fileID: -7280105267382221719}
-  - component: {fileID: 5982726486604320172}
-  - component: {fileID: 2136908986096377477}
   - component: {fileID: 8912991024697527002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MachineGunner
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -179,10 +177,10 @@ MonoBehaviour:
   gameObjectToBeRotated: {fileID: 5764697656339353918}
   barrelOfTheTank: {fileID: 7412931916158505662}
   uiController: {fileID: 3777822949838106855}
-  maxHp: 100
-  currentHp: 100
+  maxHp: 120
+  currentHp: 120
   dmg: 20
-  moveSpeed: 5
+  moveSpeed: 3
   hpRegen: 5
   level: 0
   exp: 0
@@ -190,11 +188,10 @@ MonoBehaviour:
   score: 0
   prefabNr: 0
   nextFireTime: 0
-  fireRate: 0.5
+  fireRate: 0.2
   bulletSpeed: 10
   bonusHpPerLevel: 100
   bonusDmgPerLevel: 20
-  bonusFireRatePerLevel: 1
   bonusMoveSpeed: 5
   bonusHpRegenPerLevel: 5
   bulletRadius: 0
@@ -257,78 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   target: {fileID: 818101671640344638}
-  clientAuthority: 0
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChange: 1
-  onlySyncOnChangeCorrectionMultiplier: 2
-  sendIntervalMultiplier: 3
-  rotationSensitivity: 0.01
-  compressRotation: 0
-  positionPrecision: 0.01
-  scalePrecision: 0.01
-  timelineOffset: 0
---- !u!114 &5982726486604320172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4237882189463493724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 8031605146417663369}
-  clientAuthority: 0
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChange: 1
-  onlySyncOnChangeCorrectionMultiplier: 2
-  sendIntervalMultiplier: 3
-  rotationSensitivity: 0.01
-  compressRotation: 0
-  positionPrecision: 0.01
-  scalePrecision: 0.01
-  timelineOffset: 0
---- !u!114 &2136908986096377477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4237882189463493724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 7369278269586175}
   clientAuthority: 0
   syncPosition: 1
   syncRotation: 1
@@ -893,14 +822,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8289382618372978880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.292, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7837282232662654463}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &8397946417809878563
 GameObject:
   m_ObjectHideFlags: 0

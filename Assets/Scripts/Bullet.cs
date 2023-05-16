@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using TMPro;
+using UnityEngine.Networking.Types;
 
 public class Bullet : NetworkBehaviour
 {
@@ -14,6 +15,9 @@ public class Bullet : NetworkBehaviour
     [SyncVar]
     public string teamName;
 
+    [SyncVar] 
+    public uint playerWhoShotId;
+
     public override void OnStartServer()
     {
         Invoke(nameof(DestroySelf), destroyAfter);
@@ -21,7 +25,7 @@ public class Bullet : NetworkBehaviour
 
     private void Start()
     {
-        Debug.Log(teamName);
+        Debug.Log("Bullets netId from shooter: " + playerWhoShotId);
         CmdChangeColor();
         //rb2D.AddForce(transform.forward*force);
     }
@@ -46,22 +50,22 @@ public class Bullet : NetworkBehaviour
     [ServerCallback]
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("It hit something!");
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-          Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-          if (player != null && player.teamName != teamName)
-          {
-              DestroySelf();
-          } else if (collision.CompareTag("Wall"))
-          {
-              DestroySelf();
-          }
-          else if(bullet != null && bullet.teamName != teamName)
-              DestroySelf();
-          else if (collision.CompareTag("Enemy"))
-          {
-              DestroySelf();
-          }
+        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+        if (player != null && player.teamName != teamName)
+        {
+            DestroySelf();
+        }
+        else if (collision.CompareTag("Wall"))
+        {
+            DestroySelf();
+        }
+        else if(bullet != null && bullet.teamName != teamName)
+            DestroySelf();
+        else if (collision.CompareTag("Enemy"))
+        {
+            DestroySelf();
+        }
               
 
 

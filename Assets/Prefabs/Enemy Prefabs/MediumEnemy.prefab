@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 7851541435445859395}
   m_Layer: 0
   m_Name: MediumEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -325,7 +325,13 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
+  agent: {fileID: 0}
+  detectionTag: Player
+  radius: 6
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  playerToAttack: {fileID: 0}
   health: 200
   moveSpeed: 3
   exp: 100
-  agent: {fileID: 0}

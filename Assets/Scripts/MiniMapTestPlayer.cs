@@ -39,7 +39,7 @@ public class MiniMapTestPlayer : MonoBehaviour
 
     void Update()
     {
-        Hit();
+       // Hit();
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -99,7 +99,7 @@ public class MiniMapTestPlayer : MonoBehaviour
         statPoints--;
     }
 
-    public void Hit()
+    /*public void Hit()
     {
         if (Input.GetKeyDown(KeyCode.K) && playerGotHit)
         {
@@ -121,7 +121,7 @@ public class MiniMapTestPlayer : MonoBehaviour
             Debug.Log(currentHp);
             Invoke(nameof(HitReset), 3);
         }
-    }
+    }*/
 
     void HitReset()
     {

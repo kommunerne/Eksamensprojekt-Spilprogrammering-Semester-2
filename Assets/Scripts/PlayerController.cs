@@ -53,10 +53,13 @@ public class PlayerController : NetworkBehaviour
     [Header("Stats gained pr upgrade")]
     public int bonusHpPerLevel = 100;
     public int bonusDmgPerLevel = 20;
-    public float bonusFireRatePerLevel = 1.0f;
+    private float _bonusFireRatePerLevel;
     public float bonusMoveSpeed = 5f;
     public int bonusHpRegenPerLevel = 5;
 
+    [SyncVar] private float _expTilNextLevel = 100;
+    private float _expTilNextLevelMultiplier = 1.35f;
+    
     [Header("Class Specific Variables")] 
     public float bulletRadius;
 
@@ -93,12 +96,16 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
-        if (isLocalPlayer)
+        if (isLocalPlayer && !_playerDead)
         {
             Shoot();
             RotateTank();
             Move();
             RegenHealthOverTime();
+            ExpToLevel();
+            UpdatePlayerInfo();
+            UpdatePlayerStats();
+            ShowHud();
             return;
         }
         Debug.Log(transform.name + " is not local :( " + netId);
@@ -115,8 +122,24 @@ public class PlayerController : NetworkBehaviour
     
     
     // Methods
-    
-    
+
+    [Client]
+    void ExpToLevel()
+    {
+        if (exp >= _expTilNextLevel)
+        {
+            CmdLevelPlayerUp();
+        }
+    }
+
+    [Command]
+    void CmdLevelPlayerUp()
+    {
+        exp = 0;
+        _expTilNextLevel *= _expTilNextLevelMultiplier;
+        statPoints++;
+        level++;
+    }
     
     
         // Main Methods
@@ -189,16 +212,13 @@ public class PlayerController : NetworkBehaviour
         {
             if (Input.GetButtonDown("Fire1") && nextFireTime <= 0)
             {
+                Debug.Log("The players netId:" + netId);
                 nextFireTime = fireRate;
                 
                 if(teamName == "BlueTeam")
                     CmdShoot(true);
                 else if (teamName == "RedTeam")
                     CmdShoot(false);
-                else
-                {
-                    Debug.Log("Team names don't match: " + teamName);
-                }
             }
             else
             {
@@ -213,7 +233,7 @@ public class PlayerController : NetworkBehaviour
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.damage = dmg;
             bulletScript.teamName = isPlayerBlueTeam ? "BlueTeam" : "RedTeam";
-            Debug.Log(isPlayerBlueTeam);
+            bulletScript.playerWhoShotId = netId;
 
             // Set the speed of the bullet
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
@@ -299,7 +319,8 @@ public class PlayerController : NetworkBehaviour
         [ClientRpc]
         void RpcFireRateUpgrade()
         {
-            fireRate += bonusFireRatePerLevel;
+            _bonusFireRatePerLevel = fireRate * 0.2f;
+            fireRate -= _bonusFireRatePerLevel;
             statPoints--;
         }
         
@@ -313,7 +334,7 @@ public class PlayerController : NetworkBehaviour
         [ClientRpc]
         void RpcHpRegenUpgrade()
         {
-            hpRegen += bonusHpPerLevel;
+            hpRegen += bonusHpRegenPerLevel;
             statPoints--;
         }
     
@@ -324,20 +345,7 @@ public class PlayerController : NetworkBehaviour
         // Jeg skal nok slette den når vi kommer dertil.
         //
         // ***********************************
-        [Command(requiresAuthority = false)]
-        public void CmdGotHit(int damage)
-        {
-            playerGotHit = true;
-            if (currentHp <= damage)
-            {
-                CmdPlayerDied();
-            }
 
-            currentHp -= damage;
-            Invoke(nameof(HitReset),3);
-        }
-        
-      
         [ServerCallback]
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -349,7 +357,7 @@ public class PlayerController : NetworkBehaviour
                 playerGotHit = true;
                 if (currentHp <= bullet.damage)
                 {
-                    CmdPlayerDied();
+                    CmdPlayerDiedByPlayer(bullet.playerWhoShotId);
                 }
                 currentHp = currentHp - bullet.damage;
                 Debug.Log(currentHp);
@@ -359,7 +367,7 @@ public class PlayerController : NetworkBehaviour
             {
                 if (currentHp < enemy.health)
                 {
-                    CmdPlayerDied();
+                    CmdPlayerDiedByEnemy(enemy.name);
                 }
                 else
                 {
@@ -391,18 +399,55 @@ public class PlayerController : NetworkBehaviour
         }
 
         [Command]
-        void CmdPlayerDied()
+        void CmdPlayerDiedByPlayer(uint enemyPlayer)
         {
-            PlayerDead();
+            GameObject localPlayer = NetworkServer.spawned[enemyPlayer].gameObject;
+            string nameOfKiller = localPlayer.name;
+            PlayerDead(nameOfKiller);
         }
 
+        [Command]
+        void CmdPlayerDiedByEnemy(string enemyName)
+        {
+            PlayerDead(enemyName);
+        }
+        
         [ClientRpc]
-        void PlayerDead()
+        void PlayerDead(string enemyPlayer)
         {
             _playerDead = true;
-            uiController.DeathScreen();
+            uiController.DeathScreen(enemyPlayer);
             gameObjectToBeRotated.layer = 8;
             barrelOfTheTank.layer = 8;
             _rb2D.velocity = new Vector2(0, 0);
         }
+
+        [TargetRpc]
+        public void GivePlayerExp(int newExp)
+        {
+            score += newExp;
+            Debug.Log("TargetRpc GivePlayerExp() was called on this netId: "+netId);
+            exp += newExp;
+        }
+        
+        
+        // UI
+        [Client]
+        void ShowHud()
+        {
+            uiController.CmdShowHud();
+        }
+
+        [Client]
+        void UpdatePlayerInfo()
+        {
+            uiController.CmdUpdatePlayerInfo();
+        }
+
+        [Client]
+        void UpdatePlayerStats()
+        {
+            uiController.CmdUpdatePlayerStats();
+        }
+        
 }

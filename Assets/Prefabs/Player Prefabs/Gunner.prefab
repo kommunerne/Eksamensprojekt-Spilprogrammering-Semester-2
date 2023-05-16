@@ -17,10 +17,8 @@ GameObject:
   - component: {fileID: -1167805286740495787}
   - component: {fileID: 8401894218644221272}
   - component: {fileID: -2818160544840455373}
-  - component: {fileID: -3538438675110146540}
-  - component: {fileID: 8206915016742901306}
   - component: {fileID: -6396618327480655179}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gunner
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -147,10 +145,10 @@ MonoBehaviour:
   barrelOfTheTank: {fileID: 6852541635511715490}
   uiController: {fileID: 978580706632639739}
   maxHp: 100
-  currentHp: 100
-  dmg: 20
-  moveSpeed: 5
-  hpRegen: 5
+  currentHp: 120
+  dmg: 30
+  moveSpeed: 3
+  hpRegen: 10
   level: 0
   exp: 0
   statPoints: 10
@@ -159,10 +157,9 @@ MonoBehaviour:
   nextFireTime: 0
   fireRate: 0.5
   bulletSpeed: 10
-  bonusHpPerLevel: 100
-  bonusDmgPerLevel: 20
-  bonusFireRatePerLevel: 1
-  bonusMoveSpeed: 5
+  bonusHpPerLevel: 120
+  bonusDmgPerLevel: 30
+  bonusMoveSpeed: 2
   bonusHpRegenPerLevel: 5
   bulletRadius: 0
   playerName: 
@@ -224,78 +221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   target: {fileID: 3648869112321293346}
-  clientAuthority: 0
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChange: 1
-  onlySyncOnChangeCorrectionMultiplier: 2
-  sendIntervalMultiplier: 3
-  rotationSensitivity: 0.01
-  compressRotation: 0
-  positionPrecision: 0.01
-  scalePrecision: 0.01
-  timelineOffset: 0
---- !u!114 &-3538438675110146540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231622463071815744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 6236612820103076245}
-  clientAuthority: 0
-  syncPosition: 1
-  syncRotation: 1
-  syncScale: 0
-  interpolatePosition: 1
-  interpolateRotation: 1
-  interpolateScale: 1
-  showGizmos: 0
-  showOverlay: 0
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChange: 1
-  onlySyncOnChangeCorrectionMultiplier: 2
-  sendIntervalMultiplier: 3
-  rotationSensitivity: 0.01
-  compressRotation: 0
-  positionPrecision: 0.01
-  scalePrecision: 0.01
-  timelineOffset: 0
---- !u!114 &8206915016742901306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231622463071815744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  target: {fileID: 4171237410019667683}
   clientAuthority: 0
   syncPosition: 1
   syncRotation: 1

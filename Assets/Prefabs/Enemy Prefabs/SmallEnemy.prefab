@@ -177,10 +177,16 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
+  agent: {fileID: 0}
+  detectionTag: Player
+  radius: 6
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  playerToAttack: {fileID: 0}
   health: 100
   moveSpeed: 5
   exp: 50
-  agent: {fileID: 0}
 --- !u!60 &1967938951330669768
 PolygonCollider2D:
   m_ObjectHideFlags: 0

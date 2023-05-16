@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 1586659428166161211}
   - component: {fileID: -4793616392945761911}
   - component: {fileID: 1973548583543579331}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BigGunner
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -756,24 +756,23 @@ MonoBehaviour:
   gameObjectToBeRotated: {fileID: 1152329460363474306}
   barrelOfTheTank: {fileID: 4115641611030132226}
   uiController: {fileID: 7750749407010083931}
-  maxHp: 100
-  currentHp: 100
-  dmg: 20
-  moveSpeed: 5
-  hpRegen: 5
+  maxHp: 150
+  currentHp: 150
+  dmg: 50
+  moveSpeed: 2
+  hpRegen: 7
   level: 0
   exp: 0
   statPoints: 0
   score: 0
   prefabNr: 0
   nextFireTime: 0
-  fireRate: 0.5
+  fireRate: 1
   bulletSpeed: 10
-  bonusHpPerLevel: 100
-  bonusDmgPerLevel: 20
-  bonusFireRatePerLevel: 1
-  bonusMoveSpeed: 5
-  bonusHpRegenPerLevel: 5
+  bonusHpPerLevel: 150
+  bonusDmgPerLevel: 50
+  bonusMoveSpeed: 1
+  bonusHpRegenPerLevel: 3
   bulletRadius: 0
   playerName: 
   pinCode: 0

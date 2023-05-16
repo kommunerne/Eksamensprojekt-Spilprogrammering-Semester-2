@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5406094071328256972}
   - component: {fileID: 2857814818146846658}
   - component: {fileID: 2471114204415269868}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,6 +163,7 @@ MonoBehaviour:
   force: 50
   damage: 0
   teamName: 
+  playerWhoShotId: 0
 --- !u!114 &2471114204415269868
 MonoBehaviour:
   m_ObjectHideFlags: 0

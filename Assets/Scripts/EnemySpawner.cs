@@ -66,7 +66,7 @@ public class EnemySpawner : NetworkBehaviour
             mediumEnemyCount++;
             largeEnemyCount++;
             enemyCounter += 1;
-            interval = 6f;
+            interval = 10f;
             CmdSpawnEnemies();
         }
         else

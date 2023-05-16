@@ -26,12 +26,11 @@ public class EnemySpawner : NetworkBehaviour
     
     void Update()
     {
-        if (isServer) {
-            if (spawnPoints.Count <= 0 && SceneManager.GetActiveScene().name == "GameScene")
+        if (spawnPoints.Count <= 0 && SceneManager.GetActiveScene().name == "GameScene")
                 sceneChanged = true;
-            GetSpawn();
-            SpawnSmallEnemies();
-        }
+        GetSpawn();
+        SpawnSmallEnemies();
+        
     }
     [Client]
     private void GetSpawn()
@@ -67,7 +66,7 @@ public class EnemySpawner : NetworkBehaviour
             mediumEnemyCount++;
             largeEnemyCount++;
             enemyCounter += 1;
-            interval = 3f;
+            interval = 6f;
             CmdSpawnEnemies();
         }
         else

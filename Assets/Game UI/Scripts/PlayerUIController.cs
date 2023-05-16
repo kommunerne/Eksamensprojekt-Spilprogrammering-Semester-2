@@ -212,6 +212,9 @@ public class PlayerUIController : NetworkBehaviour
         if (!isLocalPlayer)
             return;
         UpdatePlayerHealth();
+        UpdatePlayerInfo();
+        UpdatePlayerStats();
+        ShowHud();
         if(Input.GetKeyDown(KeyCode.Escape)&& isLocalPlayer)
             ShowEscScreen();
     }
@@ -220,22 +223,25 @@ public class PlayerUIController : NetworkBehaviour
     
     #region Stats HUD
 
-    [Command]
-    public void CmdUpdatePlayerStats()
+    [Client]
+    public void UpdatePlayerStats()
     {
         _currentLevel.text = player.level.ToString();
         _statusPoints.text = player.statPoints.ToString();
     }
     
-    [Command]
-    public void CmdUpdatePlayerInfo()
+
+    [Client]
+    public void UpdatePlayerInfo()
     {
         _playerLevel.text = player.level.ToString();
         _playerScore.text = player.score.ToString();
     }
+    
+   
 
-    [Command]
-    public void CmdShowHud()
+    [Client]
+    public void ShowHud()
     {
         if (player.statPoints == 0)
         {

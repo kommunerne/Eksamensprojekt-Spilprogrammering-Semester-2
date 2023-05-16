@@ -123,17 +123,13 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1347316289
+--- !u!1001 &1773385800
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1811451794, guid: 7670ae14b4e152b4eb1f420dd4e6801d, type: 3}
-      propertyPath: sceneId
-      value: 2533228244
-      objectReference: {fileID: 0}
     - target: {fileID: 6750927646768155522, guid: 7670ae14b4e152b4eb1f420dd4e6801d, type: 3}
       propertyPath: m_RootOrder
       value: 1

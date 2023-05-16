@@ -103,9 +103,6 @@ public class PlayerController : NetworkBehaviour
             Move();
             RegenHealthOverTime();
             ExpToLevel();
-            UpdatePlayerInfo();
-            UpdatePlayerStats();
-            ShowHud();
             return;
         }
         Debug.Log(transform.name + " is not local :( " + netId);
@@ -128,21 +125,15 @@ public class PlayerController : NetworkBehaviour
     {
         if (exp >= _expTilNextLevel)
         {
-            CmdLevelPlayerUp();
+            exp = 0;
+            _expTilNextLevel *= _expTilNextLevelMultiplier;
+            statPoints++;
+            level++;
         }
     }
 
-    [Command]
-    void CmdLevelPlayerUp()
-    {
-        exp = 0;
-        _expTilNextLevel *= _expTilNextLevelMultiplier;
-        statPoints++;
-        level++;
-    }
-    
-    
-        // Main Methods
+
+    // Main Methods
 
         [Client]
         void RotateTank()
@@ -429,25 +420,4 @@ public class PlayerController : NetworkBehaviour
             Debug.Log("TargetRpc GivePlayerExp() was called on this netId: "+netId);
             exp += newExp;
         }
-        
-        
-        // UI
-        [Client]
-        void ShowHud()
-        {
-            uiController.CmdShowHud();
-        }
-
-        [Client]
-        void UpdatePlayerInfo()
-        {
-            uiController.CmdUpdatePlayerInfo();
-        }
-
-        [Client]
-        void UpdatePlayerStats()
-        {
-            uiController.CmdUpdatePlayerStats();
-        }
-        
 }
